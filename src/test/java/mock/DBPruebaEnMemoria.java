@@ -5,6 +5,7 @@ import org.domain.Paciente;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class DBPruebaEnMemoria implements RepositorioPacientes {
 
@@ -18,5 +19,9 @@ public class DBPruebaEnMemoria implements RepositorioPacientes {
 
     public void guardarPaciente(Paciente paciente) {
         this.pacientes.put(paciente.getCuit(), paciente);
+    }
+
+    public Optional<Paciente> buscarPacientePorCuil(String cuit){
+        return Optional.ofNullable(pacientes.get(cuit));
     }
 }

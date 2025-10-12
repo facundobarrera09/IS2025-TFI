@@ -1,6 +1,10 @@
 package org.app.interfaces;
 import org.domain.Paciente;
 
+import java.util.Optional;
+
 public interface RepositorioPacientes {
-    void guardarPaciente(Paciente paciente);
+    public void guardarPaciente(Paciente paciente);
+
+    public Optional<Paciente> buscarPacientePorCuil(String cuit);
 }
