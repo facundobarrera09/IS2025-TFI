@@ -1,13 +1,11 @@
 package org.app;
 
 import org.app.interfaces.RepositorioPacientes;
-import org.domain.Enfermera;
-import org.domain.Ingreso;
-import org.domain.NivelEmergencia;
-import org.domain.Paciente;
+import org.domain.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ServicioUrgencia {
 
@@ -27,15 +25,13 @@ public class ServicioUrgencia {
         NivelEmergencia emergencia,
         Float frecuenciaCardiaca,
         Float frecuenciaRespiratoria,
-        Float frecuenciaDiastolica,
-        Float frecuenciaSistolica
+        TensionArterial tensionArterial
     ) {
-
         Paciente paciente = DBPacientes
                 .buscarPacientePorCuil(cuilPaciente)
                 .orElseThrow(() -> new RuntimeException("Paciente no registrado"));
 
-        Ingreso ingreso = new Ingreso(paciente, enfermera, informe, emergencia, temperatura, frecuenciaCardiaca, frecuenciaRespiratoria, frecuenciaDiastolica, frecuenciaSistolica);
+        Ingreso ingreso = new Ingreso(paciente, enfermera, informe, emergencia, temperatura, frecuenciaCardiaca, frecuenciaRespiratoria, tensionArterial);
 
         listaEspera.add(ingreso);
     }

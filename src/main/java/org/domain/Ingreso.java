@@ -7,30 +7,54 @@ public class Ingreso {
     Enfermera enfermera;
     LocalDateTime fechaIngreso;
     String informe;
-    NivelEmergencia emergencia;
+    NivelEmergencia nivelEmergencia;
     EstadoIngreso estado;
     Float temperatura;
     Float frecuenciaCardiaca;
     Float frecuenciaRespiratoria;
-    Float frecuenciaDiastolica;
-    Float frecuenciaSistolica;
+    TensionArterial tensionArterial;
 
-public Ingreso(Paciente paciente, Enfermera enfermera, String informe, NivelEmergencia emergencia,
-               Float temperatura, Float frecuenciaCardiaca, Float frecuenciaRespiratoria, Float frecuenciaDiastolica,
-               Float frecuenciaSistolica) {
-    this.paciente = paciente;
-    this.enfermera = enfermera;
-    this.fechaIngreso = LocalDateTime.now();
-    this.informe = informe;
-    this.emergencia = emergencia;
-    this.estado = EstadoIngreso.PENDIENTE;
-    this.temperatura = temperatura;
-    this.frecuenciaCardiaca = frecuenciaCardiaca;
-    this.frecuenciaRespiratoria = frecuenciaRespiratoria;
-    this.frecuenciaDiastolica = frecuenciaDiastolica;
-    this.frecuenciaSistolica = frecuenciaSistolica;
+    public Ingreso(Paciente paciente, Enfermera enfermera, String informe, NivelEmergencia nivelEmergencia,
+                   Float temperatura, Float frecuenciaCardiaca, Float frecuenciaRespiratoria, TensionArterial tensionArterial) {
+        if (paciente == null) {
+            throw new IllegalArgumentException("Paciente no puede ser nulo");
+        }
+        if (enfermera == null) {
+            throw new IllegalArgumentException("Enferma no puede ser nulo");
+        }
+        if (informe == null) {
+            throw new IllegalArgumentException("Informe no puede ser nulo");
+        }
+        if (nivelEmergencia == null) {
+            throw new IllegalArgumentException("Nivel emergencia no puede ser nulo");
+        }
+        //if (temperatura == null) {
+        //    throw new IllegalArgumentException("Temperatura no puede ser nulo");
+        //}
+        if (frecuenciaCardiaca == null) {
+            throw new IllegalArgumentException("Frecuencia Cardiaca no puede ser nulo");
+        }
+        if (frecuenciaRespiratoria == null) {
+            throw new IllegalArgumentException("Frecuencia Respiratoria no puede ser nulo");
+        }
+        if (tensionArterial == null) {
+            throw new IllegalArgumentException("Tensión Arterial no puede ser nulo");
+        }
 
-}
+        this.paciente = paciente;
+        this.enfermera = enfermera;
+        this.fechaIngreso = LocalDateTime.now();
+        this.informe = informe;
+        this.nivelEmergencia = nivelEmergencia;
+        this.temperatura = temperatura;
+        this.frecuenciaCardiaca = frecuenciaCardiaca;
+        this.frecuenciaRespiratoria = frecuenciaRespiratoria;
+        this.tensionArterial = tensionArterial;
+
+        this.estado = EstadoIngreso.PENDIENTE;
+    }
+
+
 
 
     public String getCuilPaciente(){
