@@ -36,7 +36,6 @@ public class ServicioUrgencia {
 
     public List<Ingreso> obtenerIngresosPendientes(){
         return this.listaEspera;
-
     }
 }
 

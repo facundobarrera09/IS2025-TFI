@@ -73,7 +73,10 @@ public class ModuloUrgenciasStepDefinition {
         List<String> cuilPendientes = servicioUrgencia.obtenerIngresosPendientes().stream()
                 .map(Ingreso::getCuilPaciente).toList();
 
-    assertThat(cuilPendientes).hasSize(1).contains(cuitEsperado);
+        assertThat(cuilPendientes).hasSize(1).contains(cuitEsperado);
+    }
 
+    @Then("se muestra un mensaje de error indicando \"Paciente no registrado\"")
+    public void seMuestraUnMensajeDeErrorIndicandoPacienteNoRegistrado() {
     }
 }

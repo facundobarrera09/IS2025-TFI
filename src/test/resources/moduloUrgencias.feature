@@ -7,7 +7,6 @@ Feature: Modulo de Urgencia
       | Nombre Enfermera | Apellido Enfermera |
       | Susana           | Gimenez            |
 
-
   Scenario: Ingreso del primer paciente a la lista de espera de urgencias
     Given que estan registrados los siguientes pacientes en el sistema:
       | CUIT          | Apellido Paciente | Nombre Paciente | Obra Social       |
@@ -21,5 +20,101 @@ Feature: Modulo de Urgencia
     Then la lista de espera esta ordenada por cuil de la siguiente manera:
       | 20-43772929-9 |
 
+  Scenario: Ingreso del primer paciente no exitente a la lista de espera de urgencias
+    Given que estan registrados los siguientes pacientes en el sistema:
+      | CUIT          | Apellido Paciente | Nombre Paciente | Obra Social       |
+      | 20-43772929-9 | Villagra          | Mauro           | Subsidio de salud |
+      | 26-12345678-0 | Perez             | Maria           | Swiss medical     |
+
+    When ingresa a urgencias el siguiente paciente:
+      | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
+      | 20-43772929-9 | Le agarro dengue | Emergencia          | 38          | 70                  | 15                      | 120/80           |
+
+    Then se muestra un mensaje de error indicando "Paciente no registrado"
+
+  Scenario: Ingreso del paciente a la lista de espera de urgencias con datos incompletos
+    Given que estan registrados los siguientes pacientes en el sistema:
+      | CUIT          | Apellido Paciente | Nombre Paciente | Obra Social       |
+      | 20-43772929-9 | Villagra          | Mauro           | Subsidio de salud |
+      | 26-12345678-0 | Perez             | Maria           | Swiss medical     |
+
+    When carga los datos del siguiente paciente:
+      | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
+      | 20-43111111-9 | Le agarro dengue | Emergencia          | 38          | 70                  | 15                      |                  |
+
+    Then se muestra un mensaje de error indicando "Tensión Arterial no puede estar vacio"
+
+
+  Scenario: Ingreso del paciente a la lista de espera de urgencia
+  con frecuencia cardíaca o frecuencia Respiratoria negativa
+    Given que estan registrados los siguientes pacientes en el sistema:
+      | CUIT          | Apellido Paciente | Nombre Paciente | Obra Social       |
+      | 20-43772929-9 | Villagra          | Mauro           | Subsidio de salud |
+      | 26-12345678-0 | Perez             | Maria           | Swiss medical     |
+
+    When carga los datos del siguiente paciente:
+      | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
+      | 20-43111111-9 | Le agarro dengue | Emergencia          | 38          | -70                 | 15                      |                  |
+
+    Then se muestra un mensaje de error indicando "La frecuencia cardiaca no puede ser negativa"
+
+
+
+  Scenario: Ingreso de pacientes con diferente niveles de emergencia
+    Given que estan registrados los siguientes pacientes en la lista de espera:
+      | CUIT          | Apellido Paciente | Nombre Paciente | Nivel de emergencia |
+      | 20-43772929-9 | Villagra          | Mauro           | Sin Urgencia        |
+
+    When carga los datos del siguiente paciente
+      | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
+      | 20-43111111-9 | Le agarro dengue | Emergencia          | 38          | -70                 | 15                      |                  |
+
+    Then la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:
+      | 20-43111111-9 |
+      | 20-43772929-9 |
+
+
+  Scenario: Ingreso de pacientes con diferente niveles de emergencia
+    Given que estan registrados los siguientes pacientes en la lista de espera:
+      | CUIT          | Apellido Paciente | Nombre Paciente | Nivel de emergencia |
+      | 20-43772929-9 | Villagra          | Mauro           | Sin Urgencia        |
+
+    When carga los datos del siguiente paciente
+      | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
+      | 20-43111111-9 | Le agarro dengue | Emergencia          | 38          | -70                 | 15                      |                  |
+
+    Then la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:
+      | 20-43111111-9 |
+      | 20-43772929-9 |
+
+
+
+  Scenario: Ingreso de pacientes con diferente niveles de emergencia
+    Given que estan registrados los siguientes pacientes en la lista de espera:
+      | CUIT          | Apellido Paciente | Nombre Paciente | Nivel de emergencia |
+      | 20-43772929-9 | Villagra          | Mauro           | Emergencia          |
+
+    When carga los datos del siguiente paciente
+      | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
+      | 20-43111111-9 | Le agarro dengue | Sin Urgencia        | 38          | -70                 | 15                      |  a               |
+
+    Then la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:
+      | 20-43772929-9 |
+      | 20-43111111-9 |
+
+
+
+  Scenario: Ingreso de pacientes con el mismo niveles de emergencia
+    Given que estan registrados los siguientes pacientes en la lista de espera:
+      | CUIT          | Apellido Paciente | Nombre Paciente | Nivel de emergencia |
+      | 20-43772929-9 | Villagra          | Mauro           | Emergencia          |
+
+    When carga los datos del siguiente paciente
+      | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
+      | 20-43111111-9 | Le agarro dengue | Emergencia          | 38          | -70                 | 15                      |                  |
+
+    Then la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:
+      | 20-43772929-9 |
+      | 20-43111111-9 |
 
 
