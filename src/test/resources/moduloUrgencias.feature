@@ -46,7 +46,7 @@ Feature: Modulo de Urgencia
 
     When ingresa a la guardia el siguiente paciente:
       | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
-      | 20-43111111-9 | Le agarro dengue | Emergencia          | 38          | -70                 | 15                      |                  |
+      | 20-43111111-9 | Le agarro dengue | Emergencia          | 38          | -70                 | 15                      |  120/80              |
 
     Then se muestra un mensaje de error indicando "La frecuencia cardiaca no puede ser negativa"
 

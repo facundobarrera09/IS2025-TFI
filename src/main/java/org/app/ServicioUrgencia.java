@@ -5,7 +5,6 @@ import org.domain.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class ServicioUrgencia {
 
@@ -27,18 +26,24 @@ public class ServicioUrgencia {
         Float frecuenciaRespiratoria,
         TensionArterial tensionArterial
     ) {
-        Paciente paciente = DBPacientes
+        if (frecuenciaCardiaca < 0 || frecuenciaRespiratoria < 0) {
+            throw new IllegalArgumentException("La frecuencia cardiaca no puede ser negativa");
+        }
+            Paciente paciente = DBPacientes
                 .buscarPacientePorCuil(cuilPaciente)
                 .orElseThrow(() -> new RuntimeException("Paciente no registrado"));
 
         Ingreso ingreso = new Ingreso(paciente, enfermera, informe, emergencia, temperatura, frecuenciaCardiaca, frecuenciaRespiratoria, tensionArterial);
 
         listaEspera.add(ingreso);
+
     }
 
     public List<Ingreso> obtenerIngresosPendientes(){
+
         return this.listaEspera;
     }
+
 }
 
 
