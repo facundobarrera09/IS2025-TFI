@@ -1,6 +1,5 @@
 package steps;
 
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -8,7 +7,6 @@ import io.cucumber.java.en.Then;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import mock.DBPruebaEnMemoria;
 import org.app.ServicioUrgencia;
@@ -21,9 +19,10 @@ import static org.assertj.core.api.Assertions.*;
 public class ModuloUrgenciasStepDefinition {
 
     private Enfermera enfermera;
-    private DBPruebaEnMemoria DBMockeada;
-    private ServicioUrgencia servicioUrgencia;
+    private final DBPruebaEnMemoria DBMockeada;
+    private final ServicioUrgencia servicioUrgencia;
 
+    private Exception excepcionCapturada;
 
     public ModuloUrgenciasStepDefinition(){
         this.DBMockeada = new DBPruebaEnMemoria();
@@ -32,8 +31,8 @@ public class ModuloUrgenciasStepDefinition {
 
     @Given("que la enfermera esta registrada:")
     public void queLaEnfermeraEstaRegistrada(List<Map<String, String>> tabla) {
-      String nombre = tabla.get(0).get("nombre");
-      String apellido = tabla.get(0).get("apellido");
+      String nombre = tabla.getFirst().get("nombre");
+      String apellido = tabla.getFirst().get("apellido");
 
       enfermera = new Enfermera(nombre, apellido);
     }
@@ -54,29 +53,40 @@ public class ModuloUrgenciasStepDefinition {
 
     @When("ingresa a urgencias el siguiente paciente:")
     public void ingresaAUrgenciasElSiguientePaciente(List<Map<String, String>> tabla) {
-        Map<String, String> fila = tabla.get(0);
+        Map<String, String> fila = tabla.getFirst();
         String cuit =  fila.get("CUIT");
         String informe = fila.get("Informe");
         float temperatura = Float.parseFloat(fila.get("Temperatura"));
         NivelEmergencia nivelEmergencia = Arrays.stream(NivelEmergencia.values()).filter(nivel -> nivel.tieneNombre(fila.get("Nivel de Emergencia"))).findFirst().orElseThrow(() -> new RuntimeException("Nivel Desconocido"));
         float frecuenciaCardiaca = Float.parseFloat(fila.get("Frecuencia Cardiaca"));
         float frecuenciaRespiratoria = Float.parseFloat(fila.get("Frecuencia Respiratoria"));
-        List<Float> tensionArterial = Arrays.stream(fila.get("Tension Arterial").split("/")).map(Float::parseFloat).collect(Collectors.toUnmodifiableList());
+        List<Float> tensionArterial = Arrays.stream(fila.get("Tension Arterial").split("/")).map(Float::parseFloat).toList();
 
-        servicioUrgencia.registrarUrgencia(cuit, enfermera, informe, temperatura, nivelEmergencia, frecuenciaCardiaca, frecuenciaRespiratoria, tensionArterial.get(0), tensionArterial.get(1));
+        try {
+            servicioUrgencia.registrarUrgencia(cuit, enfermera, informe, temperatura, nivelEmergencia, frecuenciaCardiaca, frecuenciaRespiratoria, tensionArterial.get(0), tensionArterial.get(1));
+        } catch (Exception e) {
+            if (e.getMessage().equals("Paciente no registrado")) {
+                excepcionCapturada = e;
+            }
+            else throw e;
+        }
 
     }
 
     @Then("la lista de espera esta ordenada por cuil de la siguiente manera:")
     public void laListaDeEsperaEstaOrdenadaPorCuil(List<String> tabla) {
-        String cuitEsperado = tabla.get(0);
+        String cuitEsperado = tabla.getFirst();
         List<String> cuilPendientes = servicioUrgencia.obtenerIngresosPendientes().stream()
                 .map(Ingreso::getCuilPaciente).toList();
 
         assertThat(cuilPendientes).hasSize(1).contains(cuitEsperado);
     }
 
-    @Then("se muestra un mensaje de error indicando \"Paciente no registrado\"")
+    @Then("se muestra un mensaje de error indicando 'Paciente no registrado'")
     public void seMuestraUnMensajeDeErrorIndicandoPacienteNoRegistrado() {
+        assertThat(excepcionCapturada)
+                .as("No exception was captured!")
+                .isNotNull()
+                .hasMessage("Paciente no registrado");
     }
 }

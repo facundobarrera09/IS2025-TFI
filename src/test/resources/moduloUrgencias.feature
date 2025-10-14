@@ -7,6 +7,7 @@ Feature: Modulo de Urgencia
       | Nombre Enfermera | Apellido Enfermera |
       | Susana           | Gimenez            |
 
+    # 1. Paciente existe -> admisión registrada en cola
   Scenario: Ingreso del primer paciente a la lista de espera de urgencias
     Given que estan registrados los siguientes pacientes en el sistema:
       | CUIT          | Apellido Paciente | Nombre Paciente | Obra Social       |
@@ -20,6 +21,7 @@ Feature: Modulo de Urgencia
     Then la lista de espera esta ordenada por cuil de la siguiente manera:
       | 20-43772929-9 |
 
+    # 2. Paciente no existe -> capturamos "Paciente no registrado"
   Scenario: Ingreso del primer paciente no exitente a la lista de espera de urgencias
     Given que estan registrados los siguientes pacientes en el sistema:
       | CUIT          | Apellido Paciente | Nombre Paciente | Obra Social       |
@@ -28,10 +30,11 @@ Feature: Modulo de Urgencia
 
     When ingresa a urgencias el siguiente paciente:
       | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
-      | 20-43772929-9 | Le agarro dengue | Emergencia          | 38          | 70                  | 15                      | 120/80           |
+      | 20-43965801-9 | Le agarro dengue | Emergencia          | 38          | 70                  | 15                      | 120/80           |
 
-    Then se muestra un mensaje de error indicando "Paciente no registrado"
+    Then se muestra un mensaje de error indicando 'Paciente no registrado'
 
+    # 3. Falta dato obligatorio
   Scenario: Ingreso del paciente a la lista de espera de urgencias con datos incompletos
     Given que estan registrados los siguientes pacientes en el sistema:
       | CUIT          | Apellido Paciente | Nombre Paciente | Obra Social       |
@@ -44,7 +47,7 @@ Feature: Modulo de Urgencia
 
     Then se muestra un mensaje de error indicando "Tensión Arterial no puede estar vacio"
 
-
+    # 4. Valores negativos de frecuencia
   Scenario: Ingreso del paciente a la lista de espera de urgencia
   con frecuencia cardíaca o frecuencia Respiratoria negativa
     Given que estan registrados los siguientes pacientes en el sistema:
@@ -58,8 +61,7 @@ Feature: Modulo de Urgencia
 
     Then se muestra un mensaje de error indicando "La frecuencia cardiaca no puede ser negativa"
 
-
-
+    # 5. Orden de prioridad: baja prioridad (ya esta) -> media prioridad (se ingresa) -> alta prioridad (ya esta)
   Scenario: Ingreso de pacientes con diferente niveles de emergencia
     Given que estan registrados los siguientes pacientes en la lista de espera:
       | CUIT          | Apellido Paciente | Nombre Paciente | Nivel de emergencia |
@@ -73,48 +75,7 @@ Feature: Modulo de Urgencia
       | 20-43111111-9 |
       | 20-43772929-9 |
 
+    # 6. Orden de prioridad: baja prioridad (ya esta) -> baja prioridad (ya esta) -> baja prioridad (se ingresa)
 
-  Scenario: Ingreso de pacientes con diferente niveles de emergencia
-    Given que estan registrados los siguientes pacientes en la lista de espera:
-      | CUIT          | Apellido Paciente | Nombre Paciente | Nivel de emergencia |
-      | 20-43772929-9 | Villagra          | Mauro           | Sin Urgencia        |
-
-    When carga los datos del siguiente paciente
-      | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
-      | 20-43111111-9 | Le agarro dengue | Emergencia          | 38          | -70                 | 15                      |                  |
-
-    Then la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:
-      | 20-43111111-9 |
-      | 20-43772929-9 |
-
-
-
-  Scenario: Ingreso de pacientes con diferente niveles de emergencia
-    Given que estan registrados los siguientes pacientes en la lista de espera:
-      | CUIT          | Apellido Paciente | Nombre Paciente | Nivel de emergencia |
-      | 20-43772929-9 | Villagra          | Mauro           | Emergencia          |
-
-    When carga los datos del siguiente paciente
-      | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
-      | 20-43111111-9 | Le agarro dengue | Sin Urgencia        | 38          | -70                 | 15                      |  a               |
-
-    Then la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:
-      | 20-43772929-9 |
-      | 20-43111111-9 |
-
-
-
-  Scenario: Ingreso de pacientes con el mismo niveles de emergencia
-    Given que estan registrados los siguientes pacientes en la lista de espera:
-      | CUIT          | Apellido Paciente | Nombre Paciente | Nivel de emergencia |
-      | 20-43772929-9 | Villagra          | Mauro           | Emergencia          |
-
-    When carga los datos del siguiente paciente
-      | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
-      | 20-43111111-9 | Le agarro dengue | Emergencia          | 38          | -70                 | 15                      |                  |
-
-    Then la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:
-      | 20-43772929-9 |
-      | 20-43111111-9 |
-
+    # 7. Verificar formato de tensión arterial y campos mandatorios (combinado)
 
