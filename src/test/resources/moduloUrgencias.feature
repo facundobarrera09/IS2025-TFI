@@ -77,18 +77,36 @@ Feature: Modulo de Urgencia
       | 24-87654321-1 |
       | 26-12345678-0 |
 
-    #7 Ordenamiento de pacientes con igual prioridad
-  Scenario: Un paciente de igual prioridad ingresa cuando ya hay otro en lista de espera
-    Given que están registrados los siguientes pacientes en la lista de espera:
-      | CUIT          | Apellido Paciente | Nombre Paciente | Nivel de emergencia |
-      | 20-43772929-9 | Villagra          | Mauro           | Urgencia Menor        |
-    When ingresa a la guardia el siguiente paciente:
-    | CUIT          | Apellido Paciente | Nombre Paciente | Nivel de emergencia |
-    | 27-44856678-1 | Paez          | Micaela           | Urgencia Menor        |
-  Then la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:
-  |CUIT|
-  |20-43772929-9|
-  |27-44856678-1|
+    # 7. Ordenamiento de pacientes con igual prioridad
+  Scenario: Ingresa un paciente de igual prioridad que uno que ya esta en la lista de espera
+    Given que están ingresados en la guardia los siguientes pacientes:
+      | CUIT          | Informe                     | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
+      | 20-43772929-9 | Le agarro dengue            | Emergencia          | 38          | 70                  | 15                      | 120/80           |
 
-    # 8. Verificar formato de tensión arterial y campos mandatorios (combinado)
+    When ingresa a la guardia el siguiente paciente:
+      | CUIT          | Informe                     | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
+      | 24-87654321-1 | Le agarro dengue            | Emergencia          | 38          | 70                  | 15                      | 120/80           |
+
+    Then la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:
+      | CUIT          |
+      | 20-43772929-9 |
+      | 27-44856678-1 |
+
+    # 8. Priorización de paciente que excedieron el máximo de tiempo de espera
+  Scenario: Un paciente en la lista de espera de la guardia excedió el tiempo máximo de espera
+    Given que están ingresados en la guardia los siguientes pacientes:
+      | CUIT          | Informe                     | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial | Hora de ingreso |
+      | 20-43772929-9 | Le agarro dengue            | Emergencia          | 38          | 70                  | 15                      | 120/80           | 09:30           |
+      | 21-88544755-2 | Le agarro dengue            | Emergencia          | 38          | 70                  | 15                      | 120/80           | 09:00           |
+      | 24-87654321-1 | Dolor de cabeza intenso     | Urgencia            | 38          | 70                  | 15                      | 120/80           | 09:30           |
+      | 26-12345678-0 | Dolor de cabeza persistente | Urgencia            | 38          | 70                  | 15                      | 120/80           | 08:30           |
+
+    When la hora es "09:35"
+
+    Then la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:
+      | 21-88544755-2 |
+      | 26-12345678-0 |
+      | 20-43772929-9 |
+      | 24-87654321-1 |
+
 

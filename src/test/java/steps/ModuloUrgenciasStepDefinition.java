@@ -4,10 +4,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.PriorityQueue;
+import java.time.*;
+import java.util.*;
 
 import mock.DBPruebaEnMemoria;
 import org.app.ServicioUrgencia;
@@ -17,9 +15,11 @@ import static org.assertj.core.api.Assertions.*;
 
 public class ModuloUrgenciasStepDefinition {
 
-    private Enfermera enfermera;
     private final DBPruebaEnMemoria DBMockeada;
     private final ServicioUrgencia servicioUrgencia;
+    private Enfermera enfermera;
+
+    private LocalDateTime fechaYHoraMockeada;
 
     private Exception excepcionCapturada;
 
@@ -30,10 +30,10 @@ public class ModuloUrgenciasStepDefinition {
 
     @Given("que la enfermera esta registrada:")
     public void queLaEnfermeraEstaRegistrada(List<Map<String, String>> tabla) {
-      String nombre = tabla.getFirst().get("nombre");
-      String apellido = tabla.getFirst().get("apellido");
+        String nombre = tabla.getFirst().get("nombre");
+        String apellido = tabla.getFirst().get("apellido");
 
-      enfermera = new Enfermera(nombre, apellido);
+        enfermera = new Enfermera(nombre, apellido);
     }
 
     @Given("que están registrados los siguientes pacientes en el sistema:")
@@ -73,8 +73,6 @@ public class ModuloUrgenciasStepDefinition {
 
     @When("que están ingresados en la guardia los siguientes pacientes:")
     public void estanIngresadosEnLaGuardiaLosSiguientesPacientes(List<Map<String, String>> tabla) {
-        //Map<String, String> fila = tabla.getFirst();
-
         for (Map<String, String> fila : tabla) {
             try {
                 String cuit =  fila.get("CUIT");
@@ -84,6 +82,28 @@ public class ModuloUrgenciasStepDefinition {
                 Float frecuenciaCardiaca = fila.get("Frecuencia Cardiaca") != null ? Float.parseFloat(fila.get("Frecuencia Cardiaca")) : null;
                 Float frecuenciaRespiratoria = fila.get("Frecuencia Respiratoria") != null ? Float.parseFloat(fila.get("Frecuencia Respiratoria")) : null;
                 String tensionArterial = fila.get("Tension Arterial");
+
+                String hora = fila.get("Hora de ingreso");
+
+                if (hora != null) {
+                    if (!hora.isEmpty()) {
+                        List<String> horaYMinutos = Arrays.stream(hora.split(":")).toList();
+                        LocalTime horaActual = LocalTime.of(
+                                Integer.parseInt(horaYMinutos.get(0)),
+                                Integer.parseInt(horaYMinutos.get(1))
+                        );
+
+                        LocalDateTime fechaYHoraDeIngreso = LocalDateTime.of(LocalDate.now(), horaActual);
+
+                        servicioUrgencia.registrarUrgencia(
+                                cuit, enfermera, informe, temperatura, nivelEmergencia,
+                                frecuenciaCardiaca, frecuenciaRespiratoria, new TensionArterial(tensionArterial),
+                                fechaYHoraDeIngreso
+                        );
+
+                        continue;
+                    }
+                }
 
                 servicioUrgencia.registrarUrgencia(
                         cuit, enfermera, informe, temperatura, nivelEmergencia,
@@ -97,7 +117,9 @@ public class ModuloUrgenciasStepDefinition {
 
     @Then("la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:")
     public void laListaDeEsperaEstaOrdenadaDeLaSiguienteManera(List<String> ordenDeCUITsEsperado) {
-        var listaDeEspera = new PriorityQueue<>(servicioUrgencia.getListaDeEspera());
+        var listaDeEspera = this.fechaYHoraMockeada == null ?
+                new PriorityQueue<>(servicioUrgencia.getListaDeEspera()) :
+                new PriorityQueue<>(servicioUrgencia.getListaDeEspera(fechaYHoraMockeada));
 
         assertThat(listaDeEspera).hasSize(ordenDeCUITsEsperado.size());
 
@@ -113,5 +135,16 @@ public class ModuloUrgenciasStepDefinition {
                 .as("No exception was captured!")
                 .isNotNull()
                 .hasMessage(expectedError);
+    }
+
+    @When("la hora es {string}")
+    public void laHoraHoraEs(String hora) {
+        List<String> horaYMinutos = Arrays.stream(hora.split(":")).toList();
+        LocalTime horaActual = LocalTime.of(
+                Integer.parseInt(horaYMinutos.get(0)),
+                Integer.parseInt(horaYMinutos.get(1))
+        );
+
+        this.fechaYHoraMockeada = LocalDateTime.of(LocalDate.now(), horaActual);
     }
 }

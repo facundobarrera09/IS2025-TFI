@@ -49,7 +49,6 @@ public class Ingreso {
 
         this.paciente = paciente;
         this.enfermera = enfermera;
-        this.fechaIngreso = LocalDateTime.now();
         this.informe = informe;
         this.nivelEmergencia = nivelEmergencia;
         this.temperatura = temperatura;
@@ -57,7 +56,12 @@ public class Ingreso {
         this.frecuenciaRespiratoria = frecuenciaRespiratoria;
         this.tensionArterial = tensionArterial;
 
+        this.fechaIngreso = LocalDateTime.now();
         this.estado = EstadoIngreso.PENDIENTE;
+    }
+
+    public LocalDateTime getFechaMaxima() {
+        return fechaIngreso.plusSeconds(this.nivelEmergencia.getTiempoMaximoDeEsperaEnSeg());
     }
 
     public String getCuilPaciente(){
@@ -102,5 +106,9 @@ public class Ingreso {
 
     public TensionArterial getTensionArterial() {
         return tensionArterial;
+    }
+
+    public void setFechaIngreso(LocalDateTime fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
     }
 }

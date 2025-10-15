@@ -1,17 +1,19 @@
 package org.domain;
 
 public enum NivelEmergencia {
-    CRITICA("Critica", 50),
-    EMERGENCIA("Emergencia", 40),
-    URGENCIA("Urgencia", 30),
-    URGENCIA_MENOR("Urgencia Menor", 20),
-    SIN_URGENCIA("Sin Urgencia", 10);
+    CRITICA("Critica",5*60, 50),
+    EMERGENCIA("Emergencia",30*60, 40),
+    URGENCIA("Urgencia", 60*60, 30),
+    URGENCIA_MENOR("Urgencia Menor", 2*60*60, 20),
+    SIN_URGENCIA("Sin Urgencia", 4*60*60, 10);
 
     final String nombre;
     final Integer jerarquia;
+    final Integer tiempoMaximoDeEsperaEnSeg;
 
-    NivelEmergencia(String nombre, Integer jerarquia) {
+    NivelEmergencia(String nombre, Integer tiempoMaximoDeEsperaEnSeg, Integer jerarquia) {
         this.nombre = nombre;
+        this.tiempoMaximoDeEsperaEnSeg = tiempoMaximoDeEsperaEnSeg;
         this.jerarquia = jerarquia;
     }
 
@@ -43,6 +45,10 @@ public enum NivelEmergencia {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public Integer getTiempoMaximoDeEsperaEnSeg() {
+        return tiempoMaximoDeEsperaEnSeg;
     }
 
     @Override
