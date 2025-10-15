@@ -3,18 +3,18 @@ package org.app;
 import org.app.interfaces.RepositorioPacientes;
 import org.domain.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.PriorityQueue;
 
 public class ServicioUrgencia {
 
-    private final List<Ingreso> listaEspera;
+    private final PriorityQueue<Ingreso> listaEspera;
     private final RepositorioPacientes DBPacientes;
 
     public ServicioUrgencia(RepositorioPacientes DBPacientes) {
         this.DBPacientes = DBPacientes;
-        this.listaEspera = new ArrayList<>();
+        this.listaEspera = new PriorityQueue<>((a, b) -> {
+            return -a.getNivelEmergencia().compararCon(b.getNivelEmergencia());
+        });
     }
 
     public void registrarUrgencia(
@@ -33,15 +33,12 @@ public class ServicioUrgencia {
 
         Ingreso ingreso = new Ingreso(paciente, enfermera, informe, emergencia, temperatura, frecuenciaCardiaca, frecuenciaRespiratoria, tensionArterial);
 
-        listaEspera.add(ingreso);
-
+        listaEspera.offer(ingreso);
     }
 
-    public List<Ingreso> obtenerIngresosPendientes(){
-
+    public PriorityQueue<Ingreso> getListaDeEspera(){
         return this.listaEspera;
     }
-
 }
 
 

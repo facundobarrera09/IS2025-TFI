@@ -1,14 +1,13 @@
 package steps;
 
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Objects;
+import java.util.PriorityQueue;
 
 import mock.DBPruebaEnMemoria;
 import org.app.ServicioUrgencia;
@@ -70,17 +69,42 @@ public class ModuloUrgenciasStepDefinition {
         } catch (Exception e) {
             excepcionCapturada = e;
         }
-
     }
 
-    @Then("la lista de espera esta ordenada por CUIT de la siguiente manera:")
-    public void laListaDeEsperaEstaOrdenadaPorCuit(List<String> tabla) {
-        String cuitEsperado = tabla.getFirst();
+    @When("que están ingresados en la guardia los siguientes pacientes:")
+    public void estanIngresadosEnLaGuardiaLosSiguientesPacientes(List<Map<String, String>> tabla) {
+        //Map<String, String> fila = tabla.getFirst();
 
-        List<String> cuilPendientes = servicioUrgencia.obtenerIngresosPendientes().stream()
-                .map(Ingreso::getCuilPaciente).toList();
+        for (Map<String, String> fila : tabla) {
+            try {
+                String cuit =  fila.get("CUIT");
+                String informe = fila.get("Informe");
+                Float temperatura = fila.get("Temperatura") != null ? Float.parseFloat(fila.get("Temperatura")) : null;
+                NivelEmergencia nivelEmergencia = NivelEmergencia.buscarPorNombre(fila.get("Nivel de Emergencia"));
+                Float frecuenciaCardiaca = fila.get("Frecuencia Cardiaca") != null ? Float.parseFloat(fila.get("Frecuencia Cardiaca")) : null;
+                Float frecuenciaRespiratoria = fila.get("Frecuencia Respiratoria") != null ? Float.parseFloat(fila.get("Frecuencia Respiratoria")) : null;
+                String tensionArterial = fila.get("Tension Arterial");
 
-        assertThat(cuilPendientes).hasSize(1).contains(cuitEsperado);
+                servicioUrgencia.registrarUrgencia(
+                        cuit, enfermera, informe, temperatura, nivelEmergencia,
+                        frecuenciaCardiaca, frecuenciaRespiratoria, new TensionArterial(tensionArterial)
+                );
+            } catch (Exception e) {
+                excepcionCapturada = e;
+            }
+        }
+    }
+
+    @Then("la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:")
+    public void laListaDeEsperaEstaOrdenadaDeLaSiguienteManera(List<String> ordenDeCUITsEsperado) {
+        var listaDeEspera = new PriorityQueue<>(servicioUrgencia.getListaDeEspera());
+
+        assertThat(listaDeEspera).hasSize(ordenDeCUITsEsperado.size());
+
+        for (String CUIT : ordenDeCUITsEsperado) {
+            assertThat(Objects.requireNonNull(listaDeEspera.poll()).getPaciente().getCuit())
+                    .isEqualTo(CUIT);
+        }
     }
 
     @Then("se muestra un mensaje de error indicando {string}")

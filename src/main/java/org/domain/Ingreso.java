@@ -60,10 +60,47 @@ public class Ingreso {
         this.estado = EstadoIngreso.PENDIENTE;
     }
 
-
-
-
     public String getCuilPaciente(){
         return this.paciente.getCuit();
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public Enfermera getEnfermera() {
+        return enfermera;
+    }
+
+    public LocalDateTime getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    public String getInforme() {
+        return informe;
+    }
+
+    public NivelEmergencia getNivelEmergencia() {
+        return nivelEmergencia;
+    }
+
+    public EstadoIngreso getEstado() {
+        return estado;
+    }
+
+    public Float getTemperatura() {
+        return temperatura;
+    }
+
+    public Float getFrecuenciaCardiaca() {
+        return frecuenciaCardiaca;
+    }
+
+    public Float getFrecuenciaRespiratoria() {
+        return frecuenciaRespiratoria;
+    }
+
+    public TensionArterial getTensionArterial() {
+        return tensionArterial;
     }
 }
