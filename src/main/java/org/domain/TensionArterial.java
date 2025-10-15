@@ -1,6 +1,5 @@
 package org.domain;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,19 +18,21 @@ public class TensionArterial {
 
     public TensionArterial(String tensionArterial) {
         if (tensionArterial == null || tensionArterial.isEmpty()) {
-            throw new IllegalArgumentException("Tensión Arterial no puede ser nulo");
+            throw new IllegalArgumentException("Tensión arterial no puede ser nulo");
         }
 
-        List<Float> tensionArterialList = Arrays.stream(tensionArterial.split("/"))
-                .map(Float::parseFloat)
-                .toList();
+        List<String> tensionArterialStringList = Arrays.stream(tensionArterial.split("/")).toList();
 
-        if (tensionArterialList.size() != 2) {
-            throw new IllegalArgumentException("Tensión Arterial debe estar en el formato 'frecuenciaSistolica/frecuenciaDiastolica'");
+        if (tensionArterialStringList.size() != 2) {
+            throw new IllegalArgumentException("Frecuencia diastólica no puede ser nulo");
         }
 
-        this.frecuenciaSistolica = tensionArterialList.get(0);
-        this.frecuenciaDiastolica = tensionArterialList.get(1);
+        if (tensionArterialStringList.get(0).isEmpty()) {
+            throw new IllegalArgumentException("Frecuencia sistólica no puede ser nulo");
+        }
+
+        this.frecuenciaSistolica = Float.parseFloat(tensionArterialStringList.get(0));
+        this.frecuenciaDiastolica = Float.parseFloat(tensionArterialStringList.get(1));
     }
 
     public float getFrecuenciaDiastolica() {

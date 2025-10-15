@@ -29,20 +29,26 @@ Feature: Modulo de Urgencia
     Then se muestra un mensaje de error indicando "Paciente no registrado"
 
     # 3. Falta dato obligatorio
-  Scenario: Ingreso del paciente a la lista de espera de urgencias con datos incompletos
+  Scenario Outline: Ingreso del paciente a la lista de espera de urgencias con datos incompletos
     When ingresa a la guardia el siguiente paciente:
-      | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
-      | 20-43772929-9 | Le agarro dengue | Emergencia          | 38          | 70                  | 15                      |                  |
+      | CUIT          | Informe          | Nivel de Emergencia   | Temperatura | Frecuencia Cardiaca   | Frecuencia Respiratoria   | Tension Arterial   |
+      | 20-43772929-9 | <Informe>        | <Nivel de emergencia> | 38          | <Frecuencia cardiaca> | <Frecuencia respiratoria> | <Tension arterial> |
 
-    Then se muestra un mensaje de error indicando "Tensión Arterial no puede ser nulo"
+    Then se muestra un mensaje de error indicando <Mensaje de error>
+
+    Examples:
+      | Informe          | Nivel de emergencia | Frecuencia cardiaca | Frecuencia respiratoria | Tension arterial | Mensaje de error                            |
+      |                  | Emergencia          | 70                  | 15                      | 120/80           | "Informe no puede ser nulo"                 |
+      | Le agarro dengue |                     | 70                  | 15                      | 120/80           | "Nivel de emergencia no puede ser nulo"     |
+      | Le agarro dengue | Emergencia          |                     | 15                      | 120/80           | "Frecuencia cardíaca no puede ser nulo"     |
+      | Le agarro dengue | Emergencia          | 70                  |                         | 120/80           | "Frecuencia respiratoria no puede ser nulo" |
+      | Le agarro dengue | Emergencia          | 70                  | 15                      |                  | "Tensión arterial no puede ser nulo"        |
+      | Le agarro dengue | Emergencia          | 70                  | 15                      |    /80           | "Frecuencia sistólica no puede ser nulo"    |
+      | Le agarro dengue | Emergencia          | 70                  | 15                      | 120/             | "Frecuencia diastólica no puede ser nulo"   |
+
 
     # 4. Valores negativos de frecuencia
   Scenario Outline: Ingreso del paciente a la lista de espera de urgencia con frecuencia cardíaca o frecuencia respiratoria negativa
-    Given que están registrados los siguientes pacientes en el sistema:
-      | CUIT          | Apellido Paciente | Nombre Paciente | Obra Social       |
-      | 20-43772929-9 | Villagra          | Mauro           | Subsidio de salud |
-      | 26-12345678-0 | Perez             | Maria           | Swiss medical     |
-
     When ingresa a la guardia el siguiente paciente:
       | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca   | Frecuencia Respiratoria   | Tension Arterial |
       | 26-12345678-0 | Le agarro dengue | Emergencia          | 38          | <Frecuencia Cardiaca> | <Frecuencia respiratoria> |  120/80          |

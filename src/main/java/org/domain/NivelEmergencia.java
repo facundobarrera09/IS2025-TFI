@@ -15,6 +15,14 @@ public enum NivelEmergencia {
 
     public boolean tieneNombre(String nombre){
         return this.nombre.equals(nombre);
+    }
 
+    public static NivelEmergencia buscarPorNombre(String nombre) {
+        for (NivelEmergencia nivel : values()) {
+            if (nivel.tieneNombre(nombre)) {
+                return nivel;
+            }
+        }
+        return null;
     }
 }

@@ -57,10 +57,10 @@ public class ModuloUrgenciasStepDefinition {
         try {
             String cuit =  fila.get("CUIT");
             String informe = fila.get("Informe");
-            float temperatura = Float.parseFloat(fila.get("Temperatura"));
-            NivelEmergencia nivelEmergencia = Arrays.stream(NivelEmergencia.values()).filter(nivel -> nivel.tieneNombre(fila.get("Nivel de Emergencia"))).findFirst().orElseThrow(() -> new RuntimeException("Nivel Desconocido"));
-            float frecuenciaCardiaca = Float.parseFloat(fila.get("Frecuencia Cardiaca"));
-            float frecuenciaRespiratoria = Float.parseFloat(fila.get("Frecuencia Respiratoria"));
+            Float temperatura = fila.get("Temperatura") != null ? Float.parseFloat(fila.get("Temperatura")) : null;
+            NivelEmergencia nivelEmergencia = NivelEmergencia.buscarPorNombre(fila.get("Nivel de Emergencia"));
+            Float frecuenciaCardiaca = fila.get("Frecuencia Cardiaca") != null ? Float.parseFloat(fila.get("Frecuencia Cardiaca")) : null;
+            Float frecuenciaRespiratoria = fila.get("Frecuencia Respiratoria") != null ? Float.parseFloat(fila.get("Frecuencia Respiratoria")) : null;
             String tensionArterial = fila.get("Tension Arterial");
 
             servicioUrgencia.registrarUrgencia(

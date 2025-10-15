@@ -26,25 +26,25 @@ public class Ingreso {
             throw new IllegalArgumentException("Informe no puede ser nulo");
         }
         if (nivelEmergencia == null) {
-            throw new IllegalArgumentException("Nivel emergencia no puede ser nulo");
+            throw new IllegalArgumentException("Nivel de emergencia no puede ser nulo");
         }
         //if (temperatura == null) {
         //    throw new IllegalArgumentException("Temperatura no puede ser nulo");
         //}
         if (frecuenciaCardiaca == null) {
-            throw new IllegalArgumentException("Frecuencia Cardiaca no puede ser nulo");
+            throw new IllegalArgumentException("Frecuencia cardíaca no puede ser nulo");
         }
         if (frecuenciaCardiaca < 0) {
             throw new IllegalArgumentException("La frecuencia cardiaca no puede ser negativa");
         }
         if (frecuenciaRespiratoria == null) {
-            throw new IllegalArgumentException("Frecuencia Respiratoria no puede ser nulo");
+            throw new IllegalArgumentException("Frecuencia respiratoria no puede ser nulo");
         }
         if (frecuenciaRespiratoria < 0) {
             throw new IllegalArgumentException("La frecuencia respiratoria no puede ser negativa");
         }
         if (tensionArterial == null) {
-            throw new IllegalArgumentException("Tensión Arterial no puede ser nulo");
+            throw new IllegalArgumentException("Tensión arterial no puede ser nulo");
         }
 
         this.paciente = paciente;
