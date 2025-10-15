@@ -50,7 +50,7 @@ Feature: Modulo de Urgencia
 
     Then se muestra un mensaje de error indicando "La frecuencia cardiaca no puede ser negativa"
 
-    # 5. Orden de prioridad: baja prioridad (ya esta) -> media prioridad (se ingresa) -> alta prioridad (ya esta)
+    # 5. y 6 Orden de prioridad: baja prioridad (ya esta) -> media prioridad (se ingresa) -> alta prioridad (ya esta)
   Scenario: Ingreso de pacientes con diferente niveles de emergencia
     Given que están registrados los siguientes pacientes en la lista de espera:
       | CUIT          | Apellido Paciente | Nombre Paciente | Nivel de emergencia |
@@ -64,7 +64,19 @@ Feature: Modulo de Urgencia
       | 20-43111111-9 |
       | 20-43772929-9 |
 
-    # 6. Orden de prioridad: baja prioridad (ya esta) -> baja prioridad (ya esta) -> baja prioridad (se ingresa)
+    #7 Ordenamiento de pacientes con igual prioridad
 
-    # 7. Verificar formato de tensión arterial y campos mandatorios (combinado)
+  Scenario: Un paciente de igual prioridad ingresa cuando ya hay otro en lista de espera
+    Given que están registrados los siguientes pacientes en la lista de espera:
+      | CUIT          | Apellido Paciente | Nombre Paciente | Nivel de emergencia |
+      | 20-43772929-9 | Villagra          | Mauro           | Urgencia Menor        |
+    When ingresa a la guardia el siguiente paciente:
+    | CUIT          | Apellido Paciente | Nombre Paciente | Nivel de emergencia |
+    | 27-44856678-1 | Paez          | Micaela           | Urgencia Menor        |
+  Then la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:
+  |CUIT|
+  |20-43772929-9|
+  |27-44856678-1|
+
+    # 8. Verificar formato de tensión arterial y campos mandatorios (combinado)
 
