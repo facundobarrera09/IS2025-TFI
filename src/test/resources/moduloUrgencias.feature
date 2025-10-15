@@ -37,18 +37,22 @@ Feature: Modulo de Urgencia
     Then se muestra un mensaje de error indicando "Tensión Arterial no puede ser nulo"
 
     # 4. Valores negativos de frecuencia
-  Scenario: Ingreso del paciente a la lista de espera de urgencia
-  con frecuencia cardíaca o frecuencia Respiratoria negativa
+  Scenario Outline: Ingreso del paciente a la lista de espera de urgencia con frecuencia cardíaca o frecuencia respiratoria negativa
     Given que están registrados los siguientes pacientes en el sistema:
       | CUIT          | Apellido Paciente | Nombre Paciente | Obra Social       |
       | 20-43772929-9 | Villagra          | Mauro           | Subsidio de salud |
       | 26-12345678-0 | Perez             | Maria           | Swiss medical     |
 
     When ingresa a la guardia el siguiente paciente:
-      | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
-      | 20-43111111-9 | Le agarro dengue | Emergencia          | 38          | -70                 | 15                      |  120/80              |
+      | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca   | Frecuencia Respiratoria   | Tension Arterial |
+      | 26-12345678-0 | Le agarro dengue | Emergencia          | 38          | <Frecuencia Cardiaca> | <Frecuencia respiratoria> |  120/80          |
 
-    Then se muestra un mensaje de error indicando "La frecuencia cardiaca no puede ser negativa"
+    Then se muestra un mensaje de error indicando <Mensaje de error>
+
+    Examples:
+      | Frecuencia Cardiaca | Frecuencia respiratoria | Mensaje de error                                    |
+      | -70                 | 15                      | "La frecuencia cardiaca no puede ser negativa"      |
+      | 70                  | -15                     | "La frecuencia respiratoria no puede ser negativa"  |
 
     # 5. y 6 Orden de prioridad: baja prioridad (ya esta) -> media prioridad (se ingresa) -> alta prioridad (ya esta)
   Scenario: Ingreso de pacientes con diferente niveles de emergencia

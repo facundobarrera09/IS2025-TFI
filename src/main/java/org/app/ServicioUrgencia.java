@@ -27,12 +27,9 @@ public class ServicioUrgencia {
         Float frecuenciaRespiratoria,
         TensionArterial tensionArterial
     ) {
-        if (frecuenciaCardiaca < 0 || frecuenciaRespiratoria < 0) {
-            throw new IllegalArgumentException("La frecuencia cardiaca no puede ser negativa");
-        }
-            Paciente paciente = DBPacientes
-                .buscarPacientePorCuil(cuilPaciente)
-                .orElseThrow(() -> new RuntimeException("Paciente no registrado"));
+        Paciente paciente = DBPacientes
+            .buscarPacientePorCuil(cuilPaciente)
+            .orElseThrow(() -> new RuntimeException("Paciente no registrado"));
 
         Ingreso ingreso = new Ingreso(paciente, enfermera, informe, emergencia, temperatura, frecuenciaCardiaca, frecuenciaRespiratoria, tensionArterial);
 

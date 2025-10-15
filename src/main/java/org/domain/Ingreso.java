@@ -34,8 +34,14 @@ public class Ingreso {
         if (frecuenciaCardiaca == null) {
             throw new IllegalArgumentException("Frecuencia Cardiaca no puede ser nulo");
         }
+        if (frecuenciaCardiaca < 0) {
+            throw new IllegalArgumentException("La frecuencia cardiaca no puede ser negativa");
+        }
         if (frecuenciaRespiratoria == null) {
             throw new IllegalArgumentException("Frecuencia Respiratoria no puede ser nulo");
+        }
+        if (frecuenciaRespiratoria < 0) {
+            throw new IllegalArgumentException("La frecuencia respiratoria no puede ser negativa");
         }
         if (tensionArterial == null) {
             throw new IllegalArgumentException("Tensión Arterial no puede ser nulo");
