@@ -88,9 +88,8 @@ Feature: Modulo de Urgencia
       | 24-87654321-1 | Le agarro dengue            | Emergencia          | 38          | 70                  | 15                      | 120/80           |
 
     Then la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:
-      | CUIT          |
       | 20-43772929-9 |
-      | 27-44856678-1 |
+      | 24-87654321-1 |
 
     # 8. Priorización de paciente que excedieron el máximo de tiempo de espera
   Scenario: Un paciente en la lista de espera de la guardia excedió el tiempo máximo de espera
