@@ -16,6 +16,7 @@ public class TensionArterial {
         this.frecuenciaDiastolica = frecuenciaDiastolica;
     }
 
+    // "120/40", "120 40", "/40"
     public TensionArterial(String tensionArterial) {
         if (tensionArterial == null || tensionArterial.isEmpty()) {
             throw new IllegalArgumentException("Tensión arterial no puede ser nulo");
