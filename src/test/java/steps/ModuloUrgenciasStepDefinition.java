@@ -19,7 +19,6 @@ public class ModuloUrgenciasStepDefinition {
     private Enfermera enfermera;
     private final DBPruebaEnMemoria DBMockeada;
     private final ServicioUrgencia servicioUrgencia;
-    private Enfermera enfermera;
 
     private LocalDateTime fechaYHoraMockeada;
 
