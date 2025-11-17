@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e346635-d67c-4ecc-959d-c1ca012afa70" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/ServicioUrgencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/ServicioUrgencia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/domain/Ingreso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/domain/Ingreso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/domain/NivelEmergencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/domain/NivelEmergencia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/domain/TensionArterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/domain/TensionArterial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/steps/AuthenticationStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/steps/AuthenticationStepDefinition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/steps/ModuloUrgenciasStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/steps/ModuloUrgenciasStepDefinition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/moduloAutenticacion.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/moduloAutenticacion.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/moduloUrgencias.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/moduloUrgencias.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,32 +16,32 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="35ch6mLzcbcKzmstpmDSnbMLKh5" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Cucumber Java.Feature: moduloAutenticacion.executor": "Run",
-    "Cucumber Java.Feature: moduloUrgencias.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature-modulo-de-autenticacion",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Cucumber Java.Feature: moduloAutenticacion.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: moduloUrgencias.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature-modulo-de-autenticacion&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Cucumber Java.Feature: moduloAutenticacion">
     <configuration name="Feature: moduloAutenticacion" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="7" />
