@@ -28,7 +28,8 @@ public class Afiliacion {
         List<Afiliacion> afiliaciones = repoAfiliaciones.obtenerAfilicionesPorNumeroAfiliado(numeroAfiliado);
         boolean afiliacionEncontrada = false;
         for (Afiliacion afiliacion : afiliaciones) {
-            if (afiliacion.getObraSocial().getNombre().equals(obraSocial.getNombre())) {
+            if (afiliacion.getObraSocial().getNombre().equals(obraSocial.getNombre()) &&
+                afiliacion.getNumeroAfiliado().equals(numeroAfiliado)) {
                 afiliacionEncontrada = true;
                 break;
             }
