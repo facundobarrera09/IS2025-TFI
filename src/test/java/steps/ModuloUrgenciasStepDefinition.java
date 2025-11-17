@@ -16,6 +16,7 @@ import static org.assertj.core.api.Assertions.*;
 
 public class ModuloUrgenciasStepDefinition {
 
+    private Enfermera enfermera;
     private final DBPruebaEnMemoria DBMockeada;
     private final ServicioUrgencia servicioUrgencia;
     private Enfermera enfermera;

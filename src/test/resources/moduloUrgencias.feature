@@ -73,6 +73,7 @@ Feature: Modulo de Urgencia
       | 24-87654321-1 | Dolor de cabeza intenso     | Urgencia            | 38          | 70                  | 15                      | 120/80           |
 
     Then la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:
+      | 20-43111111-9 |
       | 20-43772929-9 |
       | 24-87654321-1 |
       | 26-12345678-0 |
@@ -107,5 +108,3 @@ Feature: Modulo de Urgencia
       | 26-12345678-0 |
       | 20-43772929-9 |
       | 24-87654321-1 |
-
-
