@@ -44,76 +44,78 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Cucumber Java.Feature: moduloUrgencias">
-    <configuration name="Feature: moduloAutenticacion" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="7" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/moduloAutenticacion.feature" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+  <component name="RunManager" selected="JUnit.TensionArterialTest">
+    <configuration name="AfiliacionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="IS2025-TFI" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity" />
-      <option name="SUGGESTED_NAME" value="Feature: moduloAutenticacion" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="PATTERN" value="org.domain.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="org.domain" />
+      <option name="MAIN_CLASS_NAME" value="org.domain.AfiliacionTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Feature: moduloPacientes" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="7" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/moduloPacientes.feature" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+    <configuration name="DomicilioTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="IS2025-TFI" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity" />
-      <option name="SUGGESTED_NAME" value="Feature: moduloPacientes" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="PATTERN" value="org.domain.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="org.domain" />
+      <option name="MAIN_CLASS_NAME" value="org.domain.DomicilioTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Feature: moduloUrgencias" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="7" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/moduloUrgencias.feature" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+    <configuration name="ObraSocialTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="IS2025-TFI" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity" />
-      <option name="SUGGESTED_NAME" value="Feature: moduloUrgencias" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="PATTERN" value="org.domain.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="org.domain" />
+      <option name="MAIN_CLASS_NAME" value="org.domain.ObraSocialTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Ingreso de pacientes con diferente niveles de emergencia" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="7" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/moduloUrgencias.feature" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+    <configuration name="PacienteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="IS2025-TFI" />
-      <option name="NAME_FILTER" value="^Ingreso de pacientes con diferente niveles de emergencia$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity --name &quot;^Ingreso de pacientes con diferente niveles de emergencia$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Ingreso de pacientes con diferente niveles de emergencia" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="PATTERN" value="org.domain.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="org.domain" />
+      <option name="MAIN_CLASS_NAME" value="org.domain.PacienteTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TensionArterialTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="IS2025-TFI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.domain" />
+      <option name="MAIN_CLASS_NAME" value="org.domain.TensionArterialTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -129,10 +131,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Cucumber Java.Feature: moduloUrgencias" />
-        <item itemvalue="Cucumber Java.Scenario: Ingreso de pacientes con diferente niveles de emergencia" />
-        <item itemvalue="Cucumber Java.Feature: moduloPacientes" />
-        <item itemvalue="Cucumber Java.Feature: moduloAutenticacion" />
+        <item itemvalue="JUnit.TensionArterialTest" />
+        <item itemvalue="JUnit.PacienteTest" />
+        <item itemvalue="JUnit.ObraSocialTest" />
+        <item itemvalue="JUnit.DomicilioTest" />
+        <item itemvalue="JUnit.AfiliacionTest" />
       </list>
     </recent_temporary>
   </component>
