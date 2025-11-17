@@ -13,23 +13,32 @@ public class Afiliacion {
     private IRepositorioAfiliaciones repoAfiliaciones;
 
     public Afiliacion(ObraSocial obraSocial, String numeroAfiliado) {
-        if (obraSocial == null || numeroAfiliado == null) {
+        if (obraSocial == null || numeroAfiliado == null || numeroAfiliado.isEmpty()) {
             throw new IllegalArgumentException();
         }
+
         this.obraSocial = obraSocial;
         this.numeroAfiliado = numeroAfiliado;
     }
 
     public Afiliacion(IRepositorioAfiliaciones repoAfiliaciones, ObraSocial obraSocial, String numeroAfiliado) {
-        if (repoAfiliaciones == null || obraSocial == null || numeroAfiliado == null) {
+        if (repoAfiliaciones == null || obraSocial == null || numeroAfiliado == null || numeroAfiliado.isEmpty()) {
             throw new IllegalArgumentException();
         }
 
+        this.repoAfiliaciones = repoAfiliaciones;
+        this.obraSocial = obraSocial;
+        this.numeroAfiliado = numeroAfiliado;
+
+        validarAfiliacion(obraSocial, numeroAfiliado);
+    }
+
+    private void validarAfiliacion(ObraSocial obraSocial, String numeroAfiliado) {
         List<Afiliacion> afiliaciones = repoAfiliaciones.obtenerAfilicionesPorNumeroAfiliado(numeroAfiliado);
         boolean afiliacionEncontrada = false;
         for (Afiliacion afiliacion : afiliaciones) {
             if (afiliacion.getObraSocial().getNombre().equals(obraSocial.getNombre()) &&
-                afiliacion.getNumeroAfiliado().equals(numeroAfiliado)) {
+                    afiliacion.getNumeroAfiliado().equals(numeroAfiliado)) {
                 afiliacionEncontrada = true;
                 break;
             }
@@ -37,25 +46,13 @@ public class Afiliacion {
         if (!afiliacionEncontrada) {
             throw new InvalidInsurance("Paciente no afiliado a obra social");
         }
-
-        this.repoAfiliaciones = repoAfiliaciones;
-        this.obraSocial = obraSocial;
-        this.numeroAfiliado = numeroAfiliado;
     }
 
     public String getNumeroAfiliado() {
         return numeroAfiliado;
     }
 
-    public void setNumeroAfiliado(String numeroAfiliado) {
-        this.numeroAfiliado = numeroAfiliado;
-    }
-
     public ObraSocial getObraSocial() {
         return obraSocial;
-    }
-
-    public void setObraSocial(ObraSocial obraSocial) {
-        this.obraSocial = obraSocial;
     }
 }

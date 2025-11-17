@@ -10,6 +10,15 @@ public class ObraSocial {
         if (uuid == null) {
             throw new IllegalArgumentException("UUID no puede ser nulo");
         }
+        if (uuid.isEmpty()) {
+            throw new IllegalArgumentException("UUID no puede estar vacio");
+        }
+        if (nombre == null) {
+            throw new IllegalArgumentException("Nombre no puede ser nulo");
+        }
+        if (nombre.isEmpty()) {
+            throw new IllegalArgumentException("Nombre no puede estar vacio");
+        }
 
         try {
             UUID.fromString(uuid);
@@ -21,23 +30,16 @@ public class ObraSocial {
         this.uuid = uuid;
         this.nombre = nombre;
     }
+
     public ObraSocial(String nombre) {
-        this.nombre = nombre;
+        this(UUID.randomUUID().toString(), nombre);
     }
 
     public String getUuid() {
         return uuid;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
     public String getNombre() {
         return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 }

@@ -2,6 +2,8 @@ package org.domain;
 
 import mock.RepoAfiliacionesMemoria;
 import static org.mockito.Mockito.*;
+
+import org.app.errors.InvalidInsurance;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -16,11 +18,17 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
 public class AfiliacionTest {
     @Mock
-    RepoAfiliacionesMemoria repoAfiliacionesMemoria;
+    private RepoAfiliacionesMemoria repoAfiliacionesMemoria;
+
+    @Mock
+    private ObraSocial obraSocial;
+    @Mock
+    private ObraSocial obraSocial2;
+
+    // Afiliacion(ObraSocial obraSocial, String numeroAfiliado)
 
     @Test
     public void datosValidos() {
-        ObraSocial obraSocial = mock(ObraSocial.class);
         String numeroAfiliado = "123456789";
 
         Afiliacion afiliacion = new Afiliacion(obraSocial, numeroAfiliado);
@@ -29,23 +37,30 @@ public class AfiliacionTest {
     }
 
     @Test
-    public void sinObraSocial() {
-        ObraSocial obraSocial = null;
+    public void sinObraSocialTiraError() {
         String numeroAfiliado = "123456789";
 
-        assertThrows(IllegalArgumentException.class, () -> new Afiliacion(obraSocial, numeroAfiliado));
+        assertThrows(IllegalArgumentException.class, () -> new Afiliacion(null, numeroAfiliado));
     }
+
+    @Test
+    public void sinNumeroDeAfiliadoTiraError() {
+        assertThrows(IllegalArgumentException.class, () -> new Afiliacion(obraSocial, null));
+    }
+
+    @Test
+    public void numeroDeAfiliadoVacioTiraError() {
+        assertThrows(IllegalArgumentException.class, () -> new Afiliacion(obraSocial, ""));
+    }
+
+    // validarAfiliacion(ObraSocial obraSocial, String numeroAfiliado)
 
     @Test
     public void afiliacionExisteEnRepo() {
         // SETUP
-        ObraSocial obraSocial = mock(ObraSocial.class);
         when(obraSocial.getNombre()).thenReturn("Subsidio de salud");
-
-        ObraSocial obraSocial2 = mock(ObraSocial.class);
         when(obraSocial2.getNombre()).thenReturn("Mora");
 
-        RepoAfiliacionesMemoria repoAfiliacionesMemoria = mock(RepoAfiliacionesMemoria.class);
         when(
                 repoAfiliacionesMemoria.obtenerAfilicionesPorNumeroAfiliado(anyString())
         ).thenReturn(
@@ -65,4 +80,25 @@ public class AfiliacionTest {
         verify(obraSocial2, times(3)).getNombre();
     }
 
+    @Test
+    public void afiliacionNoExisteEnRepoTiraError() {
+        when(repoAfiliacionesMemoria.obtenerAfilicionesPorNumeroAfiliado(anyString()))
+                .thenReturn(new ArrayList<>());
+
+        try {
+            Afiliacion af = new Afiliacion(repoAfiliacionesMemoria, obraSocial, "1234");
+            assertNull(af);
+        }
+        catch (InvalidInsurance e) {
+            assertInstanceOf(InvalidInsurance.class, e);
+            assertEquals("Paciente no afiliado a obra social", e.getMessage());
+        }
+    }
+
+    @Test
+    public void repoEsNuloTiraError() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Afiliacion(null, obraSocial, "1234")
+        );
+    }
 }
