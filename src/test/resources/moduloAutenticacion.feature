@@ -37,7 +37,7 @@ Feature: Módulo de Autenticación
       | email              | contraseña    |
       | medico@hospital.com | SecurePass123 |
     Then soy redirigido al dashboard
-    And puedo ver las historias de usuario: IS2025-003 y ES2025-004
+    And puedo ver las historias de usuario: "IS2025-003" y "ES2025-004"
 
   # 5. Login con credenciales incorrectas
   Scenario: Inicio de sesión con credenciales inválidas
@@ -52,7 +52,7 @@ Feature: Módulo de Autenticación
       | email                 | contraseña  |
       | enfermero@hospital.com | NursePass456 |
     Then soy redirigido al dashboard
-    And puedo ver las historias de usuario: IS2025-001 e IS2025-002
+    And puedo ver las historias de usuario: "IS2025-001" y "IS2025-002"
 
   # 7. Intento de login con usuario no registrado
   Scenario: Inicio de sesión con usuario no registrado

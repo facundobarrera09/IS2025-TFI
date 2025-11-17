@@ -4,6 +4,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 
+import java.time.*;
+import java.util.*;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -14,9 +17,13 @@ import org.domain.*;
 import static org.assertj.core.api.Assertions.*;
 
 public class ModuloUrgenciasStepDefinition {
-    private Enfermera enfermera;
+
     private final DBPruebaEnMemoria DBMockeada;
     private final ServicioUrgencia servicioUrgencia;
+    private Enfermera enfermera;
+
+    private LocalDateTime fechaYHoraMockeada;
+
     private Exception excepcionCapturada;
     public ModuloUrgenciasStepDefinition(){
         this.DBMockeada = new DBPruebaEnMemoria();
@@ -78,126 +85,88 @@ public class ModuloUrgenciasStepDefinition {
         Map<String, String> fila = tabla.getFirst();
         try { String cuit = fila.get("CUIT");
             String informe = fila.get("Informe");
-            float temperatura = Float.parseFloat(fila.get("Temperatura"));
-            NivelEmergencia nivelEmergencia = Arrays.stream(NivelEmergencia.values()).filter(nivel -> nivel.tieneNombre(fila.get("Nivel de Emergencia"))).findFirst().orElseThrow(() -> new RuntimeException("Nivel Desconocido"));
-            float frecuenciaCardiaca = Float.parseFloat(fila.get("Frecuencia Cardiaca"));
-            float frecuenciaRespiratoria = Float.parseFloat(fila.get("Frecuencia Respiratoria"));
+            Float temperatura = fila.get("Temperatura") != null ? Float.parseFloat(fila.get("Temperatura")) : null;
+            NivelEmergencia nivelEmergencia = NivelEmergencia.buscarPorNombre(fila.get("Nivel de Emergencia"));
+            Float frecuenciaCardiaca = fila.get("Frecuencia Cardiaca") != null ? Float.parseFloat(fila.get("Frecuencia Cardiaca")) : null;
+            Float frecuenciaRespiratoria = fila.get("Frecuencia Respiratoria") != null ? Float.parseFloat(fila.get("Frecuencia Respiratoria")) : null;
             String tensionArterial = fila.get("Tension Arterial");
             servicioUrgencia.registrarUrgencia( cuit, enfermera, informe, temperatura, nivelEmergencia, frecuenciaCardiaca, frecuenciaRespiratoria, new TensionArterial(tensionArterial) );
         }
         catch (Exception e) { excepcionCapturada = e;
         }
     }
-    @Then("la lista de espera esta ordenada por CUIT de la siguiente manera:")
-    public void laListaDeEsperaEstaOrdenadaPorCuit(List<String> tabla) {
-        String cuitEsperado = tabla.getFirst(); List<String> cuilPendientes = servicioUrgencia.obtenerIngresosPendientes().stream() .map(Ingreso::getCuilPaciente).toList(); assertThat(cuilPendientes).hasSize(1).contains(cuitEsperado);
+
+    @When("que están ingresados en la guardia los siguientes pacientes:")
+    public void estanIngresadosEnLaGuardiaLosSiguientesPacientes(List<Map<String, String>> tabla) {
+        for (Map<String, String> fila : tabla) {
+            try {
+                String cuit =  fila.get("CUIT");
+                String informe = fila.get("Informe");
+                Float temperatura = fila.get("Temperatura") != null ? Float.parseFloat(fila.get("Temperatura")) : null;
+                NivelEmergencia nivelEmergencia = NivelEmergencia.buscarPorNombre(fila.get("Nivel de Emergencia"));
+                Float frecuenciaCardiaca = fila.get("Frecuencia Cardiaca") != null ? Float.parseFloat(fila.get("Frecuencia Cardiaca")) : null;
+                Float frecuenciaRespiratoria = fila.get("Frecuencia Respiratoria") != null ? Float.parseFloat(fila.get("Frecuencia Respiratoria")) : null;
+                String tensionArterial = fila.get("Tension Arterial");
+
+                String hora = fila.get("Hora de ingreso");
+
+                if (hora != null) {
+                    if (!hora.isEmpty()) {
+                        List<String> horaYMinutos = Arrays.stream(hora.split(":")).toList();
+                        LocalTime horaActual = LocalTime.of(
+                                Integer.parseInt(horaYMinutos.get(0)),
+                                Integer.parseInt(horaYMinutos.get(1))
+                        );
+
+                        LocalDateTime fechaYHoraDeIngreso = LocalDateTime.of(LocalDate.now(), horaActual);
+
+                        servicioUrgencia.registrarUrgencia(
+                                cuit, enfermera, informe, temperatura, nivelEmergencia,
+                                frecuenciaCardiaca, frecuenciaRespiratoria, new TensionArterial(tensionArterial),
+                                fechaYHoraDeIngreso
+                        );
+
+                        continue;
+                    }
+                }
+
+                servicioUrgencia.registrarUrgencia(
+                        cuit, enfermera, informe, temperatura, nivelEmergencia,
+                        frecuenciaCardiaca, frecuenciaRespiratoria, new TensionArterial(tensionArterial)
+                );
+            } catch (Exception e) {
+                excepcionCapturada = e;
+            }
+        }
     }
 
     @Then("la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:")
-    public void laListaDeEsperaEstaOrdenadaPorNivelDeEmergenciaDeLaSiguienteManera(List<String> tabla) {
-        List<String> cuitsEsperados = tabla;
-        List<String> cuitsActuales = servicioUrgencia.obtenerIngresosPendientes().stream()
-                .map(Ingreso::getCuilPaciente)
-                .toList();
+    public void laListaDeEsperaEstaOrdenadaDeLaSiguienteManera(List<String> ordenDeCUITsEsperado) {
+        var listaDeEspera = this.fechaYHoraMockeada == null ?
+                new PriorityQueue<>(servicioUrgencia.getListaDeEspera()) :
+                new PriorityQueue<>(servicioUrgencia.getListaDeEspera(fechaYHoraMockeada));
 
-        assertThat(cuitsActuales)
-                .hasSameSizeAs(cuitsEsperados)
-                .containsExactlyElementsOf(cuitsEsperados);
+        assertThat(listaDeEspera).hasSize(ordenDeCUITsEsperado.size());
+
+        for (String CUIT : ordenDeCUITsEsperado) {
+            assertThat(Objects.requireNonNull(listaDeEspera.poll()).getPaciente().getCuit())
+                    .isEqualTo(CUIT);
+        }
     }
-
 
     @Then("se muestra un mensaje de error indicando {string}")
     public void seMuestraUnMensajeDeErrorIndicandoPacienteNoRegistrado(String expectedError) {
         assertThat(excepcionCapturada) .as("No exception was captured!") .isNotNull() .hasMessage(expectedError);
     }
 
+    @When("la hora es {string}")
+    public void laHoraHoraEs(String hora) {
+        List<String> horaYMinutos = Arrays.stream(hora.split(":")).toList();
+        LocalTime horaActual = LocalTime.of(
+                Integer.parseInt(horaYMinutos.get(0)),
+                Integer.parseInt(horaYMinutos.get(1))
+        );
+
+        this.fechaYHoraMockeada = LocalDateTime.of(LocalDate.now(), horaActual);
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

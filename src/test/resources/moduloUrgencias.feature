@@ -10,6 +10,8 @@ Feature: Modulo de Urgencia
       | CUIT          | Apellido Paciente | Nombre Paciente | Obra Social       |
       | 20-43772929-9 | Villagra          | Mauro           | Subsidio de salud |
       | 26-12345678-0 | Perez             | Maria           | Swiss medical     |
+      | 24-87654321-1 | Molina            | Marcos          | OSPE              |
+      | 21-88544755-2 | Rodriguez         | Camila          | OSFATUN           |
 
     # 1. Paciente existe -> admisión registrada en cola
   Scenario: Ingreso del primer paciente a la lista de espera de urgencias
@@ -17,7 +19,7 @@ Feature: Modulo de Urgencia
       | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
       | 20-43772929-9 | Le agarro dengue | Emergencia          | 38          | 70                  | 15                      | 120/80           |
 
-    Then la lista de espera esta ordenada por CUIT de la siguiente manera:
+    Then la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:
       | 20-43772929-9 |
 
     # 2. Paciente no existe -> capturamos "Paciente no registrado"
@@ -29,54 +31,81 @@ Feature: Modulo de Urgencia
     Then se muestra un mensaje de error indicando "Paciente no registrado"
 
     # 3. Falta dato obligatorio
-  Scenario: Ingreso del paciente a la lista de espera de urgencias con datos incompletos
+  Scenario Outline: Ingreso del paciente a la lista de espera de urgencias con datos incompletos
     When ingresa a la guardia el siguiente paciente:
-      | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
-      | 20-43772929-9 | Le agarro dengue | Emergencia          | 38          | 70                  | 15                      |                  |
+      | CUIT          | Informe          | Nivel de Emergencia   | Temperatura | Frecuencia Cardiaca   | Frecuencia Respiratoria   | Tension Arterial   |
+      | 20-43772929-9 | <Informe>        | <Nivel de emergencia> | 38          | <Frecuencia cardiaca> | <Frecuencia respiratoria> | <Tension arterial> |
 
-    Then se muestra un mensaje de error indicando "Tensión Arterial no puede ser nulo"
+    Then se muestra un mensaje de error indicando <Mensaje de error>
+
+    Examples:
+      | Informe          | Nivel de emergencia | Frecuencia cardiaca | Frecuencia respiratoria | Tension arterial | Mensaje de error                            |
+      |                  | Emergencia          | 70                  | 15                      | 120/80           | "Informe no puede ser nulo"                 |
+      | Le agarro dengue |                     | 70                  | 15                      | 120/80           | "Nivel de emergencia no puede ser nulo"     |
+      | Le agarro dengue | Emergencia          |                     | 15                      | 120/80           | "Frecuencia cardíaca no puede ser nulo"     |
+      | Le agarro dengue | Emergencia          | 70                  |                         | 120/80           | "Frecuencia respiratoria no puede ser nulo" |
+      | Le agarro dengue | Emergencia          | 70                  | 15                      |                  | "Tensión arterial no puede ser nulo"        |
+      | Le agarro dengue | Emergencia          | 70                  | 15                      |    /80           | "Frecuencia sistólica no puede ser nulo"    |
+      | Le agarro dengue | Emergencia          | 70                  | 15                      | 120/             | "Frecuencia diastólica no puede ser nulo"   |
 
     # 4. Valores negativos de frecuencia
-  Scenario: Ingreso del paciente a la lista de espera de urgencia
-  con frecuencia cardíaca o frecuencia Respiratoria negativa
-    Given que están registrados los siguientes pacientes en el sistema:
-      | CUIT          | Apellido Paciente | Nombre Paciente | Obra Social       |
-      | 20-43772929-9 | Villagra          | Mauro           | Subsidio de salud |
-      | 26-12345678-0 | Perez             | Maria           | Swiss medical     |
-
+  Scenario Outline: Ingreso del paciente a la lista de espera de urgencia con frecuencia cardíaca o frecuencia respiratoria negativa
     When ingresa a la guardia el siguiente paciente:
-      | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
-      | 20-43111111-9 | Le agarro dengue | Emergencia          | 38          | -70                 | 15                      |  120/80              |
+      | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca   | Frecuencia Respiratoria   | Tension Arterial |
+      | 26-12345678-0 | Le agarro dengue | Emergencia          | 38          | <Frecuencia Cardiaca> | <Frecuencia respiratoria> |  120/80          |
 
-    Then se muestra un mensaje de error indicando "La frecuencia cardiaca no puede ser negativa"
+    Then se muestra un mensaje de error indicando <Mensaje de error>
 
-    # 5. y 6 Orden de prioridad: baja prioridad (ya esta) -> media prioridad (se ingresa) -> alta prioridad (ya esta)
+    Examples:
+      | Frecuencia Cardiaca | Frecuencia respiratoria | Mensaje de error                                    |
+      | -70                 | 15                      | "La frecuencia cardiaca no puede ser negativa"      |
+      | 70                  | -15                     | "La frecuencia respiratoria no puede ser negativa"  |
+
+    # 5 y 6. Orden de prioridad: baja prioridad (ya esta) -> media prioridad (se ingresa) -> alta prioridad (ya esta)
   Scenario: Ingreso de pacientes con diferente niveles de emergencia
-    Given que están registrados los siguientes pacientes en la lista de espera:
-      | CUIT          | Apellido Paciente | Nombre Paciente | Nivel de emergencia |
-      | 20-43772929-9 | Villagra          | Mauro           | Sin Urgencia        |
+    Given que están ingresados en la guardia los siguientes pacientes:
+      | CUIT          | Informe                     | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
+      | 20-43772929-9 | Le agarro dengue            | Emergencia          | 38          | 70                  | 15                      | 120/80           |
+      | 26-12345678-0 | Dolor de cabeza persistente | Urgencia Menor      | 38          | 70                  | 15                      | 120/80           |
 
     When ingresa a la guardia el siguiente paciente:
-      | CUIT          | Informe          | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
-      | 20-43111111-9 | Le agarro dengue | Emergencia          | 38          | -70                 | 15                      |                  |
+      | CUIT          | Informe                     | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
+      | 24-87654321-1 | Dolor de cabeza intenso     | Urgencia            | 38          | 70                  | 15                      | 120/80           |
 
     Then la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:
-      | 20-43111111-9 |
       | 20-43772929-9 |
+      | 24-87654321-1 |
+      | 26-12345678-0 |
 
-    #7 Ordenamiento de pacientes con igual prioridad
+    # 7. Ordenamiento de pacientes con igual prioridad
+  Scenario: Ingresa un paciente de igual prioridad que uno que ya esta en la lista de espera
+    Given que están ingresados en la guardia los siguientes pacientes:
+      | CUIT          | Informe                     | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
+      | 20-43772929-9 | Le agarro dengue            | Emergencia          | 38          | 70                  | 15                      | 120/80           |
 
-  Scenario: Un paciente de igual prioridad ingresa cuando ya hay otro en lista de espera
-    Given que están registrados los siguientes pacientes en la lista de espera:
-      | CUIT          | Apellido Paciente | Nombre Paciente | Nivel de emergencia |
-      | 20-43772929-9 | Villagra          | Mauro           | Urgencia Menor        |
     When ingresa a la guardia el siguiente paciente:
-    | CUIT          | Apellido Paciente | Nombre Paciente | Nivel de emergencia |
-    | 27-44856678-1 | Paez          | Micaela           | Urgencia Menor        |
-  Then la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:
-  |CUIT|
-  |20-43772929-9|
-  |27-44856678-1|
+      | CUIT          | Informe                     | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial |
+      | 24-87654321-1 | Le agarro dengue            | Emergencia          | 38          | 70                  | 15                      | 120/80           |
 
-    # 8. Verificar formato de tensión arterial y campos mandatorios (combinado)
+    Then la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:
+      | 20-43772929-9 |
+      | 24-87654321-1 |
+
+    # 8. Priorización de paciente que excedieron el máximo de tiempo de espera
+  Scenario: Un paciente en la lista de espera de la guardia excedió el tiempo máximo de espera
+    Given que están ingresados en la guardia los siguientes pacientes:
+      | CUIT          | Informe                     | Nivel de Emergencia | Temperatura | Frecuencia Cardiaca | Frecuencia Respiratoria | Tension Arterial | Hora de ingreso |
+      | 20-43772929-9 | Le agarro dengue            | Emergencia          | 38          | 70                  | 15                      | 120/80           | 09:30           |
+      | 21-88544755-2 | Le agarro dengue            | Emergencia          | 38          | 70                  | 15                      | 120/80           | 09:00           |
+      | 24-87654321-1 | Dolor de cabeza intenso     | Urgencia            | 38          | 70                  | 15                      | 120/80           | 09:30           |
+      | 26-12345678-0 | Dolor de cabeza persistente | Urgencia            | 38          | 70                  | 15                      | 120/80           | 08:30           |
+
+    When la hora es "09:35"
+
+    Then la lista de espera esta ordenada por nivel de emergencia de la siguiente manera:
+      | 21-88544755-2 |
+      | 26-12345678-0 |
+      | 20-43772929-9 |
+      | 24-87654321-1 |
+
 

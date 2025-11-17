@@ -160,11 +160,6 @@ public class AuthenticationStepDefinition {
                 historiasUsuarioDisponibles.contains(historia2));
     }
 
-    @Then("puedo ver las historias de usuario: {string} e {string}")
-    public void puedo_ver_las_historias_de_usuario_e(String historia1, String historia2) {
-        puedo_ver_las_historias_de_usuario_y(historia1, historia2);
-    }
-
     @Then("veo el mensaje de error {string}")
     public void veo_el_mensaje_de_error(String mensajeError) {
         System.out.println("Verificando error login. Esperado: '" + mensajeError + "', Actual: '" + resultadoLogin + "'");

@@ -5,22 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e346635-d67c-4ecc-959d-c1ca012afa70" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/app/interfaces/RepositorioUsuarios.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/app/interfaces/ServicioAutenticacion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/app/interfaces/ServicioAutenticacionImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/domain/AuthenticationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/domain/Autoridad.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/domain/Usuario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/mock/RepositorioUsuariosPrueba.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/steps/AuthenticationStepDefinition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/moduloAutenticacion.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/es_AR.aff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/es_AR.dic" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/ServicioUrgencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/ServicioUrgencia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/domain/Ingreso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/domain/Ingreso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/domain/NivelEmergencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/domain/NivelEmergencia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/domain/TensionArterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/domain/TensionArterial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/steps/AuthenticationStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/steps/AuthenticationStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/steps/ModuloUrgenciasStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/steps/ModuloUrgenciasStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/moduloAutenticacion.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/moduloAutenticacion.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/moduloUrgencias.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/moduloUrgencias.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,146 +23,81 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;maxigallardo1&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/facundobarrera09/IS2025-TFI.git&quot;,
-    &quot;accountId&quot;: &quot;58e68c30-830c-4632-a378-0134786e156a&quot;
-  }
-}</component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 1
-}</component>
-  <component name="ProjectId" id="35aWf3GtRw9EgxzhfOAnnnb0FPh" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="35ch6mLzcbcKzmstpmDSnbMLKh5" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "JUnit.ServicioAutenticacionImplTest$InicioSesionTests.deberiaIniciarSesionConMultiplesUsuariosDistintos.executor": "Run",
-    "JUnit.ServicioAutenticacionImplTest$InicioSesionTests.deberiaLanzarExcepcionConContraseñaVacia.executor": "Run",
-    "JUnit.ServicioAutenticacionImplTest$InicioSesionTests.deberiaLanzarExcepcionConEmailVacio.executor": "Run",
-    "JUnit.ServicioAutenticacionImplTest$RegistroUsuarioTests.deberiaAceptarContraseñaExactamenteDe8Caracteres.executor": "Run",
-    "JUnit.ServicioAutenticacionImplTest$RegistroUsuarioTests.deberiaGenerarHashConFormatoCorrecto.executor": "Run",
-    "JUnit.ServicioAutenticacionImplTest$RegistroUsuarioTests.deberiaLanzarExcepcionConEmailDuplicado.executor": "Run",
-    "JUnit.ServicioAutenticacionImplTest$RegistroUsuarioTests.deberiaLanzarExcepcionConEmailInvalido.executor": "Run",
-    "JUnit.ServicioAutenticacionImplTest$RegistroUsuarioTests.deberiaLanzarExcepcionConEmailVacio.executor": "Run",
-    "JUnit.ServicioAutenticacionImplTest$RegistroUsuarioTests.deberiaRegistrarUsuarioConDatosValidos.executor": "Debug",
-    "JUnit.ServicioAutenticacionImplTest$RegistroUsuarioTests.executor": "Run",
-    "JUnit.ServicioAutenticacionImplTest.executor": "Run",
+    "Cucumber Java.Feature: moduloAutenticacion.executor": "Run",
+    "Cucumber Java.Feature: moduloUrgencias.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "develop",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feature-modulo-de-autenticacion",
+    "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/maxi/Desktop/TFI2025/TFI-1.0",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.ServicioAutenticacionImplTest$RegistroUsuarioTests.deberiaGenerarHashConFormatoCorrecto">
-    <configuration name="ServicioAutenticacionImplTest$InicioSesionTests.deberiaLanzarExcepcionConContraseñaVacia" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Cucumber Java.Feature: moduloAutenticacion">
+    <configuration name="Feature: moduloAutenticacion" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="7" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/moduloAutenticacion.feature" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="IS2025-TFI" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity" />
+      <option name="SUGGESTED_NAME" value="Feature: moduloAutenticacion" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.app.interfaces.*" />
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.app.interfaces.ServicioAutenticacionImplTest" />
-      <option name="MAIN_CLASS_NAME" value="org.app.interfaces.ServicioAutenticacionImplTest$InicioSesionTests" />
-      <option name="METHOD_NAME" value="deberiaLanzarExcepcionConContraseñaVacia" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ServicioAutenticacionImplTest$InicioSesionTests.deberiaLanzarExcepcionConEmailVacio" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Feature: moduloUrgencias" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="7" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/moduloUrgencias.feature" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="IS2025-TFI" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity" />
+      <option name="SUGGESTED_NAME" value="Feature: moduloUrgencias" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.app.interfaces.*" />
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.app.interfaces.ServicioAutenticacionImplTest" />
-      <option name="MAIN_CLASS_NAME" value="org.app.interfaces.ServicioAutenticacionImplTest$InicioSesionTests" />
-      <option name="METHOD_NAME" value="deberiaLanzarExcepcionConEmailVacio" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ServicioAutenticacionImplTest$RegistroUsuarioTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IS2025-TFI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.app.interfaces.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.app.interfaces.ServicioAutenticacionImplTest" />
-      <option name="MAIN_CLASS_NAME" value="org.app.interfaces.ServicioAutenticacionImplTest$RegistroUsuarioTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ServicioAutenticacionImplTest$RegistroUsuarioTests.deberiaGenerarHashConFormatoCorrecto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IS2025-TFI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.app.interfaces.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.app.interfaces.ServicioAutenticacionImplTest" />
-      <option name="MAIN_CLASS_NAME" value="org.app.interfaces.ServicioAutenticacionImplTest$RegistroUsuarioTests" />
-      <option name="METHOD_NAME" value="deberiaGenerarHashConFormatoCorrecto" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ServicioAutenticacionImplTest$RegistroUsuarioTests.deberiaRegistrarUsuarioConDatosValidos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IS2025-TFI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.app.interfaces.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.app.interfaces.ServicioAutenticacionImplTest" />
-      <option name="MAIN_CLASS_NAME" value="org.app.interfaces.ServicioAutenticacionImplTest$RegistroUsuarioTests" />
-      <option name="METHOD_NAME" value="deberiaRegistrarUsuarioConDatosValidos" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ServicioAutenticacionImplTest$RegistroUsuarioTests.deberiaGenerarHashConFormatoCorrecto" />
-        <item itemvalue="JUnit.ServicioAutenticacionImplTest$InicioSesionTests.deberiaLanzarExcepcionConContraseñaVacia" />
-        <item itemvalue="JUnit.ServicioAutenticacionImplTest$InicioSesionTests.deberiaLanzarExcepcionConEmailVacio" />
-        <item itemvalue="JUnit.ServicioAutenticacionImplTest$RegistroUsuarioTests" />
-        <item itemvalue="JUnit.ServicioAutenticacionImplTest$RegistroUsuarioTests.deberiaRegistrarUsuarioConDatosValidos" />
+        <item itemvalue="Cucumber Java.Feature: moduloAutenticacion" />
+        <item itemvalue="Cucumber Java.Feature: moduloUrgencias" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
       </set>
     </attachedChunks>
   </component>
@@ -177,16 +105,25 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="5e346635-d67c-4ecc-959d-c1ca012afa70" name="Changes" comment="" />
-      <created>1763348762723</created>
+      <created>1763414998949</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1763348762723</updated>
-      <workItem from="1763348763818" duration="1475000" />
-      <workItem from="1763350406001" duration="403000" />
+      <updated>1763414998949</updated>
+      <workItem from="1763415096929" duration="227000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint type="java-exception">
+          <properties class="java.lang.NoClassDefFoundError" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

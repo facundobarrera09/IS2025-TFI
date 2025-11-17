@@ -3,18 +3,32 @@ package org.app;
 import org.app.interfaces.RepositorioPacientes;
 import org.domain.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDateTime;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 public class ServicioUrgencia {
 
-    private final List<Ingreso> listaEspera;
     private final RepositorioPacientes DBPacientes;
+    private final PriorityQueue<Ingreso> listaEspera;
 
     public ServicioUrgencia(RepositorioPacientes DBPacientes) {
         this.DBPacientes = DBPacientes;
-        this.listaEspera = new ArrayList<>();
+        this.listaEspera = new PriorityQueue<>((a, b) -> {
+            boolean aExcedioFechaMaxima = a.getFechaMaxima().isAfter(LocalDateTime.now());
+            boolean bExcedioFechaMaxima = b.getFechaMaxima().isAfter(LocalDateTime.now());
+
+            if ((aExcedioFechaMaxima && bExcedioFechaMaxima) || (!aExcedioFechaMaxima && !bExcedioFechaMaxima)) {
+                int comparacionEmergencia = -a.getNivelEmergencia().compararCon(b.getNivelEmergencia());
+                if (comparacionEmergencia != 0) {
+                    return comparacionEmergencia;
+                }
+                // Si tienen el mismo nivel de emergencia, el que llegó antes tiene prioridad
+                return a.getFechaIngreso().compareTo(b.getFechaIngreso());
+            }
+
+            return aExcedioFechaMaxima ? 1 : -1;
+        });
     }
 
     public void registrarUrgencia(
@@ -27,24 +41,55 @@ public class ServicioUrgencia {
         Float frecuenciaRespiratoria,
         TensionArterial tensionArterial
     ) {
-        if (frecuenciaCardiaca < 0 || frecuenciaRespiratoria < 0) {
-            throw new IllegalArgumentException("La frecuencia cardiaca no puede ser negativa");
-        }
-            Paciente paciente = DBPacientes
+        Paciente paciente = DBPacientes
+            .buscarPacientePorCuil(cuilPaciente)
+            .orElseThrow(() -> new RuntimeException("Paciente no registrado"));
+
+        Ingreso ingreso = new Ingreso(paciente, enfermera, informe, emergencia, temperatura, frecuenciaCardiaca, frecuenciaRespiratoria, tensionArterial);
+
+        listaEspera.offer(ingreso);
+    }
+
+    public void registrarUrgencia(
+            String cuilPaciente,
+            Enfermera enfermera,
+            String informe,
+            Float temperatura,
+            NivelEmergencia emergencia,
+            Float frecuenciaCardiaca,
+            Float frecuenciaRespiratoria,
+            TensionArterial tensionArterial,
+            LocalDateTime fechaIngreso
+    ) {
+        Paciente paciente = DBPacientes
                 .buscarPacientePorCuil(cuilPaciente)
                 .orElseThrow(() -> new RuntimeException("Paciente no registrado"));
 
         Ingreso ingreso = new Ingreso(paciente, enfermera, informe, emergencia, temperatura, frecuenciaCardiaca, frecuenciaRespiratoria, tensionArterial);
+        ingreso.setFechaIngreso(fechaIngreso);
 
-        listaEspera.add(ingreso);
-
+        listaEspera.offer(ingreso);
     }
 
-    public List<Ingreso> obtenerIngresosPendientes(){
-
+    public PriorityQueue<Ingreso> getListaDeEspera(){
         return this.listaEspera;
     }
 
+    public PriorityQueue<Ingreso> getListaDeEspera(LocalDateTime fechaActual){
+        PriorityQueue<Ingreso> listaEspera = new PriorityQueue<Ingreso>((a, b) -> {
+            boolean aExcedioFechaMaxima = a.getFechaMaxima().isAfter(fechaActual);
+            boolean bExcedioFechaMaxima = b.getFechaMaxima().isAfter(fechaActual);
+
+            if ((aExcedioFechaMaxima && bExcedioFechaMaxima) || (!aExcedioFechaMaxima && !bExcedioFechaMaxima)) {
+                return -a.getNivelEmergencia().compararCon(b.getNivelEmergencia());
+            }
+
+            return aExcedioFechaMaxima ? 1 : -1;
+        });
+        listaEspera.addAll(this.listaEspera);
+
+        return listaEspera;
+    }
 }
 
 
