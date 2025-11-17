@@ -46,7 +46,7 @@ public class ModuloUrgenciasStepDefinition {
             String nombreObraSocial = map.get("Obra Social");
             String numeroAfiliado = map.get("Numero de Afiliado");
 
-            ObraSocial obraSocial = new ObraSocial("1S", nombreObraSocial);
+            ObraSocial obraSocial = new ObraSocial(nombreObraSocial);
             Afiliacion afiliacion = new Afiliacion(obraSocial, numeroAfiliado);
             Paciente paciente = new Paciente(cuit, apellidoPaciente, nombrePaciente, afiliacion);
             DBMockeada.guardarPaciente(paciente);
