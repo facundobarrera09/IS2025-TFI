@@ -10,6 +10,7 @@ import java.util.*;
 import mock.DBPruebaEnMemoria;
 import org.app.ServicioUrgencia;
 import org.domain.*;
+import org.domain.ObraSocial;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -42,9 +43,12 @@ public class ModuloUrgenciasStepDefinition {
             String cuit = map.get("CUIT");
             String apellidoPaciente = map.get("Apellido Paciente");
             String nombrePaciente = map.get("Nombre Paciente");
-            String obraSocial = map.get("Obra Social");
+            String nombreObraSocial = map.get("Obra Social");
+            String numeroAfiliado = map.get("Numero de Afiliado");
 
-            Paciente paciente = new Paciente(cuit, apellidoPaciente, nombrePaciente, obraSocial);
+            ObraSocial obraSocial = new ObraSocial("1S", nombreObraSocial);
+            Afiliacion afiliacion = new Afiliacion(obraSocial, numeroAfiliado);
+            Paciente paciente = new Paciente(cuit, apellidoPaciente, nombrePaciente, afiliacion);
             DBMockeada.guardarPaciente(paciente);
         }
     }

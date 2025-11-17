@@ -7,11 +7,11 @@ Feature: Modulo de Urgencia
       | Nombre Enfermera | Apellido Enfermera |
       | Susana           | Gimenez            |
     And que están registrados los siguientes pacientes en el sistema:
-      | CUIT          | Apellido Paciente | Nombre Paciente | Obra Social       |
-      | 20-43772929-9 | Villagra          | Mauro           | Subsidio de salud |
-      | 26-12345678-0 | Perez             | Maria           | Swiss medical     |
-      | 24-87654321-1 | Molina            | Marcos          | OSPE              |
-      | 21-88544755-2 | Rodriguez         | Camila          | OSFATUN           |
+      | CUIT          | Apellido Paciente | Nombre Paciente | Obra Social       | Numero de Afiliado |
+      | 20-43772929-9 | Villagra          | Mauro           | Subsidio de salud |  20-43772929-9     |
+      | 26-12345678-0 | Perez             | Maria           | Swiss medical     |  26-12345678-0     |
+      | 24-87654321-1 | Molina            | Marcos          | OSPE              |  24-87654321-1     |
+      | 21-88544755-2 | Rodriguez         | Camila          | OSFATUN           |  21-88544755-2     |
 
     # 1. Paciente existe -> admisión registrada en cola
   Scenario: Ingreso del primer paciente a la lista de espera de urgencias

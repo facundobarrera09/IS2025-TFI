@@ -11,17 +11,21 @@ public class DBPruebaEnMemoria implements RepositorioPacientes {
 
     private Map<String, Paciente> pacientes;
 
-
     public DBPruebaEnMemoria(){
         this.pacientes = new HashMap<>();
     }
-    @Override
 
+    @Override
     public void guardarPaciente(Paciente paciente) {
         this.pacientes.put(paciente.getCuit(), paciente);
     }
 
+    @Override
     public Optional<Paciente> buscarPacientePorCuil(String cuit){
         return Optional.ofNullable(pacientes.get(cuit));
+    }
+
+    public Map<String, Paciente> getPacientes() {
+        return pacientes;
     }
 }
