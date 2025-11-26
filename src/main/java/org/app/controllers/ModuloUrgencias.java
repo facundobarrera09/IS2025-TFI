@@ -41,8 +41,7 @@ public class ModuloUrgencias {
         Paciente paciente;
         try {
             paciente = repositorioPacientes.buscarOCrearPaciente(formPaciente);
-        }
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(
                     new ResInvalidFindOrCreatePaciente(e.getMessage(), form.getPaciente())
             );
@@ -64,8 +63,7 @@ public class ModuloUrgencias {
                     form.getFrecuenciaRespiratoria(),
                     new TensionArterial(form.getTensionArterial())
             );
-        }
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(
                     new ResInvalidCreateIngreso(e.getMessage(), form)
             );
@@ -75,7 +73,16 @@ public class ModuloUrgencias {
     }
 
     @GetMapping("/registroPacientes")
-    public String listarUrgencias() {
-        throw new ResponseStatusException(HttpStatusCode.valueOf(500));
+    public ResponseEntity<ResListaDeIngresos> listarUrgencias() {
+
+            PriorityQueue<Ingreso> cola = this.servicioUrgencia.getListaDeEspera();
+
+            ResListaDeIngresos respuesta = new ResListaDeIngresos(
+                    LocalDateTime.now(),
+                    cola
+            );
+
+            return ResponseEntity.ok(respuesta);
+        }
     }
-}
+
