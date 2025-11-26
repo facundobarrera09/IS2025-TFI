@@ -5,6 +5,9 @@ public class Domicilio {
     private String numero;
     private String localidad;
 
+    public Domicilio() {
+
+    }
     public Domicilio(String calle, String numero, String localidad) {
         if (calle == null || calle.isEmpty()) {
             throw new IllegalArgumentException("Calle no puede estar vacio");
@@ -21,15 +24,15 @@ public class Domicilio {
         this.localidad = localidad;
     }
 
-    public String getCalle() {
-        return calle;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
 
     public String getLocalidad() {
         return localidad;
     }
+    public String getCalle() { return calle;}
+    public String getNumero() { return numero;}
+
+    public void setCalle(String calle) { this.calle = calle;}
+    public void setNumero(String numero) { this.numero = numero;}
+    public void setLocalidad(String localidad) { this.localidad = localidad;}
+
 }

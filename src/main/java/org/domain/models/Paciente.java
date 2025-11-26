@@ -47,7 +47,6 @@ public class Paciente {
     public String getCuit() {
         return cuit;
     }
-
     public String getApellido() {
         return apellido;
     }
@@ -56,11 +55,12 @@ public class Paciente {
         return nombre;
     }
 
+    public Domicilio getDomicilio() {
+        return domicilio;
+    }
+
     public Afiliacion getAfiliacion() {
         return afiliacion;
     }
 
-    public Domicilio getDomicilio() {
-        return domicilio;
-    }
 }
