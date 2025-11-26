@@ -1,0 +1,18 @@
+###
+POST http://localhost:8080/ingresos
+Content-Type: application/json
+
+{
+    "paciente": {
+        "cuit": "20432165491"
+    },
+    "enfermera": {
+        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
+    },
+    "informe": "Algun informe aceptable",
+    "temperatura": 36.5,
+    "nivel": "SIN URGENCIA",
+    "frecuenciaCardiaca:": 80,
+    "frecuenciaRespiratoria": 16,
+    "tensionArterial": "120/80"
+}
