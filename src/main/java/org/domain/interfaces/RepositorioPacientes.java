@@ -1,5 +1,5 @@
-package org.app.interfaces;
-import org.domain.Paciente;
+package org.domain.interfaces;
+import org.domain.models.Paciente;
 
 import java.util.Optional;
 

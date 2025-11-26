@@ -1,8 +1,8 @@
 package mock;
 
-import org.app.errors.ElementNotFound;
-import org.app.interfaces.IRepositorioObrasSociales;
-import org.domain.ObraSocial;
+import org.domain.errors.ElementNotFound;
+import org.domain.interfaces.IRepositorioObrasSociales;
+import org.domain.models.ObraSocial;
 
 import java.util.*;
 

@@ -1,7 +1,7 @@
-package org.app.interfaces;
+package org.domain.interfaces;
 
 
-import org.domain.Usuario;
+import org.domain.models.Usuario;
 
 public interface RepositorioUsuarios {
     // Usar solo un método para guardar

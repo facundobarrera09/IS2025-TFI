@@ -1,4 +1,4 @@
-package org.domain;
+package org.domain.models;
 
 import java.util.UUID;
 

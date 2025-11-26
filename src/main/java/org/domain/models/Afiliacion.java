@@ -1,8 +1,7 @@
-package org.domain;
+package org.domain.models;
 
-import org.app.errors.InvalidInsurance;
-import org.app.interfaces.IRepositorioAfiliaciones;
-import org.app.interfaces.IRepositorioObrasSociales;
+import org.domain.errors.InvalidInsurance;
+import org.domain.interfaces.IRepositorioAfiliaciones;
 
 import java.util.List;
 

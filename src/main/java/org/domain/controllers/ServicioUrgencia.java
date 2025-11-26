@@ -1,10 +1,9 @@
-package org.app;
+package org.domain.controllers;
 
-import org.app.interfaces.RepositorioPacientes;
-import org.domain.*;
+import org.domain.interfaces.RepositorioPacientes;
+import org.domain.models.*;
 
 import java.time.LocalDateTime;
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class ServicioUrgencia {

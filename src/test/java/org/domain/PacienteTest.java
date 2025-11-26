@@ -1,5 +1,8 @@
 package org.domain;
 
+import org.domain.models.Afiliacion;
+import org.domain.models.Domicilio;
+import org.domain.models.Paciente;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;

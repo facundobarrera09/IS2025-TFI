@@ -1,4 +1,4 @@
-package org.domain;
+package org.domain.models;
 
 public class Paciente {
     private String cuit;

@@ -5,10 +5,10 @@ import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import static org.junit.Assert.*;
 import java.util.*;
-import org.domain.Usuario;
-import org.domain.AuthenticationException;
-import org.app.interfaces.ServicioAutenticacion;
-import org.app.interfaces.ServicioAutenticacionImpl;
+import org.domain.models.Usuario;
+import org.domain.models.AuthenticationException;
+import org.domain.interfaces.ServicioAutenticacion;
+import org.domain.interfaces.ServicioAutenticacionImpl;
 import mock.RepositorioUsuariosPrueba;
 
 public class AuthenticationStepDefinition {

@@ -1,4 +1,4 @@
-package org.app.errors;
+package org.domain.errors;
 
 public class ElementNotFound extends RuntimeException {
     public ElementNotFound(String message) {

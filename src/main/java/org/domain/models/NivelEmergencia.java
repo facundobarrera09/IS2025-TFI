@@ -1,4 +1,4 @@
-package org.domain;
+package org.domain.models;
 
 public enum NivelEmergencia {
     CRITICA("Critica",5*60, 50),

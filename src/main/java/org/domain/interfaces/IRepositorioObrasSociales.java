@@ -1,10 +1,9 @@
-package org.app.interfaces;
+package org.domain.interfaces;
 
-import org.app.errors.ElementNotFound;
-import org.domain.ObraSocial;
+import org.domain.errors.ElementNotFound;
+import org.domain.models.ObraSocial;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface IRepositorioObrasSociales {
     public List<ObraSocial> obtenerObrasSociales();

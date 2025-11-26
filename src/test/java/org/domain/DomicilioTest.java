@@ -1,5 +1,6 @@
 package org.domain;
 
+import org.domain.models.Domicilio;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

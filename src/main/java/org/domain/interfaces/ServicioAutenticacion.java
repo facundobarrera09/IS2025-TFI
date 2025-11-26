@@ -1,7 +1,7 @@
-package org.app.interfaces;
+package org.domain.interfaces;
 
-import org.domain.Usuario;
-import org.domain.AuthenticationException;
+import org.domain.models.Usuario;
+import org.domain.models.AuthenticationException;
 import java.util.List;
 
 public interface ServicioAutenticacion {

@@ -1,4 +1,4 @@
-package org.domain;
+package org.domain.models;
 
 public class Enfermera {
     private String nombre;

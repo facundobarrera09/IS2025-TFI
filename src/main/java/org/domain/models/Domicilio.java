@@ -1,4 +1,4 @@
-package org.domain;
+package org.domain.models;
 
 public class Domicilio {
     private String calle;

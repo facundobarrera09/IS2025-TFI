@@ -1,7 +1,9 @@
 package org.app.interfaces;
 
-import org.domain.Usuario;
-import org.domain.AuthenticationException;
+import org.domain.models.Usuario;
+import org.domain.models.AuthenticationException;
+import org.domain.interfaces.RepositorioUsuarios;
+import org.domain.interfaces.ServicioAutenticacionImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

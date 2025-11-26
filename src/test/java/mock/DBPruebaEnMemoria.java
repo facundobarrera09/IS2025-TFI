@@ -1,7 +1,7 @@
 package mock;
 
-import org.app.interfaces.RepositorioPacientes;
-import org.domain.Paciente;
+import org.domain.interfaces.RepositorioPacientes;
+import org.domain.models.Paciente;
 
 import java.util.HashMap;
 import java.util.Map;

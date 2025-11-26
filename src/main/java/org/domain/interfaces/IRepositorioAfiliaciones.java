@@ -1,6 +1,6 @@
-package org.app.interfaces;
+package org.domain.interfaces;
 
-import org.domain.Afiliacion;
+import org.domain.models.Afiliacion;
 
 import java.util.List;
 
