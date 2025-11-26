@@ -1,7 +1,10 @@
 package org.app.controllers;
 
-import org.app.models.CreateIngreso;
+import org.app.models.ingresos.CreateIngreso;
+import org.app.models.ingresos.ResInvalidCreateIngreso;
+import org.app.models.ingresos.ResListaDeIngresos;
 import org.app.models.paciente.FindOrCreatePaciente;
+import org.app.models.paciente.ResInvalidFindOrCreatePaciente;
 import org.domain.controllers.ServicioUrgencia;
 import org.domain.interfaces.IRepositorioEnfermeras;
 import org.domain.interfaces.RepositorioPacientes;
@@ -9,9 +12,12 @@ import org.domain.models.*;
 import org.domain.models.repos.RepoEnfermeras;
 import org.domain.models.repos.RepoPacientes;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.PriorityQueue;
 import java.util.UUID;
@@ -29,32 +35,27 @@ public class ModuloUrgencias {
     }
 
     @PostMapping("/ingresos")
-    public void registrarPaciente(@RequestBody CreateIngreso form) {
+    public ResponseEntity<?> registrarPaciente(@RequestBody CreateIngreso form) {
 
         FindOrCreatePaciente formPaciente = form.getPaciente();
-        Optional<Paciente> paciente = repositorioPacientes.buscarPacientePorCuil(formPaciente.getCuit());
-        if (paciente.isEmpty()) {
-            paciente = Optional.of(new Paciente(
-                    formPaciente.getCuit(),
-                    formPaciente.getApellido(),
-                    formPaciente.getNombre(),
-                    formPaciente.getDomicilio()
-            ));
-            repositorioPacientes.guardarPaciente(paciente.get());
+        Paciente paciente;
+        try {
+            paciente = repositorioPacientes.buscarOCrearPaciente(formPaciente);
         }
-
-        System.out.println("Paciente registrado");
+        catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(
+                    new ResInvalidFindOrCreatePaciente(e.getMessage(), form.getPaciente())
+            );
+        }
 
         Optional<Enfermera> enfermera = repositorioEnfermeras.obtenerEnfermera(UUID.fromString(form.getEnfermera().getUuid()));
         if (enfermera.isEmpty()) {
-            throw new ResponseStatusException(HttpStatusCode.valueOf(400), "Enfermera con ese uuid no existe");
+            return ResponseEntity.badRequest().body("Enfermera con ese uuid no existe");
         }
-
-        System.out.println("Enfermera encontrada");
 
         try {
             this.servicioUrgencia.registrarUrgencia(
-                    paciente.get().getCuit(),
+                    paciente.getCuit(),
                     enfermera.get(),
                     form.getInforme(),
                     form.getTemperatura(),
@@ -65,10 +66,12 @@ public class ModuloUrgencias {
             );
         }
         catch (IllegalArgumentException e) {
-            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+            return ResponseEntity.badRequest().body(
+                    new ResInvalidCreateIngreso(e.getMessage(), form)
+            );
         }
 
-        System.out.println("Ingreso registrado");
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/registroPacientes")

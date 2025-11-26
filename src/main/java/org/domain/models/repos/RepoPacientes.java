@@ -1,5 +1,6 @@
 package org.domain.models.repos;
 
+import org.app.models.paciente.FindOrCreatePaciente;
 import org.domain.interfaces.RepositorioPacientes;
 import org.domain.models.Domicilio;
 import org.domain.models.Paciente;
@@ -31,6 +32,22 @@ public class RepoPacientes implements RepositorioPacientes {
     @Override
     public Optional<Paciente> buscarPacientePorCuil(String cuit){
         return Optional.ofNullable(pacientes.get(cuit));
+    }
+
+    @Override
+    public Paciente buscarOCrearPaciente(FindOrCreatePaciente formPaciente) {
+        Optional<Paciente> paciente = this.buscarPacientePorCuil(formPaciente.getCuit());
+        if (paciente.isEmpty()) {
+            paciente = Optional.of(new Paciente(
+                    formPaciente.getCuit(),
+                    formPaciente.getApellido(),
+                    formPaciente.getNombre(),
+                    formPaciente.getDomicilio()
+            ));
+            this.guardarPaciente(paciente.get());
+        }
+
+        return paciente.get();
     }
 
     public Map<String, Paciente> getPacientes() {

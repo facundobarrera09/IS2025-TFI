@@ -5,16 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e346635-d67c-4ecc-959d-c1ca012afa70" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/app/models/CreateIngreso.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/app/models/paciente/FindOrCreatePaciente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/app/models/shared/FindByUUID.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/domain/interfaces/IRepositorioEnfermeras.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/domain/models/repos/RepoEnfermeras.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/domain/models/repos/RepoPacientes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/app/models/IErrorResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/app/models/ingresos/ResInvalidCreateIngreso.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/app/models/ingresos/ResListaDeIngresos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/app/models/paciente/ResInvalidFindOrCreatePaciente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/ModuloUrgencias.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/controllers/ModuloUrgencias.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/test/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/controllers/ModuloUrgencias.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/controllers/ModuloUrgencias.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/models/CreateIngreso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/models/ingresos/CreateIngreso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/domain/interfaces/RepositorioPacientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/domain/interfaces/RepositorioPacientes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/domain/models/Domicilio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/domain/models/Domicilio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/domain/models/Enfermera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/domain/models/Enfermera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/domain/models/Ingreso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/domain/models/Ingreso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/domain/models/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/domain/models/Paciente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/domain/models/repos/RepoPacientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/domain/models/repos/RepoPacientes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/mock/DBPruebaEnMemoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/mock/DBPruebaEnMemoria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/rest/ingresos.rest" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/rest/ingresos.rest" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +30,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -70,9 +76,9 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.runner",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -83,47 +89,56 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.Main">
-    <configuration name="DomicilioTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Feature: moduloAutenticacion" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="7" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/moduloAutenticacion.feature" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="IS2025-TFI" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity" />
+      <option name="SUGGESTED_NAME" value="Feature: moduloAutenticacion" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.domain.models.*" />
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.domain" />
-      <option name="MAIN_CLASS_NAME" value="org.domain.DomicilioTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ObraSocialTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Feature: moduloPacientes" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="7" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/moduloPacientes.feature" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="IS2025-TFI" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity" />
+      <option name="SUGGESTED_NAME" value="Feature: moduloPacientes" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.domain.models.*" />
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.domain" />
-      <option name="MAIN_CLASS_NAME" value="org.domain.ObraSocialTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PacienteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Feature: moduloUrgencias" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="7" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/moduloUrgencias.feature" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="IS2025-TFI" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity" />
+      <option name="SUGGESTED_NAME" value="Feature: moduloUrgencias" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.domain.models.*" />
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.domain" />
-      <option name="MAIN_CLASS_NAME" value="org.domain.PacienteTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -168,10 +183,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.Main" />
+        <item itemvalue="Cucumber Java.Feature: moduloUrgencias" />
+        <item itemvalue="Cucumber Java.Feature: moduloPacientes" />
+        <item itemvalue="Cucumber Java.Feature: moduloAutenticacion" />
         <item itemvalue="JUnit.TensionArterialTest" />
-        <item itemvalue="JUnit.PacienteTest" />
-        <item itemvalue="JUnit.ObraSocialTest" />
-        <item itemvalue="JUnit.DomicilioTest" />
       </list>
     </recent_temporary>
   </component>
@@ -192,7 +207,7 @@
       <option name="presentableId" value="Default" />
       <updated>1763414998949</updated>
       <workItem from="1763415096929" duration="227000" />
-      <workItem from="1764162624868" duration="9440000" />
+      <workItem from="1764162624868" duration="17608000" />
     </task>
     <servers />
   </component>
@@ -208,5 +223,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

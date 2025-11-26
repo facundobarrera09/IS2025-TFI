@@ -1,4 +1,4 @@
-package org.app.models;
+package org.app.models.ingresos;
 
 import org.app.models.paciente.FindOrCreatePaciente;
 import org.app.models.shared.FindByUUID;

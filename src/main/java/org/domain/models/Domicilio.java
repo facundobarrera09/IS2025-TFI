@@ -20,4 +20,16 @@ public class Domicilio {
         this.numero = numero;
         this.localidad = localidad;
     }
+
+    public String getCalle() {
+        return calle;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public String getLocalidad() {
+        return localidad;
+    }
 }

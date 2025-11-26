@@ -1,5 +1,8 @@
 package org.domain.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.time.LocalDateTime;
 
 public class Ingreso {
@@ -64,6 +67,7 @@ public class Ingreso {
         return fechaIngreso.plusSeconds(this.nivelEmergencia.getTiempoMaximoDeEsperaEnSeg());
     }
 
+    @JsonIgnore
     public String getCuilPaciente(){
         return this.paciente.getCuit();
     }

@@ -48,4 +48,19 @@ public class Paciente {
         return cuit;
     }
 
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Afiliacion getAfiliacion() {
+        return afiliacion;
+    }
+
+    public Domicilio getDomicilio() {
+        return domicilio;
+    }
 }

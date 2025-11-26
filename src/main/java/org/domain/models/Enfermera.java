@@ -17,4 +17,16 @@ public class Enfermera {
         this.nombre = nombre;
         this.apellido = apellido;
     }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
 }
