@@ -47,7 +47,7 @@ public class Paciente {
     public String getCuit() {
         return cuit;
     }
-    public StringgetApellido() {
+    public String getApellido() {
         return apellido;
     }
 

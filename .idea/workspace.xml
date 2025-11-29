@@ -7,10 +7,6 @@
     <list default="true" id="5e346635-d67c-4ecc-959d-c1ca012afa70" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/app/controllers/ModuloUrgencias.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/controllers/ModuloUrgencias.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/models/ingresos/ResListaDeIngresos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/models/ingresos/ResListaDeIngresos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/models/paciente/FindOrCreatePaciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/models/paciente/FindOrCreatePaciente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/models/shared/FindByUUID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/models/shared/FindByUUID.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/domain/models/Domicilio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/domain/models/Domicilio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/domain/models/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/domain/models/Paciente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,9 +25,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HttpClientOnboardingState"><![CDATA[{
-  "isOnboardingCommentShown": true
-}]]></component>
+  <component name="HttpClientOnboardingState">{
+  &quot;isOnboardingCommentShown&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -40,76 +36,60 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Cucumber Java.Feature: moduloAutenticacion.executor": "Run",
-    "Cucumber Java.Feature: moduloPacientes.executor": "Run",
-    "Cucumber Java.Feature: moduloUrgencias.executor": "Run",
-    "Cucumber Java.Scenario: Ingreso de pacientes con diferente niveles de emergencia.executor": "Run",
-    "HTTP Request.generated-requests | #2.executor": "Run",
-    "HTTP Request.generated-requests | #4.executor": "Run",
-    "HTTP Request.generated-requests | #7.executor": "Run",
-    "HTTP Request.generated-requests | 1. INGRESAR PACIENTE (POST).executor": "Run",
-    "HTTP Request.generated-requests | CASO 1: VALIDACIÓN (Debe dar Error 400)#2.executor": "Run",
-    "HTTP Request.generated-requests | PASO 1: Entra Facundo (SIN URGENCIA - Prioridad Baja).executor": "Run",
-    "HTTP Request.generated-requests | PASO 1: Entra Pepe (URGENCIA - Llegó 10:00).executor": "Run",
-    "HTTP Request.generated-requests | PASO 2: Entra Ana (URGENCIA - Llegó 10:05).executor": "Run",
-    "HTTP Request.generated-requests | PASO 2: Entra Maria (EMERGENCIA - Prioridad Alta).executor": "Run",
-    "HTTP Request.generated-requests | PASO 3: Ver Lista.executor": "Run",
-    "HTTP Request.generated-requests | PASO 3: Ver la Lista (¿Quién está primero?).executor": "Run",
-    "JUnit.AfiliacionTest.executor": "Run",
-    "JUnit.DomicilioTest.executor": "Run",
-    "JUnit.ObraSocialTest.executor": "Run",
-    "JUnit.PacienteTest.executor": "Run",
-    "JUnit.ServicioAutenticacionImplTest.executor": "Run",
-    "JUnit.TensionArterialTest.executor": "Run",
-    "Maven.IS2025-TFI [test].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.Main.executor": "Run",
-    "git-widget-placeholder": "backend",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.runner",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Cucumber Java.Feature: moduloAutenticacion.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: moduloPacientes.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: moduloUrgencias.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Ingreso de pacientes con diferente niveles de emergencia.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #2.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #4.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #7.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | 1. INGRESAR PACIENTE (POST).executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | CASO 1: VALIDACIÓN (Debe dar Error 400)#2.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | PASO 1: Entra Facundo (SIN URGENCIA - Prioridad Baja).executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | PASO 1: Entra Pepe (URGENCIA - Llegó 10:00).executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | PASO 2: Entra Ana (URGENCIA - Llegó 10:05).executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | PASO 2: Entra Maria (EMERGENCIA - Prioridad Alta).executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | PASO 3: Ver Lista.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | PASO 3: Ver la Lista (¿Quién está primero?).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AfiliacionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DomicilioTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ObraSocialTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PacienteTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServicioAutenticacionImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TensionArterialTest.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.IS2025-TFI [test].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Main.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;backend&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.runner&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.app" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="configurationStatuses">
-      <map>
-        <entry key="HttpClient.HttpRequestRunConfigurationType">
-          <value>
-            <map>
-              <entry key="generated-requests | PASO 1: Entra Pepe (URGENCIA - Llegó 10:00)" value="STOPPED" />
-              <entry key="generated-requests | PASO 2: Entra Ana (URGENCIA - Llegó 10:05)" value="STOPPED" />
-              <entry key="generated-requests | PASO 3: Ver Lista" value="STOPPED" />
-              <entry key="generated-requests | PASO 3: Ver la Lista (¿Quién está primero?)" value="STOPPED" />
-            </map>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="RunManager" selected="HTTP Request.generated-requests | PASO 3: Ver Lista">
+  <component name="RunManager" selected="Spring Boot.Main">
     <configuration name="generated-requests | PASO 1: Entra Pepe (URGENCIA - Llegó 10:00)" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" executionIdentifier="PASO 1: Entra Pepe (URGENCIA - Llegó 10:00)" index="5" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -146,10 +126,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.Main" />
         <item itemvalue="HTTP Request.generated-requests | PASO 3: Ver Lista" />
         <item itemvalue="HTTP Request.generated-requests | PASO 1: Entra Pepe (URGENCIA - Llegó 10:00)" />
         <item itemvalue="HTTP Request.generated-requests | PASO 2: Entra Ana (URGENCIA - Llegó 10:05)" />
-        <item itemvalue="Spring Boot.Main" />
         <item itemvalue="HTTP Request.generated-requests | PASO 3: Ver la Lista (¿Quién está primero?)" />
       </list>
     </recent_temporary>

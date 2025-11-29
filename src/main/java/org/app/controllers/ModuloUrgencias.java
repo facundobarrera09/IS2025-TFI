@@ -72,7 +72,7 @@ public class ModuloUrgencias {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/registroPacientes")
+    @GetMapping("/ingresos")
     public ResponseEntity<ResListaDeIngresos> listarUrgencias() {
 
             PriorityQueue<Ingreso> cola = this.servicioUrgencia.getListaDeEspera();
