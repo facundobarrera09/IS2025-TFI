@@ -4,19 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e346635-d67c-4ecc-959d-c1ca012afa70" name="Changes" comment="">
+    <list default="true" id="5e346635-d67c-4ecc-959d-c1ca012afa70" name="Changes" comment="Añadir Pipeline de GitHub Actions">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/steps/ModuloUrgenciasStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/steps/ModuloUrgenciasStepDefinition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/moduloUrgencias.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/moduloUrgencias.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="backend" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "micaapaezISI"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/facundobarrera09/IS2025-TFI.git",
+    "accountId": "e1a08e36-f6cd-4391-b2d2-b486c95eb96d"
+  }
+}]]></component>
+  <component name="HttpClientOnboardingState">{
+  &quot;isOnboardingCommentShown&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -30,8 +57,33 @@
     "Cucumber Java.Feature: moduloAutenticacion.executor": "Run",
     "Cucumber Java.Feature: moduloPacientes.executor": "Run",
     "Cucumber Java.Feature: moduloUrgencias.executor": "Run",
+    "Cucumber Java.Scenario: Ingreso de pacientes con diferente niveles de emergencia.executor": "Run",
+    "HTTP Request.generated-requests | #2.executor": "Run",
+    "HTTP Request.generated-requests | #4.executor": "Run",
+    "HTTP Request.generated-requests | #7.executor": "Run",
+    "HTTP Request.generated-requests | 1. INGRESAR PACIENTE (POST).executor": "Run",
+    "HTTP Request.generated-requests | CASO 1: VALIDACIÓN (Debe dar Error 400)#2.executor": "Run",
+    "HTTP Request.generated-requests | PASO 1: Entra Facundo (SIN URGENCIA - Prioridad Baja).executor": "Run",
+    "HTTP Request.generated-requests | PASO 1: Entra Pepe (URGENCIA - Llegó 10:00).executor": "Run",
+    "HTTP Request.generated-requests | PASO 2: Entra Ana (URGENCIA - Llegó 10:05).executor": "Run",
+    "HTTP Request.generated-requests | PASO 2: Entra Maria (EMERGENCIA - Prioridad Alta).executor": "Run",
+    "HTTP Request.generated-requests | PASO 3: Ver Lista.executor": "Run",
+    "HTTP Request.generated-requests | PASO 3: Ver la Lista (¿Quién está primero?).executor": "Run",
+    "JUnit.AfiliacionTest.executor": "Run",
+    "JUnit.DomicilioTest.executor": "Run",
+    "JUnit.ObraSocialTest.executor": "Run",
+    "JUnit.PacienteTest.executor": "Run",
+    "JUnit.ServicioAutenticacionImplTest.executor": "Run",
+    "JUnit.TensionArterialTest.executor": "Run",
+    "Maven.IS2025-TFI [test].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.Main.executor": "Run",
     "git-widget-placeholder": "develop",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
@@ -40,85 +92,78 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.runner",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.TensionArterialTest">
-    <configuration name="AfiliacionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.app" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Cucumber Java.Feature: moduloUrgencias">
+    <configuration name="Feature: moduloUrgencias" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="7" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/moduloUrgencias.feature" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="IS2025-TFI" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity" />
+      <option name="SUGGESTED_NAME" value="Feature: moduloUrgencias" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.domain.*" />
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.domain" />
-      <option name="MAIN_CLASS_NAME" value="org.domain.AfiliacionTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DomicilioTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Ingresa un paciente de igual prioridad que uno que ya esta en la lista de espera" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="7" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/moduloUrgencias.feature" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="IS2025-TFI" />
+      <option name="NAME_FILTER" value="^Ingresa un paciente de igual prioridad que uno que ya esta en la lista de espera$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity --name &quot;^Ingresa un paciente de igual prioridad que uno que ya esta en la lista de espera$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Ingresa un paciente de igual prioridad que uno que ya esta en la lista de espera" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.domain.*" />
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.domain" />
-      <option name="MAIN_CLASS_NAME" value="org.domain.DomicilioTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ObraSocialTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Ingreso del paciente a la lista de espera de urgencia" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="7" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/moduloUrgencias.feature" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="IS2025-TFI" />
+      <option name="NAME_FILTER" value="^Ingreso del paciente a la lista de espera de urgencia$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity --name &quot;^Ingreso del paciente a la lista de espera de urgencia$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Ingreso del paciente a la lista de espera de urgencia" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.domain.*" />
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.domain" />
-      <option name="MAIN_CLASS_NAME" value="org.domain.ObraSocialTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PacienteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IS2025-TFI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.domain.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.domain" />
-      <option name="MAIN_CLASS_NAME" value="org.domain.PacienteTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TensionArterialTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IS2025-TFI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.domain.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.domain" />
-      <option name="MAIN_CLASS_NAME" value="org.domain.TensionArterialTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="generated-requests | PASO 3: Ver Lista" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" executionIdentifier="PASO 3: Ver Lista" index="7" runType="Run single request">
+      <method v="2" />
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
@@ -129,13 +174,26 @@
       <option name="filePath" />
       <method v="2" />
     </configuration>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="IS2025-TFI" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.app.Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TensionArterialTest" />
-        <item itemvalue="JUnit.PacienteTest" />
-        <item itemvalue="JUnit.ObraSocialTest" />
-        <item itemvalue="JUnit.DomicilioTest" />
-        <item itemvalue="JUnit.AfiliacionTest" />
+        <item itemvalue="Cucumber Java.Scenario: Ingreso del paciente a la lista de espera de urgencia" />
+        <item itemvalue="Cucumber Java.Scenario: Ingresa un paciente de igual prioridad que uno que ya esta en la lista de espera" />
+        <item itemvalue="Cucumber Java.Feature: moduloUrgencias" />
+        <item itemvalue="Spring Boot.Main" />
+        <item itemvalue="HTTP Request.generated-requests | PASO 3: Ver Lista" />
       </list>
     </recent_temporary>
   </component>
@@ -156,20 +214,29 @@
       <option name="presentableId" value="Default" />
       <updated>1763414998949</updated>
       <workItem from="1763415096929" duration="227000" />
+      <workItem from="1764162624868" duration="17608000" />
     </task>
+    <task id="LOCAL-00001" summary="Añadir Pipeline de GitHub Actions">
+      <option name="closed" value="true" />
+      <created>1765039584127</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1765039584127</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint type="java-exception">
-          <properties class="java.lang.NoClassDefFoundError" package="java.lang" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Completar implementacion de POST /ingresos y corregir confictos de JDK" />
+    <MESSAGE value="Añadir Pipeline de GitHub Actions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Añadir Pipeline de GitHub Actions" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
