@@ -16,10 +16,7 @@ jobs:
 
     # IMPORTANTE: Esto le dice a todos los pasos "run" que
     # se ejecuten dentro de tu carpeta "backend"
-    defaults:
-      run:
-        working-directory: ./backend
-
+    
     steps:
       # Paso 1: Descargar el código
       - name: Checkout del código
