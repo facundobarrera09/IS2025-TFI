@@ -1,7 +1,7 @@
 package mock;
 
-import org.domain.Usuario;
-import org.app.interfaces.RepositorioUsuarios;
+import org.domain.models.Usuario;
+import org.domain.interfaces.RepositorioUsuarios;
 import java.util.*;
 
 public class RepositorioUsuariosPrueba implements RepositorioUsuarios {

@@ -1,6 +1,5 @@
 package steps;
 
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,7 +9,7 @@ import java.util.*;
 import mock.DBPruebaEnMemoria;
 import mock.RepoAfiliacionesMemoria;
 import mock.RepoObrasSociales;
-import org.domain.*;
+import org.domain.models.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

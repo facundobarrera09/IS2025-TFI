@@ -4,17 +4,38 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
-    <artifactId>IS2025-TFI</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
     <properties>
-        <maven.compiler.source>23</maven.compiler.source>
-        <maven.compiler.target>23</maven.compiler.target>
+        <java.version>23</java.version>
+<!--        <maven.compiler.source>23</maven.compiler.source>-->
+<!--        <maven.compiler.target>23</maven.compiler.target>-->
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Versión ESTABLE de JUnit 5 -->
         <junit.jupiter.version>5.10.2</junit.jupiter.version>
     </properties>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.6</version> <relativePath/>
+    </parent>
+
+    <groupId>org.example</groupId>
+    <artifactId>IS2025-TFI</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <licenses>
+        <license/>
+    </licenses>
+    <developers>
+        <developer/>
+    </developers>
+    <scm>
+        <connection/>
+        <developerConnection/>
+        <tag/>
+        <url/>
+    </scm>
 
     <dependencies>
         <!-- Cucumber -->
@@ -63,6 +84,18 @@
             <version>5.18.0</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -75,6 +108,12 @@
                 <configuration>
                     <useModulePath>false</useModulePath>
                 </configuration>
+            </plugin>
+
+            <!-- Spring -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

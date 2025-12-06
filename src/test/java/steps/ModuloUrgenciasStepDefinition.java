@@ -8,9 +8,8 @@ import java.time.*;
 import java.util.*;
 
 import mock.DBPruebaEnMemoria;
-import org.app.ServicioUrgencia;
-import org.domain.*;
-import org.domain.ObraSocial;
+import org.domain.controllers.ServicioUrgencia;
+import org.domain.models.*;
 
 import static org.assertj.core.api.Assertions.*;
 

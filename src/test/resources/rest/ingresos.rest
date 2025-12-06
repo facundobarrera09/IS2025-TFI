@@ -1,0 +1,115 @@
+### Paciente existente de baja prioridad
+POST http://localhost:8080/ingresos
+Content-Type: application/json
+
+{
+    "paciente": {
+        "cuit": "20432165491"
+    },
+    "enfermera": {
+        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
+    },
+    "informe": "Algun informe aceptable",
+    "temperatura": 36.5,
+    "nivel": "Sin Urgencia",
+    "frecuenciaCardiaca": 80.0,
+    "frecuenciaRespiratoria": 16.0,
+    "tensionArterial": "120/80"
+}
+
+### Paciente existente de alta prioridad
+POST http://localhost:8080/ingresos
+Content-Type: application/json
+
+{
+    "paciente": {
+        "cuit": "20432165491"
+    },
+    "enfermera": {
+        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
+    },
+    "informe": "Algun informe aceptable",
+    "temperatura": 36.5,
+    "nivel": "Emergencia",
+    "frecuenciaCardiaca": 80.0,
+    "frecuenciaRespiratoria": 16.0,
+    "tensionArterial": "120/80"
+}
+
+### Paciente no exitente de baja prioridad
+POST http://localhost:8080/ingresos
+Content-Type: application/json
+
+{
+    "paciente": {
+        "cuit": "40698547589",
+        "apellido": "Gomez",
+        "nombre": "Laura"
+    },
+    "enfermera": {
+        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
+    },
+    "informe": "Algun informe aceptable",
+    "temperatura": 36.5,
+    "nivel": "Sin Urgencia",
+    "frecuenciaCardiaca": 80.0,
+    "frecuenciaRespiratoria": 16.0,
+    "tensionArterial": "120/80"
+}
+
+### A la creación del paciente le faltan datos
+POST http://localhost:8080/ingresos
+Content-Type: application/json
+
+{
+    "paciente": {
+        "cuit": "40698547589",
+        "apellido": "Gomez"
+    },
+    "enfermera": {
+        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
+    },
+    "informe": "Algun informe aceptable",
+    "temperatura": 36.5,
+    "nivel": "Sin Urgencia",
+    "frecuenciaCardiaca": 80.0,
+    "frecuenciaRespiratoria": 16.0,
+    "tensionArterial": "120/80"
+}
+
+### Al ingreso le faltan datos
+POST http://localhost:8080/ingresos
+Content-Type: application/json
+
+{
+    "paciente": {
+        "cuit": "20432165491"
+    },
+    "enfermera": {
+        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
+    },
+    "informe": "Algun informe aceptable",
+    "temperatura": 36.5,
+    "nivel": "Sin Urgencia",
+    "frecuenciaCardiaca": 80.0,
+    "tensionArterial": "120/80"
+}
+
+### Valores de frecuencia negativos
+POST http://localhost:8080/ingresos
+Content-Type: application/json
+
+{
+    "paciente": {
+        "cuit": "20432165491"
+    },
+    "enfermera": {
+        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
+    },
+    "informe": "Algun informe aceptable",
+    "temperatura": 36.5,
+    "nivel": "Sin Urgencia",
+    "frecuenciaCardiaca": 80.0,
+    "frecuenciaRespiratoria": -5.0,
+    "tensionArterial": "120/80"
+}

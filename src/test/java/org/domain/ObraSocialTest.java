@@ -1,5 +1,6 @@
 package org.domain;
 
+import org.domain.models.ObraSocial;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;

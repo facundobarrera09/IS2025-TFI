@@ -1,7 +1,7 @@
 package mock;
 
-import org.app.interfaces.IRepositorioAfiliaciones;
-import org.domain.Afiliacion;
+import org.domain.interfaces.IRepositorioAfiliaciones;
+import org.domain.models.Afiliacion;
 
 import java.util.ArrayList;
 import java.util.List;

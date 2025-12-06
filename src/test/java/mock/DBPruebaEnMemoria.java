@@ -1,7 +1,8 @@
 package mock;
 
-import org.app.interfaces.RepositorioPacientes;
-import org.domain.Paciente;
+import org.app.models.paciente.FindOrCreatePaciente;
+import org.domain.interfaces.RepositorioPacientes;
+import org.domain.models.Paciente;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +24,11 @@ public class DBPruebaEnMemoria implements RepositorioPacientes {
     @Override
     public Optional<Paciente> buscarPacientePorCuil(String cuit){
         return Optional.ofNullable(pacientes.get(cuit));
+    }
+
+    @Override
+    public Paciente buscarOCrearPaciente(FindOrCreatePaciente formPaciente) {
+        return null;
     }
 
     public Map<String, Paciente> getPacientes() {
