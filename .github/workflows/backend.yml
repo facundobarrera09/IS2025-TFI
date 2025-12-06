@@ -1,29 +1,26 @@
 name: Tests Backend Java
 
-# 1. CUÁNDO EJECUTAR
+
 on:
   pull_request:
     branches: [ "main" ]
-    # Opcional: Solo ejecutar si cambiaron cosas dentro de la carpeta 'backend'
+    
     paths:
       - 'backend/**' 
   workflow_dispatch:
 
-# 2. QUÉ HACER
+
 jobs:
   test-java:
     runs-on: ubuntu-latest
 
-    # IMPORTANTE: Esto le dice a todos los pasos "run" que
-    # se ejecuten dentro de tu carpeta "backend"
+  
     
     steps:
-      # Paso 1: Descargar el código
+     
       - name: Checkout del código
         uses: actions/checkout@v4
 
-      # Paso 2: Configurar Java
-      # Usamos Java 17, que es el estándar actual para Spring Boot 3
       - name: Configurar Java 23
         uses: actions/setup-java@v4
         with:
@@ -31,7 +28,5 @@ jobs:
           distribution: 'temurin'
           cache: maven # Esto hace que las descargas sean más rápidas la próxima vez
 
-      # Paso 3: Ejecutar los tests (con Maven)
-      # El comando 'mvn test' corre las pruebas que tengas en la carpeta 'test'
       - name: Ejecutar Tests con Maven
         run: mvn test
