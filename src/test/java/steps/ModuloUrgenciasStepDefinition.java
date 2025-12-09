@@ -8,7 +8,7 @@ import java.time.*;
 import java.util.*;
 
 import mock.DBPruebaEnMemoria;
-import org.domain.controllers.ServicioUrgencia;
+import org.domain.controllers.ControladorUrgencias;
 import org.domain.models.*;
 
 import static org.assertj.core.api.Assertions.*;
@@ -17,7 +17,7 @@ public class ModuloUrgenciasStepDefinition {
 
     private Enfermera enfermera;
     private final DBPruebaEnMemoria DBMockeada;
-    private final ServicioUrgencia servicioUrgencia;
+    private final ControladorUrgencias servicioUrgencia;
 
     private LocalDateTime fechaYHoraMockeada;
 
@@ -25,7 +25,7 @@ public class ModuloUrgenciasStepDefinition {
 
     public ModuloUrgenciasStepDefinition(){
         this.DBMockeada = new DBPruebaEnMemoria();
-        this.servicioUrgencia = new ServicioUrgencia(DBMockeada);
+        this.servicioUrgencia = new ControladorUrgencias(DBMockeada);
     }
 
     @Given("que la enfermera esta registrada:")

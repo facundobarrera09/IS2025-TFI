@@ -1,0 +1,6 @@
+{
+  "timestamp": 1765317117091,
+  "status": 400,
+  "error": "Bad Request",
+  "path": "/ingresos"
+}

@@ -1,17 +1,17 @@
 package org.domain.controllers;
 
-import org.domain.interfaces.RepositorioPacientes;
+import org.domain.interfaces.IRepositorioPacientes;
 import org.domain.models.*;
 
 import java.time.LocalDateTime;
 import java.util.PriorityQueue;
 
-public class ServicioUrgencia {
+public class ControladorUrgencias {
 
-    private final RepositorioPacientes DBPacientes;
+    private final IRepositorioPacientes DBPacientes;
     private final PriorityQueue<Ingreso> listaEspera;
 
-    public ServicioUrgencia(RepositorioPacientes DBPacientes) {
+    public ControladorUrgencias(IRepositorioPacientes DBPacientes) {
         this.DBPacientes = DBPacientes;
         this.listaEspera = new PriorityQueue<>((a, b) -> {
             boolean aExcedioFechaMaxima = a.getFechaMaxima().isAfter(LocalDateTime.now());

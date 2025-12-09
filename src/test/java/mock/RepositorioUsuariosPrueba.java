@@ -1,10 +1,10 @@
 package mock;
 
 import org.domain.models.Usuario;
-import org.domain.interfaces.RepositorioUsuarios;
+import org.domain.interfaces.IRepositorioUsuarios;
 import java.util.*;
 
-public class RepositorioUsuariosPrueba implements RepositorioUsuarios {
+public class RepositorioUsuariosPrueba implements IRepositorioUsuarios {
     private Map<String, Usuario> usuarios = new HashMap<>();
 
     @Override

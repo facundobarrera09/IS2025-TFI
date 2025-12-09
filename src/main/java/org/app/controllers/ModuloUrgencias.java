@@ -1,88 +1,68 @@
 package org.app.controllers;
 
+import org.app.exceptions.InvalidCreateIngreso;
+import org.app.exceptions.InvalidFindOrCreatePaciente;
 import org.app.models.ingresos.CreateIngreso;
 import org.app.models.ingresos.ResInvalidCreateIngreso;
 import org.app.models.ingresos.ResListaDeIngresos;
-import org.app.models.paciente.FindOrCreatePaciente;
 import org.app.models.paciente.ResInvalidFindOrCreatePaciente;
-import org.domain.controllers.ServicioUrgencia;
-import org.domain.interfaces.IRepositorioEnfermeras;
-import org.domain.interfaces.RepositorioPacientes;
+import org.app.services.AuthService;
+import org.app.services.UrgenciasService;
 import org.domain.models.*;
-import org.domain.models.repos.RepoEnfermeras;
-import org.domain.models.repos.RepoPacientes;
-import org.springframework.http.HttpStatusCode;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Optional;
-import java.util.PriorityQueue;
-import java.util.UUID;
 
 @RestController
 public class ModuloUrgencias {
-    ServicioUrgencia servicioUrgencia;
-    RepositorioPacientes repositorioPacientes;
-    IRepositorioEnfermeras repositorioEnfermeras;
+    private final AuthService authService;
+    private final UrgenciasService urgenciasService;
 
-    ModuloUrgencias() {
-        this.repositorioPacientes = new RepoPacientes();
-        this.servicioUrgencia = new ServicioUrgencia(repositorioPacientes);
-        this.repositorioEnfermeras = new RepoEnfermeras();
+    @Autowired
+    ModuloUrgencias(AuthService authService, UrgenciasService urgenciasService) {
+        this.authService = authService;
+        this.urgenciasService = urgenciasService;
     }
 
     @PostMapping("/ingresos")
-    public ResponseEntity<?> registrarPaciente(@RequestBody CreateIngreso form) {
+    public ResponseEntity<?> registrarUrgencia(@RequestHeader(HttpHeaders.AUTHORIZATION) String authHeader, @RequestBody CreateIngreso form) {
+        System.out.println("Registrando urgencia");
+        if (!authService.tieneAutoridad(authHeader, Autoridad.ENFERMERO)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
 
-        FindOrCreatePaciente formPaciente = form.getPaciente();
-        Paciente paciente;
         try {
-            paciente = repositorioPacientes.buscarOCrearPaciente(formPaciente);
-        } catch (IllegalArgumentException e) {
+            urgenciasService.registrarUrgencia(form);
+            return ResponseEntity.ok().build();
+        }
+        catch (InvalidFindOrCreatePaciente e) {
             return ResponseEntity.badRequest().body(
                     new ResInvalidFindOrCreatePaciente(e.getMessage(), form.getPaciente())
             );
         }
-
-        Optional<Enfermera> enfermera = repositorioEnfermeras.obtenerEnfermera(UUID.fromString(form.getEnfermera().getUuid()));
-        if (enfermera.isEmpty()) {
-            return ResponseEntity.badRequest().body("Enfermera con ese uuid no existe");
-        }
-
-        try {
-            this.servicioUrgencia.registrarUrgencia(
-                    paciente.getCuit(),
-                    enfermera.get(),
-                    form.getInforme(),
-                    form.getTemperatura(),
-                    NivelEmergencia.buscarPorNombre(form.getNivel()),
-                    form.getFrecuenciaCardiaca(),
-                    form.getFrecuenciaRespiratoria(),
-                    new TensionArterial(form.getTensionArterial())
-            );
-        } catch (IllegalArgumentException e) {
+        catch (InvalidCreateIngreso e) {
             return ResponseEntity.badRequest().body(
                     new ResInvalidCreateIngreso(e.getMessage(), form)
             );
         }
-
-        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/ingresos")
-    public ResponseEntity<ResListaDeIngresos> listarUrgencias() {
-
-            PriorityQueue<Ingreso> cola = this.servicioUrgencia.getListaDeEspera();
-
-            ResListaDeIngresos respuesta = new ResListaDeIngresos(
-                    LocalDateTime.now(),
-                    cola
-            );
-
-            return ResponseEntity.ok(respuesta);
+    public ResponseEntity<ResListaDeIngresos> listarUrgencias(@RequestHeader("Authorization") String authHeader) {
+        if (!authService.tieneAutoridad(authHeader, Autoridad.ENFERMERO) && !authService.tieneAutoridad(authHeader, Autoridad.MEDICO)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
+
+        ResListaDeIngresos respuesta = new ResListaDeIngresos(
+                LocalDateTime.now(),
+                urgenciasService.listarUrgencias()
+        );
+
+        return ResponseEntity.ok(respuesta);
     }
+}
 

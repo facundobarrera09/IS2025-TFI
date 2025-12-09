@@ -3,7 +3,7 @@ package org.domain.interfaces;
 
 import org.domain.models.Usuario;
 
-public interface RepositorioUsuarios {
+public interface IRepositorioUsuarios {
     // Usar solo un método para guardar
     void guardarUsuario(Usuario usuario);
     // Usar solo un método para buscar

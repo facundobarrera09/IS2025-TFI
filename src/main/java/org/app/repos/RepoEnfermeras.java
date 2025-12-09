@@ -1,4 +1,4 @@
-package org.domain.models.repos;
+package org.app.repos;
 
 import org.domain.interfaces.IRepositorioEnfermeras;
 import org.domain.models.Enfermera;
