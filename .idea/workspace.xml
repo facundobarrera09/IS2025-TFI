@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e346635-d67c-4ecc-959d-c1ca012afa70" name="Changes" comment="Agregar Dockerfile para Render" />
+    <list default="true" id="5e346635-d67c-4ecc-959d-c1ca012afa70" name="Changes" comment="Modificar Dockerfile para Render">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,18 +28,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "micaapaezISI"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;micaapaezISI&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/facundobarrera09/IS2025-TFI.git",
-    "accountId": "e1a08e36-f6cd-4391-b2d2-b486c95eb96d"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/facundobarrera09/IS2025-TFI.git&quot;,
+    &quot;accountId&quot;: &quot;e1a08e36-f6cd-4391-b2d2-b486c95eb96d&quot;
   }
-}]]></component>
+}</component>
   <component name="HttpClientOnboardingState">{
   &quot;isOnboardingCommentShown&quot;: true
 }</component>
@@ -49,54 +51,54 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Cucumber Java.Feature: moduloAutenticacion.executor": "Run",
-    "Cucumber Java.Feature: moduloPacientes.executor": "Run",
-    "Cucumber Java.Feature: moduloUrgencias.executor": "Run",
-    "Cucumber Java.Scenario: Ingreso de pacientes con diferente niveles de emergencia.executor": "Run",
-    "HTTP Request.generated-requests | #2.executor": "Run",
-    "HTTP Request.generated-requests | #4.executor": "Run",
-    "HTTP Request.generated-requests | #7.executor": "Run",
-    "HTTP Request.generated-requests | 1. INGRESAR PACIENTE (POST).executor": "Run",
-    "HTTP Request.generated-requests | CASO 1: VALIDACIÓN (Debe dar Error 400)#2.executor": "Run",
-    "HTTP Request.generated-requests | PASO 1: Entra Facundo (SIN URGENCIA - Prioridad Baja).executor": "Run",
-    "HTTP Request.generated-requests | PASO 1: Entra Pepe (URGENCIA - Llegó 10:00).executor": "Run",
-    "HTTP Request.generated-requests | PASO 2: Entra Ana (URGENCIA - Llegó 10:05).executor": "Run",
-    "HTTP Request.generated-requests | PASO 2: Entra Maria (EMERGENCIA - Prioridad Alta).executor": "Run",
-    "HTTP Request.generated-requests | PASO 3: Ver Lista.executor": "Run",
-    "HTTP Request.generated-requests | PASO 3: Ver la Lista (¿Quién está primero?).executor": "Run",
-    "JUnit.AfiliacionTest.executor": "Run",
-    "JUnit.DomicilioTest.executor": "Run",
-    "JUnit.ObraSocialTest.executor": "Run",
-    "JUnit.PacienteTest.executor": "Run",
-    "JUnit.ServicioAutenticacionImplTest.executor": "Run",
-    "JUnit.TensionArterialTest.executor": "Run",
-    "Maven.IS2025-TFI [test].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.Main.executor": "Run",
-    "git-widget-placeholder": "develop",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.runner",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Cucumber Java.Feature: moduloAutenticacion.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: moduloPacientes.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: moduloUrgencias.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Ingreso de pacientes con diferente niveles de emergencia.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #2.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #4.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #7.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | 1. INGRESAR PACIENTE (POST).executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | CASO 1: VALIDACIÓN (Debe dar Error 400)#2.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | PASO 1: Entra Facundo (SIN URGENCIA - Prioridad Baja).executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | PASO 1: Entra Pepe (URGENCIA - Llegó 10:00).executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | PASO 2: Entra Ana (URGENCIA - Llegó 10:05).executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | PASO 2: Entra Maria (EMERGENCIA - Prioridad Alta).executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | PASO 3: Ver Lista.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | PASO 3: Ver la Lista (¿Quién está primero?).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AfiliacionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DomicilioTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ObraSocialTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PacienteTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ServicioAutenticacionImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TensionArterialTest.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.IS2025-TFI [test].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Main.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.runner&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.app" />
@@ -212,6 +214,7 @@
       <updated>1763414998949</updated>
       <workItem from="1763415096929" duration="227000" />
       <workItem from="1764162624868" duration="17608000" />
+      <workItem from="1765241361414" duration="3409000" />
     </task>
     <task id="LOCAL-00001" summary="Añadir Pipeline de GitHub Actions">
       <option name="closed" value="true" />
@@ -229,7 +232,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765042407899</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Agregar Dockerfile para Render">
+      <option name="closed" value="true" />
+      <created>1765043090643</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1765043090643</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
