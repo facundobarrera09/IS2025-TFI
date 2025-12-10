@@ -46,6 +46,21 @@ public class ControladorUrgencias {
         return resultado;
     }
 
+    private Ingreso ingresoEnProgresoDeMedico(Medico medico) {
+        Ingreso ingresoEnProgreso = null;
+
+        for (Ingreso ingreso : historicoEspera) {
+            if (ingreso.getEstado() == EstadoIngreso.EN_PROCESO && ingreso.getAtencion() != null) {
+                if (ingreso.getAtencion().getMedico().equals(medico)) {
+                    ingresoEnProgreso = ingreso;
+                    break;
+                }
+            }
+        }
+
+        return ingresoEnProgreso;
+    }
+
     public void registrarUrgencia(
         String cuilPaciente,
         Enfermera enfermera,
@@ -117,6 +132,12 @@ public class ControladorUrgencias {
     }
 
     public Ingreso reclamarIngreso(Medico medico) throws ListaDeEsperaVacia {
+
+        Ingreso ingresoEnProgreso = ingresoEnProgresoDeMedico(medico);
+        if (ingresoEnProgreso != null) {
+            return ingresoEnProgreso;
+        }
+
         Ingreso ingreso = listaEspera.poll();
         if (ingreso == null) {
             throw new ListaDeEsperaVacia("No hay pacientes en la lista de espera");
