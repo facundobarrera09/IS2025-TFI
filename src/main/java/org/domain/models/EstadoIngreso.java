@@ -2,6 +2,6 @@ package org.domain.models;
 
 public enum EstadoIngreso {
     PENDIENTE,
-    PROCESO,
+    EN_PROCESO,
     FINALIZADO;
 }

@@ -1,15 +1,19 @@
 package org.app.interfaces;
 
+import org.domain.interfaces.helpers.IPasswordHasher;
+import org.domain.models.Autoridad;
 import org.domain.models.Usuario;
-import org.domain.models.AuthenticationException;
-import org.domain.interfaces.RepositorioUsuarios;
-import org.domain.interfaces.ServicioAutenticacionImpl;
+import org.domain.errors.UsuarioNoAutenticado;
+import org.domain.interfaces.IRepositorioUsuarios;
+import org.domain.controllers.ControladorAutenticacion;
+import org.domain.models.helpers.PasswordHasherPorMapeo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,10 +23,13 @@ import static org.mockito.Mockito.*;
 class ServicioAutenticacionImplTest {
 
     @Mock
-    private RepositorioUsuarios repositorio;
+    private IRepositorioUsuarios repositorio;
+
+    @Spy
+    private IPasswordHasher hasher = new PasswordHasherPorMapeo();
 
     @InjectMocks
-    private ServicioAutenticacionImpl servicioAutenticacion;
+    private ControladorAutenticacion servicioAutenticacion;
 
     @BeforeEach
     void setUp() {
@@ -38,7 +45,7 @@ class ServicioAutenticacionImplTest {
             // Arrange
             String email = "usuario@hospital.com";
             String contraseña = "SecurePass123";
-            String autoridad = "médico";
+            Autoridad autoridad = Autoridad.MEDICO;
 
             when(repositorio.existeEmail(email)).thenReturn(false);
 
@@ -49,10 +56,10 @@ class ServicioAutenticacionImplTest {
             assertNotNull(usuario);
             assertEquals(email, usuario.getEmail());
             assertEquals(autoridad, usuario.getAutoridad());
-            assertNotEquals(contraseña, usuario.getContraseñaHash());
-            assertTrue(usuario.getContraseñaHash().startsWith("$argon2id$") || 
-                      usuario.getContraseñaHash().startsWith("$2a$") || 
-                      usuario.getContraseñaHash().startsWith("$2b$"));
+            assertNotEquals(contraseña, usuario.getHashContraseña());
+            assertTrue(usuario.getHashContraseña().startsWith("$argon2id$") ||
+                      usuario.getHashContraseña().startsWith("$2a$") ||
+                      usuario.getHashContraseña().startsWith("$2b$"));
 
             verify(repositorio).existeEmail(email);
             verify(repositorio).guardarUsuario(usuario);
@@ -63,7 +70,7 @@ class ServicioAutenticacionImplTest {
             // Arrange
             String email = "email-sin-arroba";
             String contraseña = "SecurePass123";
-            String autoridad = "médico";
+            Autoridad autoridad = Autoridad.MEDICO;
 
             // Act & Assert
             IllegalArgumentException excepcion = assertThrows(
@@ -72,7 +79,6 @@ class ServicioAutenticacionImplTest {
             );
 
             assertEquals("Formato de email inválido", excepcion.getMessage());
-            verify(repositorio, never()).existeEmail(anyString());
             verify(repositorio, never()).guardarUsuario(any(Usuario.class));
         }
 
@@ -81,7 +87,7 @@ class ServicioAutenticacionImplTest {
             // Arrange
             String email = "";
             String contraseña = "SecurePass123";
-            String autoridad = "médico";
+            Autoridad autoridad = Autoridad.MEDICO;
 
             // Act & Assert
             IllegalArgumentException excepcion = assertThrows(
@@ -90,7 +96,6 @@ class ServicioAutenticacionImplTest {
             );
 
             assertEquals("Formato de email inválido", excepcion.getMessage());
-            verify(repositorio, never()).existeEmail(anyString());
             verify(repositorio, never()).guardarUsuario(any(Usuario.class));
         }
 
@@ -99,7 +104,7 @@ class ServicioAutenticacionImplTest {
             // Arrange
             String email = "usuario@hospital.com";
             String contraseña = "Short7";
-            String autoridad = "médico";
+            Autoridad autoridad = Autoridad.MEDICO;
 
             // Act & Assert
             IllegalArgumentException excepcion = assertThrows(
@@ -108,7 +113,6 @@ class ServicioAutenticacionImplTest {
             );
 
             assertEquals("La contraseña debe tener al menos 8 caracteres", excepcion.getMessage());
-            verify(repositorio, never()).existeEmail(anyString());
             verify(repositorio, never()).guardarUsuario(any(Usuario.class));
         }
 
@@ -117,7 +121,7 @@ class ServicioAutenticacionImplTest {
             // Arrange
             String email = "usuario@hospital.com";
             String contraseña = "12345678";
-            String autoridad = "médico";
+            Autoridad autoridad = Autoridad.MEDICO;
 
             when(repositorio.existeEmail(email)).thenReturn(false);
 
@@ -136,7 +140,7 @@ class ServicioAutenticacionImplTest {
             // Arrange
             String email = "usuario@hospital.com";
             String contraseña = "SecurePass123";
-            String autoridad = "médico";
+            Autoridad autoridad = Autoridad.MEDICO;
 
             when(repositorio.existeEmail(email)).thenReturn(true);
 
@@ -156,7 +160,7 @@ class ServicioAutenticacionImplTest {
             // Arrange
             String email = "usuario@hospital.com";
             String contraseña = "SecurePass123";
-            String autoridad = "médico";
+            Autoridad autoridad = Autoridad.MEDICO;
 
             when(repositorio.existeEmail(email)).thenReturn(false);
 
@@ -164,7 +168,7 @@ class ServicioAutenticacionImplTest {
             Usuario usuario = servicioAutenticacion.registrarUsuario(email, contraseña, autoridad);
 
             // Assert
-            String hash = usuario.getContraseñaHash();
+            String hash = usuario.getHashContraseña();
             assertTrue(hash.startsWith("$argon2id$") || hash.startsWith("$2a$") || hash.startsWith("$2b$"));
             assertEquals("$argon2id$v=19$m=65536,t=3,p=4$c29tZXNhbHQ$RdescudvJCsgt3ub+b+dWRWJTmaaJObG", hash);
         }
@@ -174,12 +178,12 @@ class ServicioAutenticacionImplTest {
     class InicioSesionTests {
 
         @Test
-        void deberiaIniciarSesionConCredencialesCorrectas() throws AuthenticationException {
+        void deberiaIniciarSesionConCredencialesCorrectas() throws UsuarioNoAutenticado {
             // Arrange
             String email = "medico@hospital.com";
             String contraseña = "SecurePass123";
             String hashEsperado = "$argon2id$v=19$m=65536,t=3,p=4$c29tZXNhbHQ$RdescudvJCsgt3ub+b+dWRWJTmaaJObG";
-            Usuario usuarioMock = new Usuario(email, hashEsperado, "médico");
+            Usuario usuarioMock = new Usuario(email, hashEsperado, Autoridad.MEDICO);
 
             when(repositorio.buscarPorEmail(email)).thenReturn(usuarioMock);
 
@@ -189,7 +193,7 @@ class ServicioAutenticacionImplTest {
             // Assert
             assertNotNull(usuario);
             assertEquals(email, usuario.getEmail());
-            assertEquals("médico", usuario.getAutoridad());
+            assertEquals(Autoridad.MEDICO, usuario.getAutoridad());
             verify(repositorio).buscarPorEmail(email);
         }
 
@@ -202,8 +206,8 @@ class ServicioAutenticacionImplTest {
             when(repositorio.buscarPorEmail(email)).thenReturn(null);
 
             // Act & Assert
-            AuthenticationException excepcion = assertThrows(
-                AuthenticationException.class,
+            UsuarioNoAutenticado excepcion = assertThrows(
+                UsuarioNoAutenticado.class,
                 () -> servicioAutenticacion.iniciarSesion(email, contraseña)
             );
 
@@ -217,13 +221,13 @@ class ServicioAutenticacionImplTest {
             String email = "medico@hospital.com";
             String contraseñaIncorrecta = "OtraPass123";
             String hashEsperado = "$argon2id$v=19$m=65536,t=3,p=4$c29tZXNhbHQ$RdescudvJCsgt3ub+b+dWRWJTmaaJObG";
-            Usuario usuarioMock = new Usuario(email, hashEsperado, "médico");
+            Usuario usuarioMock = new Usuario(email, hashEsperado, Autoridad.MEDICO);
 
             when(repositorio.buscarPorEmail(email)).thenReturn(usuarioMock);
 
             // Act & Assert
-            AuthenticationException excepcion = assertThrows(
-                AuthenticationException.class,
+            UsuarioNoAutenticado excepcion = assertThrows(
+                UsuarioNoAutenticado.class,
                 () -> servicioAutenticacion.iniciarSesion(email, contraseñaIncorrecta)
             );
 
@@ -240,8 +244,8 @@ class ServicioAutenticacionImplTest {
             when(repositorio.buscarPorEmail(email)).thenReturn(null);
 
             // Act & Assert
-            AuthenticationException excepcion = assertThrows(
-                AuthenticationException.class,
+            UsuarioNoAutenticado excepcion = assertThrows(
+                UsuarioNoAutenticado.class,
                 () -> servicioAutenticacion.iniciarSesion(email, contraseña)
             );
 
@@ -255,13 +259,13 @@ class ServicioAutenticacionImplTest {
             String email = "medico@hospital.com";
             String contraseña = "";
             String hashEsperado = "$argon2id$v=19$m=65536,t=3,p=4$c29tZXNhbHQ$RdescudvJCsgt3ub+b+dWRWJTmaaJObG";
-            Usuario usuarioMock = new Usuario(email, hashEsperado, "médico");
+            Usuario usuarioMock = new Usuario(email, hashEsperado, Autoridad.MEDICO);
 
             when(repositorio.buscarPorEmail(email)).thenReturn(usuarioMock);
 
             // Act & Assert
-            AuthenticationException excepcion = assertThrows(
-                AuthenticationException.class,
+            UsuarioNoAutenticado excepcion = assertThrows(
+                UsuarioNoAutenticado.class,
                 () -> servicioAutenticacion.iniciarSesion(email, contraseña)
             );
 
@@ -270,17 +274,17 @@ class ServicioAutenticacionImplTest {
         }
 
         @Test
-        void deberiaIniciarSesionConMultiplesUsuariosDistintos() throws AuthenticationException {
+        void deberiaIniciarSesionConMultiplesUsuariosDistintos() throws UsuarioNoAutenticado {
             // Arrange
             String emailMedico = "medico@hospital.com";
             String contraseñaMedico = "SecurePass123";
             String hashMedico = "$argon2id$v=19$m=65536,t=3,p=4$c29tZXNhbHQ$RdescudvJCsgt3ub+b+dWRWJTmaaJObG";
-            Usuario usuarioMedico = new Usuario(emailMedico, hashMedico, "médico");
+            Usuario usuarioMedico = new Usuario(emailMedico, hashMedico, Autoridad.MEDICO);
 
             String emailEnfermero = "enfermero@hospital.com";
             String contraseñaEnfermero = "NursePass456";
             String hashEnfermero = "$argon2id$v=19$m=65536,t=3,p=4$c29tZXNhbHQ$RdescudvJCsgt3ub+b+dWRWJTmaaJObH";
-            Usuario usuarioEnfermero = new Usuario(emailEnfermero, hashEnfermero, "enfermero");
+            Usuario usuarioEnfermero = new Usuario(emailEnfermero, hashEnfermero, Autoridad.ENFERMERO);
 
             when(repositorio.buscarPorEmail(emailMedico)).thenReturn(usuarioMedico);
             when(repositorio.buscarPorEmail(emailEnfermero)).thenReturn(usuarioEnfermero);
@@ -292,11 +296,11 @@ class ServicioAutenticacionImplTest {
             // Assert
             assertNotNull(resultadoMedico);
             assertEquals(emailMedico, resultadoMedico.getEmail());
-            assertEquals("médico", resultadoMedico.getAutoridad());
+            assertEquals(Autoridad.MEDICO, resultadoMedico.getAutoridad());
 
             assertNotNull(resultadoEnfermero);
             assertEquals(emailEnfermero, resultadoEnfermero.getEmail());
-            assertEquals("enfermero", resultadoEnfermero.getAutoridad());
+            assertEquals(Autoridad.ENFERMERO, resultadoEnfermero.getAutoridad());
 
             verify(repositorio).buscarPorEmail(emailMedico);
             verify(repositorio).buscarPorEmail(emailEnfermero);

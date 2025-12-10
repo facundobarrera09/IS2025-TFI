@@ -5,15 +5,18 @@ import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import static org.junit.Assert.*;
 import java.util.*;
+
+import org.domain.models.Autoridad;
 import org.domain.models.Usuario;
-import org.domain.models.AuthenticationException;
-import org.domain.interfaces.ServicioAutenticacion;
-import org.domain.interfaces.ServicioAutenticacionImpl;
+import org.domain.errors.UsuarioNoAutenticado;
+import org.domain.interfaces.IControladorAutenticacion;
+import org.domain.controllers.ControladorAutenticacion;
 import mock.RepositorioUsuariosPrueba;
+import org.domain.models.helpers.PasswordHasherPorMapeo;
 
 public class AuthenticationStepDefinition {
 
-    private ServicioAutenticacion servicioAuth;
+    private IControladorAutenticacion servicioAuth;
     // Usar la implementación concreta del mock
     private RepositorioUsuariosPrueba repositorioPrueba = new RepositorioUsuariosPrueba();
     private String resultadoRegistro;
@@ -26,13 +29,13 @@ public class AuthenticationStepDefinition {
     public void que_el_sistema_tiene_los_siguientes_usuarios_registrados(io.cucumber.datatable.DataTable dataTable) {
         System.out.println("=== INICIALIZANDO BACKGROUND ===");
         // Inicializar el servicio con la implementación del mock
-        servicioAuth = new ServicioAutenticacionImpl(repositorioPrueba);
+        servicioAuth = new ControladorAutenticacion(repositorioPrueba, new PasswordHasherPorMapeo());
 
         List<Map<String, String>> usuarios = dataTable.asMaps();
         for (Map<String, String> usuario : usuarios) {
             String email = usuario.get("email");
             String contraseña = usuario.get("contraseña");
-            String autoridad = usuario.get("autoridad");
+            Autoridad autoridad = Autoridad.buscarPorNombre(usuario.get("autoridad"));
 
             System.out.println("Precargando usuario: " + email + ", " + autoridad);
 
@@ -62,7 +65,7 @@ public class AuthenticationStepDefinition {
 
         String email = datos.get("email");
         String contraseña = datos.get("contraseña");
-        String autoridad = datos.get("autoridad");
+        Autoridad autoridad = Autoridad.buscarPorNombre(datos.get("autoridad"));
 
         System.out.println("Datos registro - Email: " + email + ", Autoridad: " + autoridad);
 
@@ -81,7 +84,7 @@ public class AuthenticationStepDefinition {
     public void mi_contraseña_es_hasheada_usando_ARGON2ID_o_Bcrypt() {
         System.out.println("=== VERIFICANDO HASH ===");
         assertNotNull("El usuario debe estar registrado", usuarioRegistrado);
-        String contraseñaAlmacenada = usuarioRegistrado.getContraseñaHash();
+        String contraseñaAlmacenada = usuarioRegistrado.getHashContraseña();
 
         System.out.println("Contraseña almacenada: " + contraseñaAlmacenada);
 
@@ -135,7 +138,7 @@ public class AuthenticationStepDefinition {
             resultadoLogin = "Login exitoso";
             System.out.println("Login EXITOSO: " + email);
             System.out.println("Historias disponibles: " + historiasUsuarioDisponibles);
-        } catch (AuthenticationException e) {
+        } catch (UsuarioNoAutenticado e) {
             loginExitoso = false;
             resultadoLogin = e.getMessage();
             System.out.println("Login FALLIDO: " + e.getMessage());

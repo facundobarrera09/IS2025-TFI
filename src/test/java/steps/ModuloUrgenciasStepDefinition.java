@@ -7,8 +7,8 @@ import io.cucumber.java.en.Then;
 import java.time.*;
 import java.util.*;
 
-import mock.DBPruebaEnMemoria;
-import org.domain.controllers.ServicioUrgencia;
+import mock.RepoPacientesParaPruebas;
+import org.domain.controllers.ControladorUrgencias;
 import org.domain.models.*;
 
 import static org.assertj.core.api.Assertions.*;
@@ -16,16 +16,16 @@ import static org.assertj.core.api.Assertions.*;
 public class ModuloUrgenciasStepDefinition {
 
     private Enfermera enfermera;
-    private final DBPruebaEnMemoria DBMockeada;
-    private final ServicioUrgencia servicioUrgencia;
+    private final RepoPacientesParaPruebas DBMockeada;
+    private final ControladorUrgencias servicioUrgencia;
 
     private LocalDateTime fechaYHoraMockeada;
 
     private Exception excepcionCapturada;
 
     public ModuloUrgenciasStepDefinition(){
-        this.DBMockeada = new DBPruebaEnMemoria();
-        this.servicioUrgencia = new ServicioUrgencia(DBMockeada);
+        this.DBMockeada = new RepoPacientesParaPruebas();
+        this.servicioUrgencia = new ControladorUrgencias(DBMockeada);
     }
 
     @Given("que la enfermera esta registrada:")

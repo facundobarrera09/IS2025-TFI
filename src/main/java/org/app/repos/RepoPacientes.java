@@ -1,7 +1,7 @@
-package org.domain.models.repos;
+package org.app.repos;
 
 import org.app.models.paciente.FindOrCreatePaciente;
-import org.domain.interfaces.RepositorioPacientes;
+import org.domain.interfaces.IRepositorioPacientes;
 import org.domain.models.Domicilio;
 import org.domain.models.Paciente;
 
@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class RepoPacientes implements RepositorioPacientes {
+public class RepoPacientes implements IRepositorioPacientes {
 
     private Map<String, Paciente> pacientes;
 

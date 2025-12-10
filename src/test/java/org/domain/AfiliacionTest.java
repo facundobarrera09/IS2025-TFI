@@ -3,7 +3,7 @@ package org.domain;
 import mock.RepoAfiliacionesMemoria;
 import static org.mockito.Mockito.*;
 
-import org.domain.errors.InvalidInsurance;
+import org.domain.errors.AfiliacionNoExistente;
 import org.domain.models.Afiliacion;
 import org.domain.models.ObraSocial;
 import org.junit.jupiter.api.Test;
@@ -90,8 +90,8 @@ public class AfiliacionTest {
             Afiliacion af = new Afiliacion(repoAfiliacionesMemoria, obraSocial, "1234");
             assertNull(af);
         }
-        catch (InvalidInsurance e) {
-            assertInstanceOf(InvalidInsurance.class, e);
+        catch (AfiliacionNoExistente e) {
+            assertInstanceOf(AfiliacionNoExistente.class, e);
             assertEquals("Paciente no afiliado a obra social", e.getMessage());
         }
     }

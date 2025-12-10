@@ -1,0 +1,17 @@
+### Iniciar sesión como médico
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "email": "med@mail.com",
+  "contraseña": "password"
+}
+
+### Iniciar sesión como enfermero
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "email": "enf@mail.com",
+  "contraseña": "password"
+}

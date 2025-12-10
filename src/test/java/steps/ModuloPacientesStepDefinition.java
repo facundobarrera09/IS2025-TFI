@@ -6,7 +6,7 @@ import io.cucumber.java.en.When;
 
 import java.util.*;
 
-import mock.DBPruebaEnMemoria;
+import mock.RepoPacientesParaPruebas;
 import mock.RepoAfiliacionesMemoria;
 import mock.RepoObrasSociales;
 import org.domain.models.*;
@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ModuloPacientesStepDefinition {
 
-    private final DBPruebaEnMemoria repoPacientes;
+    private final RepoPacientesParaPruebas repoPacientes;
     private final RepoAfiliacionesMemoria repoAfiliaciones;
     private final RepoObrasSociales repoObrasSociales;
     private Enfermera enfermera;
@@ -23,7 +23,7 @@ public class ModuloPacientesStepDefinition {
     private Exception excepcionCapturada;
 
     public ModuloPacientesStepDefinition(){
-        this.repoPacientes = new DBPruebaEnMemoria();
+        this.repoPacientes = new RepoPacientesParaPruebas();
         this.repoAfiliaciones = new RepoAfiliacionesMemoria();
         this.repoObrasSociales = new RepoObrasSociales();
     }

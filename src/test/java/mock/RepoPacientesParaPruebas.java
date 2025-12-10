@@ -1,18 +1,18 @@
 package mock;
 
 import org.app.models.paciente.FindOrCreatePaciente;
-import org.domain.interfaces.RepositorioPacientes;
+import org.domain.interfaces.IRepositorioPacientes;
 import org.domain.models.Paciente;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class DBPruebaEnMemoria implements RepositorioPacientes {
+public class RepoPacientesParaPruebas implements IRepositorioPacientes {
 
     private Map<String, Paciente> pacientes;
 
-    public DBPruebaEnMemoria(){
+    public RepoPacientesParaPruebas(){
         this.pacientes = new HashMap<>();
     }
 

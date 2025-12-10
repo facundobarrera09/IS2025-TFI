@@ -5,14 +5,14 @@ Feature: Módulo de Autenticación
   Background:
     Given que el sistema tiene los siguientes usuarios registrados:
       | email                 | contraseña      | autoridad |
-      | medico@hospital.com   | SecurePass123   | medico    |
-      | enfermero@hospital.com | NursePass456 | enfermero |
+      | medico@hospital.com   | SecurePass123   | médico    |
+      | enfermero@hospital.com | NursePass456 | enfermera |
 
   # 1. Registro exitoso
   Scenario: Registro exitoso de un nuevo usuario médico
     When me registro con los siguientes datos:
       | email             | contraseña       | autoridad |
-      | nuevo@hospital.com| NewSecurePass123 | medico    |
+      | nuevo@hospital.com| NewSecurePass123 | médico    |
     Then mi contraseña es hasheada usando ARGON2ID o Bcrypt
     And veo el mensaje "Registro exitoso"
     And soy redirigido a la página de login
