@@ -2,16 +2,14 @@ package org.app.controllers;
 
 import org.app.exceptions.InvalidCreateIngreso;
 import org.app.exceptions.InvalidFindOrCreatePaciente;
+import org.app.models.ingresos.AddInforme;
 import org.app.models.ingresos.CreateIngreso;
 import org.app.models.ingresos.ResInvalidCreateIngreso;
 import org.app.models.ingresos.ResListaDeIngresos;
 import org.app.models.paciente.ResInvalidFindOrCreatePaciente;
 import org.app.services.AuthService;
 import org.app.services.UrgenciasService;
-import org.domain.errors.UsuarioNoAutenticado;
-import org.domain.errors.UsuarioNoAutorizado;
-import org.domain.errors.ListaDeEsperaVacia;
-import org.domain.errors.PacienteYaIngresado;
+import org.domain.errors.*;
 import org.domain.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -87,6 +85,24 @@ public class ModuloUrgencias {
         }
         catch (ListaDeEsperaVacia e) {
             return ResponseEntity.badRequest().body("No hay pacientes en la lista de espera");
+        }
+    }
+
+    @PostMapping("/ingresos/informe")
+    public ResponseEntity<?> registrarInforme(@RequestHeader("Authorization") String authHeader, @RequestBody AddInforme form) {
+        try {
+            Usuario usuario = authService.validarSesion(authHeader);
+            urgenciasService.registrarInforme(usuario, form.getInforme());
+            return ResponseEntity.noContent().build();
+        }
+        catch (UsuarioNoAutenticado e) {
+            return ResponseEntity.status(401).build();
+        }
+        catch (IllegalArgumentException | SinIngresoEnProceso e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+        catch (UsuarioNoAutorizado e) {
+            return ResponseEntity.status(403).build();
         }
     }
 }

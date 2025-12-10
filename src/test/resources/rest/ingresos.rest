@@ -1,11 +1,11 @@
 ### Listar pacientes
 GET http://localhost:8080/ingresos
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMxODE1NSwiZXhwIjoxNzY1MzMyNTU1fQ.2M9jZTG7TUb5C-4mYKGXTfPAbPM0qhpDyaJ8h2W0e8w
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMzNDM2MywiZXhwIjoxNzY1MzQ4NzYzfQ.a3pYdnl0QIYSklG9j8QTMG0lV4ovzxJpdhIvn5h1-Kk
 
 ### Paciente existente de baja prioridad
 POST http://localhost:8080/ingresos
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMxODE1NSwiZXhwIjoxNzY1MzMyNTU1fQ.2M9jZTG7TUb5C-4mYKGXTfPAbPM0qhpDyaJ8h2W0e8w
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMzNDM2MywiZXhwIjoxNzY1MzQ4NzYzfQ.a3pYdnl0QIYSklG9j8QTMG0lV4ovzxJpdhIvn5h1-Kk
 
 {
     "paciente": {
@@ -28,7 +28,7 @@ Content-Type: application/json
 
 {
     "paciente": {
-        "cuit": "20432165491"
+        "cuit": "20432165492"
     },
     "enfermera": {
         "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"

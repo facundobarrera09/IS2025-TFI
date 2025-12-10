@@ -73,4 +73,12 @@ public class UrgenciasService {
 
         return this.controladorUrgencia.reclamarIngreso(usuario.getMedico());
     }
+
+    public void registrarInforme(Usuario usuario, String informe) {
+        if (usuario.getAutoridad() != Autoridad.MEDICO) {
+            throw new UsuarioNoAutorizado(UsuarioNoAutorizado.PROHIBIDO);
+        }
+
+        this.controladorUrgencia.registrarInforme(usuario.getMedico(), informe);
+    }
 }

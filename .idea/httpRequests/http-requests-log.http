@@ -1,3 +1,516 @@
+POST http://localhost:8080/ingresos/informe
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
+Content-Type: application/json
+Content-Length: 71
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "informe": "Este informe fue escrito por un médico y es válido"
+}
+
+###
+
+GET http://localhost:8080/ingresos/reclamar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-12-09T234938.200.json
+
+###
+
+POST http://localhost:8080/ingresos
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMzNDM2MywiZXhwIjoxNzY1MzQ4NzYzfQ.a3pYdnl0QIYSklG9j8QTMG0lV4ovzxJpdhIvn5h1-Kk
+Content-Length: 335
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "paciente": {
+        "cuit": "20432165491"
+    },
+    "enfermera": {
+        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
+    },
+    "informe": "Algun informe aceptable",
+    "temperatura": 36.5,
+    "nivel": "Sin Urgencia",
+    "frecuenciaCardiaca": 80.0,
+    "frecuenciaRespiratoria": 16.0,
+    "tensionArterial": "120/80"
+}
+
+###
+
+POST http://localhost:8080/ingresos/informe
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
+Content-Type: application/json
+Content-Length: 71
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "informe": "Este informe fue escrito por un médico y es válido"
+}
+
+###
+
+GET http://localhost:8080/ingresos/reclamar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-12-09T234832.200.json
+
+###
+
+GET http://localhost:8080/ingresos/reclamar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMxODE1NSwiZXhwIjoxNzY1MzMyNTU1fQ.2M9jZTG7TUb5C-4mYKGXTfPAbPM0qhpDyaJ8h2W0e8w
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+POST http://localhost:8080/ingresos/informe
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
+Content-Type: application/json
+Content-Length: 71
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "informe": "Este informe fue escrito por un médico y es válido"
+}
+
+<> 2025-12-09T234827.400.txt
+
+###
+
+GET http://localhost:8080/ingresos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMzNDM2MywiZXhwIjoxNzY1MzQ4NzYzfQ.a3pYdnl0QIYSklG9j8QTMG0lV4ovzxJpdhIvn5h1-Kk
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-12-09T234820.200.json
+
+###
+
+POST http://localhost:8080/ingresos
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMzNDM2MywiZXhwIjoxNzY1MzQ4NzYzfQ.a3pYdnl0QIYSklG9j8QTMG0lV4ovzxJpdhIvn5h1-Kk
+Content-Length: 335
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "paciente": {
+        "cuit": "20432165491"
+    },
+    "enfermera": {
+        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
+    },
+    "informe": "Algun informe aceptable",
+    "temperatura": 36.5,
+    "nivel": "Sin Urgencia",
+    "frecuenciaCardiaca": 80.0,
+    "frecuenciaRespiratoria": 16.0,
+    "tensionArterial": "120/80"
+}
+
+###
+
+POST http://localhost:8080/ingresos/informe
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
+Content-Type: application/json
+Content-Length: 71
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "informe": "Este informe fue escrito por un médico y es válido"
+}
+
+###
+
+GET http://localhost:8080/ingresos/reclamar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-12-09T234754.200.json
+
+###
+
+GET http://localhost:8080/ingresos/reclamar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMxODE1NSwiZXhwIjoxNzY1MzMyNTU1fQ.2M9jZTG7TUb5C-4mYKGXTfPAbPM0qhpDyaJ8h2W0e8w
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+GET http://localhost:8080/ingresos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMzNDM2MywiZXhwIjoxNzY1MzQ4NzYzfQ.a3pYdnl0QIYSklG9j8QTMG0lV4ovzxJpdhIvn5h1-Kk
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-12-09T234707.200.json
+
+###
+
+POST http://localhost:8080/ingresos
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMzNDM2MywiZXhwIjoxNzY1MzQ4NzYzfQ.a3pYdnl0QIYSklG9j8QTMG0lV4ovzxJpdhIvn5h1-Kk
+Content-Length: 335
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "paciente": {
+        "cuit": "20432165493"
+    },
+    "enfermera": {
+        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
+    },
+    "informe": "Algun informe aceptable",
+    "temperatura": 36.5,
+    "nivel": "Sin Urgencia",
+    "frecuenciaCardiaca": 80.0,
+    "frecuenciaRespiratoria": 16.0,
+    "tensionArterial": "120/80"
+}
+
+<> 2025-12-09T234705.400.json
+
+###
+
+POST http://localhost:8080/ingresos
+Content-Type: application/json
+Content-Length: 333
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "paciente": {
+        "cuit": "20432165492"
+    },
+    "enfermera": {
+        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
+    },
+    "informe": "Algun informe aceptable",
+    "temperatura": 36.5,
+    "nivel": "Emergencia",
+    "frecuenciaCardiaca": 80.0,
+    "frecuenciaRespiratoria": 16.0,
+    "tensionArterial": "120/80"
+}
+
+<> 2025-12-09T234648.400.json
+
+###
+
+POST http://localhost:8080/ingresos
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMzNDM2MywiZXhwIjoxNzY1MzQ4NzYzfQ.a3pYdnl0QIYSklG9j8QTMG0lV4ovzxJpdhIvn5h1-Kk
+Content-Length: 335
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "paciente": {
+        "cuit": "20432165491"
+    },
+    "enfermera": {
+        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
+    },
+    "informe": "Algun informe aceptable",
+    "temperatura": 36.5,
+    "nivel": "Sin Urgencia",
+    "frecuenciaCardiaca": 80.0,
+    "frecuenciaRespiratoria": 16.0,
+    "tensionArterial": "120/80"
+}
+
+###
+
+POST http://localhost:8080/ingresos/informe
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
+Content-Type: application/json
+Content-Length: 71
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "informe": "Este informe fue escrito por un médico y es válido"
+}
+
+###
+
+GET http://localhost:8080/ingresos/reclamar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-12-09T234532.200.json
+
+###
+
+POST http://localhost:8080/ingresos
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMzNDM2MywiZXhwIjoxNzY1MzQ4NzYzfQ.a3pYdnl0QIYSklG9j8QTMG0lV4ovzxJpdhIvn5h1-Kk
+Content-Length: 335
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "paciente": {
+        "cuit": "20432165491"
+    },
+    "enfermera": {
+        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
+    },
+    "informe": "Algun informe aceptable",
+    "temperatura": 36.5,
+    "nivel": "Sin Urgencia",
+    "frecuenciaCardiaca": 80.0,
+    "frecuenciaRespiratoria": 16.0,
+    "tensionArterial": "120/80"
+}
+
+###
+
+POST http://localhost:8080/ingresos
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMzNDM2MywiZXhwIjoxNzY1MzQ4NzYzfQ.a3pYdnl0QIYSklG9j8QTMG0lV4ovzxJpdhIvn5h1-Kk
+Content-Length: 335
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "paciente": {
+        "cuit": "20432165491"
+    },
+    "enfermera": {
+        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
+    },
+    "informe": "Algun informe aceptable",
+    "temperatura": 36.5,
+    "nivel": "Sin Urgencia",
+    "frecuenciaCardiaca": 80.0,
+    "frecuenciaRespiratoria": 16.0,
+    "tensionArterial": "120/80"
+}
+
+###
+
+POST http://localhost:8080/ingresos/informe
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
+Content-Type: application/json
+Content-Length: 71
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "informe": "Este informe fue escrito por un médico y es válido"
+}
+
+###
+
+GET http://localhost:8080/ingresos/reclamar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-12-09T234155.200.json
+
+###
+
+POST http://localhost:8080/ingresos
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMzNDM2MywiZXhwIjoxNzY1MzQ4NzYzfQ.a3pYdnl0QIYSklG9j8QTMG0lV4ovzxJpdhIvn5h1-Kk
+Content-Length: 335
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "paciente": {
+        "cuit": "20432165491"
+    },
+    "enfermera": {
+        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
+    },
+    "informe": "Algun informe aceptable",
+    "temperatura": 36.5,
+    "nivel": "Sin Urgencia",
+    "frecuenciaCardiaca": 80.0,
+    "frecuenciaRespiratoria": 16.0,
+    "tensionArterial": "120/80"
+}
+
+###
+
+POST http://localhost:8080/ingresos/informe
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
+Content-Type: application/json
+Content-Length: 71
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "informe": "Este informe fue escrito por un médico y es válido"
+}
+
+###
+
+GET http://localhost:8080/ingresos/reclamar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMxODE1NSwiZXhwIjoxNzY1MzMyNTU1fQ.2M9jZTG7TUb5C-4mYKGXTfPAbPM0qhpDyaJ8h2W0e8w
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+GET http://localhost:8080/ingresos/reclamar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-12-09T234007.200.json
+
+###
+
+GET http://localhost:8080/ingresos/reclamar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-12-09T233955.200.json
+
+###
+
+GET http://localhost:8080/ingresos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMzNDM2MywiZXhwIjoxNzY1MzQ4NzYzfQ.a3pYdnl0QIYSklG9j8QTMG0lV4ovzxJpdhIvn5h1-Kk
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-12-09T233950.200.json
+
+###
+
+POST http://localhost:8080/ingresos
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMzNDM2MywiZXhwIjoxNzY1MzQ4NzYzfQ.a3pYdnl0QIYSklG9j8QTMG0lV4ovzxJpdhIvn5h1-Kk
+Content-Length: 335
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "paciente": {
+        "cuit": "20432165491"
+    },
+    "enfermera": {
+        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
+    },
+    "informe": "Algun informe aceptable",
+    "temperatura": 36.5,
+    "nivel": "Sin Urgencia",
+    "frecuenciaCardiaca": 80.0,
+    "frecuenciaRespiratoria": 16.0,
+    "tensionArterial": "120/80"
+}
+
+###
+
+GET http://localhost:8080/ingresos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMzNDM2MywiZXhwIjoxNzY1MzQ4NzYzfQ.a3pYdnl0QIYSklG9j8QTMG0lV4ovzxJpdhIvn5h1-Kk
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-12-09T233947.200.json
+
+###
+
+POST http://localhost:8080/login
+Content-Type: application/json
+Content-Length: 58
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "enf@mail.com",
+  "contraseña": "password"
+}
+
+<> 2025-12-09T233923.200.json
+
+###
+
+POST http://localhost:8080/ingresos
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMxODE1NSwiZXhwIjoxNzY1MzMyNTU1fQ.2M9jZTG7TUb5C-4mYKGXTfPAbPM0qhpDyaJ8h2W0e8w
+Content-Length: 335
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "paciente": {
+        "cuit": "20432165491"
+    },
+    "enfermera": {
+        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
+    },
+    "informe": "Algun informe aceptable",
+    "temperatura": 36.5,
+    "nivel": "Sin Urgencia",
+    "frecuenciaCardiaca": 80.0,
+    "frecuenciaRespiratoria": 16.0,
+    "tensionArterial": "120/80"
+}
+
+###
+
+GET http://localhost:8080/ingresos/reclamar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-12-09T233908.400.txt
+
+###
+
 GET http://localhost:8080/ingresos/reclamar
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
@@ -257,480 +770,6 @@ Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 <> 2025-12-09T222756.400.txt
-
-###
-
-GET http://localhost:8080/ingresos/reclamar
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2025-12-09T222650.500.json
-
-###
-
-POST http://localhost:8080/login
-Content-Type: application/json
-Content-Length: 58
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "email": "med@mail.com",
-  "contraseña": "password"
-}
-
-<> 2025-12-09T222617.200.json
-
-###
-
-POST http://localhost:8080/login
-Content-Type: application/json
-Content-Length: 58
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "email": "med@mail.com",
-  "contraseña": "password"
-}
-
-<> 2025-12-09T221742.400.json
-
-###
-
-POST http://localhost:8080/ingresos
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMxODE1NSwiZXhwIjoxNzY1MzMyNTU1fQ.2M9jZTG7TUb5C-4mYKGXTfPAbPM0qhpDyaJ8h2W0e8w
-Content-Length: 335
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-    "paciente": {
-        "cuit": "20432165491"
-    },
-    "enfermera": {
-        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
-    },
-    "informe": "Algun informe aceptable",
-    "temperatura": 36.5,
-    "nivel": "Sin Urgencia",
-    "frecuenciaCardiaca": 80.0,
-    "frecuenciaRespiratoria": 16.0,
-    "tensionArterial": "120/80"
-}
-
-###
-
-GET http://localhost:8080/ingresos
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMxODE1NSwiZXhwIjoxNzY1MzMyNTU1fQ.2M9jZTG7TUb5C-4mYKGXTfPAbPM0qhpDyaJ8h2W0e8w
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2025-12-09T191005.200.json
-
-###
-
-GET http://localhost:8080/ingresos
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMxODE1NSwiZXhwIjoxNzY1MzMyNTU1fQ.2M9jZTG7TUb5C-4mYKGXTfPAbPM0qhpDyaJ8h2W0e8w
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2025-12-09T191001.200.json
-
-###
-
-POST http://localhost:8080/login
-Content-Type: application/json
-Content-Length: 58
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "email": "enf@mail.com",
-  "contraseña": "password"
-}
-
-<> 2025-12-09T190915.200.json
-
-###
-
-POST http://localhost:8080/ingresos
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMxNzg3MiwiZXhwIjoxNzY1MzMyMjcyfQ.LWeDJNmBcDWQGcQYHpb5a7OWgxCoKcQz_Z_uYfsECjQ
-Content-Length: 335
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-    "paciente": {
-        "cuit": "20432165491"
-    },
-    "enfermera": {
-        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
-    },
-    "informe": "Algun informe aceptable",
-    "temperatura": 36.5,
-    "nivel": "Sin Urgencia",
-    "frecuenciaCardiaca": 80.0,
-    "frecuenciaRespiratoria": 16.0,
-    "tensionArterial": "120/80"
-}
-
-###
-
-GET http://localhost:8080/ingresos
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMxNzg3MiwiZXhwIjoxNzY1MzMyMjcyfQ.LWeDJNmBcDWQGcQYHpb5a7OWgxCoKcQz_Z_uYfsECjQ
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2025-12-09T190849.200.json
-
-###
-
-GET http://localhost:8080/ingresos
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMxNzg3MiwiZXhwIjoxNzY1MzMyMjcyfQ.LWeDJNmBcDWQGcQYHpb5a7OWgxCoKcQz_Z_uYfsECjQ
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-###
-
-POST http://localhost:8080/login
-Content-Type: application/json
-Content-Length: 58
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "email": "med@mail.com",
-  "contraseña": "password"
-}
-
-<> 2025-12-09T190432.200.json
-
-###
-
-POST http://localhost:8080/ingresos
-Content-Type: application/json
-Authorization: some-auth
-Content-Length: 335
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-    "paciente": {
-        "cuit": "20432165491"
-    },
-    "enfermera": {
-        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
-    },
-    "informe": "Algun informe aceptable",
-    "temperatura": 36.5,
-    "nivel": "Sin Urgencia",
-    "frecuenciaCardiaca": 80.0,
-    "frecuenciaRespiratoria": 16.0,
-    "tensionArterial": "120/80"
-}
-
-###
-
-POST http://localhost:8080/ingresos
-Content-Type: application/json
-Authorization: some-auth
-Content-Length: 335
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-    "paciente": {
-        "cuit": "20432165491"
-    },
-    "enfermera": {
-        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
-    },
-    "informe": "Algun informe aceptable",
-    "temperatura": 36.5,
-    "nivel": "Sin Urgencia",
-    "frecuenciaCardiaca": 80.0,
-    "frecuenciaRespiratoria": 16.0,
-    "tensionArterial": "120/80"
-}
-
-###
-
-GET http://localhost:8080/ingresos
-Authorization: some-auth
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-###
-
-GET http://localhost:8080/ingresos
-Authorization: some-auth
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2025-12-09T185859.200.json
-
-###
-
-POST http://localhost:8080/ingresos
-Content-Type: application/json
-Authorization: some-auth
-Content-Length: 335
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-    "paciente": {
-        "cuit": "20432165491"
-    },
-    "enfermera": {
-        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
-    },
-    "informe": "Algun informe aceptable",
-    "temperatura": 36.5,
-    "nivel": "Sin Urgencia",
-    "frecuenciaCardiaca": 80.0,
-    "frecuenciaRespiratoria": 16.0,
-    "tensionArterial": "120/80"
-}
-
-###
-
-POST http://localhost:8080/ingresos
-Content-Type: application/json
-Authorization: some-auth
-Content-Length: 335
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-    "paciente": {
-        "cuit": "20432165491"
-    },
-    "enfermera": {
-        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
-    },
-    "informe": "Algun informe aceptable",
-    "temperatura": 36.5,
-    "nivel": "Sin Urgencia",
-    "frecuenciaCardiaca": 80.0,
-    "frecuenciaRespiratoria": 16.0,
-    "tensionArterial": "120/80"
-}
-
-###
-
-POST http://localhost:8080/ingresos
-Content-Type: application/json
-Content-Length: 335
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-    "paciente": {
-        "cuit": "20432165491"
-    },
-    "enfermera": {
-        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
-    },
-    "informe": "Algun informe aceptable",
-    "temperatura": 36.5,
-    "nivel": "Sin Urgencia",
-    "frecuenciaCardiaca": 80.0,
-    "frecuenciaRespiratoria": 16.0,
-    "tensionArterial": "120/80"
-}
-
-<> 2025-12-09T185416.400.json
-
-###
-
-POST http://localhost:8080/ingresos
-Content-Type: application/json
-Content-Length: 335
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-    "paciente": {
-        "cuit": "20432165491"
-    },
-    "enfermera": {
-        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
-    },
-    "informe": "Algun informe aceptable",
-    "temperatura": 36.5,
-    "nivel": "Sin Urgencia",
-    "frecuenciaCardiaca": 80.0,
-    "frecuenciaRespiratoria": 16.0,
-    "tensionArterial": "120/80"
-}
-
-<> 2025-12-09T185407.400.json
-
-###
-
-POST http://localhost:8080/ingresos
-Content-Type: application/json
-Content-Length: 335
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-    "paciente": {
-        "cuit": "20432165491"
-    },
-    "enfermera": {
-        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
-    },
-    "informe": "Algun informe aceptable",
-    "temperatura": 36.5,
-    "nivel": "Sin Urgencia",
-    "frecuenciaCardiaca": 80.0,
-    "frecuenciaRespiratoria": 16.0,
-    "tensionArterial": "120/80"
-}
-
-<> 2025-12-09T185157.400.json
-
-###
-
-POST http://localhost:8080/ingresos
-Content-Type: application/json
-Content-Length: 335
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-    "paciente": {
-        "cuit": "20432165491"
-    },
-    "enfermera": {
-        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
-    },
-    "informe": "Algun informe aceptable",
-    "temperatura": 36.5,
-    "nivel": "Sin Urgencia",
-    "frecuenciaCardiaca": 80.0,
-    "frecuenciaRespiratoria": 16.0,
-    "tensionArterial": "120/80"
-}
-
-<> 2025-12-09T185139.400.json
-
-###
-
-POST http://localhost:8080/ingresos
-Content-Type: application/json
-Content-Length: 335
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-    "paciente": {
-        "cuit": "20432165491"
-    },
-    "enfermera": {
-        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
-    },
-    "informe": "Algun informe aceptable",
-    "temperatura": 36.5,
-    "nivel": "Sin Urgencia",
-    "frecuenciaCardiaca": 80.0,
-    "frecuenciaRespiratoria": 16.0,
-    "tensionArterial": "120/80"
-}
-
-<> 2025-12-09T184953.400.json
-
-###
-
-POST http://localhost:8080/login
-Content-Type: application/json
-Content-Length: 58
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "email": "med@mail.com",
-  "contraseña": "password"
-}
-
-<> 2025-12-09T140420.200.json
-
-###
-
-POST http://localhost:8080/login
-Content-Type: application/json
-Content-Length: 58
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "email": "med@mail.com",
-  "contraseña": "password"
-}
-
-<> 2025-12-09T135226.500.json
-
-###
-
-POST http://localhost:8080/login
-Content-Type: application/json
-Content-Length: 58
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "email": "med@mail.com",
-  "contraseña": "password"
-}
-
-<> 2025-12-09T134945.500.json
-
-###
-
-POST http://localhost:8080/login
-Content-Type: application/json
-Content-Length: 58
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "email": "med@mail.com",
-  "contraseña": "password"
-}
-
-<> 2025-12-09T134808.500.json
 
 ###
 

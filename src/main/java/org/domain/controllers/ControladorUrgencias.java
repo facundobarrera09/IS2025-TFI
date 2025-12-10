@@ -2,6 +2,7 @@ package org.domain.controllers;
 
 import org.domain.errors.ListaDeEsperaVacia;
 import org.domain.errors.PacienteYaIngresado;
+import org.domain.errors.SinIngresoEnProceso;
 import org.domain.interfaces.IRepositorioPacientes;
 import org.domain.models.*;
 
@@ -13,7 +14,7 @@ public class ControladorUrgencias {
 
     private final IRepositorioPacientes DBPacientes;
     private final PriorityQueue<Ingreso> listaEspera;
-    private final ArrayList<Ingreso> historicoEspera;
+    private final ArrayList<Ingreso> historicoIngresos;
 
     public ControladorUrgencias(IRepositorioPacientes DBPacientes) {
         this.DBPacientes = DBPacientes;
@@ -32,12 +33,12 @@ public class ControladorUrgencias {
 
             return aExcedioFechaMaxima ? 1 : -1;
         });
-        this.historicoEspera = new ArrayList<>();
+        this.historicoIngresos = new ArrayList<>();
     }
 
     private boolean pacienteEstaIngresado(Paciente paciente) {
         boolean resultado = false;
-        for (Ingreso ingreso : historicoEspera) {
+        for (Ingreso ingreso : historicoIngresos) {
             if (ingreso.getPaciente().equals(paciente) && ingreso.getEstado() != EstadoIngreso.FINALIZADO) {
                 resultado = true;
                 break;
@@ -49,7 +50,7 @@ public class ControladorUrgencias {
     private Ingreso ingresoEnProgresoDeMedico(Medico medico) {
         Ingreso ingresoEnProgreso = null;
 
-        for (Ingreso ingreso : historicoEspera) {
+        for (Ingreso ingreso : historicoIngresos) {
             if (ingreso.getEstado() == EstadoIngreso.EN_PROCESO && ingreso.getAtencion() != null) {
                 if (ingreso.getAtencion().getMedico().equals(medico)) {
                     ingresoEnProgreso = ingreso;
@@ -82,7 +83,7 @@ public class ControladorUrgencias {
         Ingreso ingreso = new Ingreso(paciente, enfermera, informe, emergencia, temperatura, frecuenciaCardiaca, frecuenciaRespiratoria, tensionArterial);
 
         listaEspera.offer(ingreso);
-        historicoEspera.add(ingreso);
+        historicoIngresos.add(ingreso);
     }
 
     public void registrarUrgencia(
@@ -108,7 +109,7 @@ public class ControladorUrgencias {
         ingreso.setFechaIngreso(fechaIngreso);
 
         listaEspera.offer(ingreso);
-        historicoEspera.add(ingreso);
+        historicoIngresos.add(ingreso);
     }
 
     public PriorityQueue<Ingreso> getListaDeEspera(){
@@ -132,6 +133,9 @@ public class ControladorUrgencias {
     }
 
     public Ingreso reclamarIngreso(Medico medico) throws ListaDeEsperaVacia {
+        if (medico == null) {
+            throw new IllegalArgumentException("medico no puede ser nulo");
+        }
 
         Ingreso ingresoEnProgreso = ingresoEnProgresoDeMedico(medico);
         if (ingresoEnProgreso != null) {
@@ -144,8 +148,37 @@ public class ControladorUrgencias {
         }
         ingreso.setAtencion(new Atencion(medico));
         ingreso.setEstado(EstadoIngreso.EN_PROCESO);
-        historicoEspera.addFirst(ingreso);
         return ingreso;
+    }
+
+    public void registrarInforme(Medico medico, String informe) {
+        if (medico == null) {
+            throw new IllegalArgumentException("medico no puede ser nulo");
+        }
+        if (informe == null || informe.isEmpty()) {
+            throw new IllegalArgumentException("informe no puede ser nulo");
+        }
+
+        Ingreso ingreso = ingresoEnProgresoDeMedico(medico);
+        if (ingreso == null) {
+            throw new SinIngresoEnProceso("El medico no tiene ingresos en proceso.");
+        }
+
+        ingreso.getAtencion().setInforme(informe);
+        ingreso.setEstado(EstadoIngreso.FINALIZADO);
+
+        System.out.println("Historico de ingresos:");
+        for (Ingreso i : historicoIngresos) {
+            System.out.println(" - CUIT: " + i.getPaciente().getCuit()
+                    + ", Fecha de entrada: " + i.getFechaIngreso().toString()
+                    + ", Informe de entrada: " + i.getInforme()
+                    + ", Estado: " + i.getEstado() +
+                    ((i.getAtencion() != null) ?
+                    ", Médico: " + i.getAtencion().getMedico().getMatricula() +
+                    ", Informe: " + i.getAtencion().getInforme()
+                    : "")
+            );
+        }
     }
 }
 
