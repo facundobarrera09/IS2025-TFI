@@ -8,11 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class DBPruebaEnMemoria implements IRepositorioPacientes {
+public class RepoPacientesParaPruebas implements IRepositorioPacientes {
 
     private Map<String, Paciente> pacientes;
 
-    public DBPruebaEnMemoria(){
+    public RepoPacientesParaPruebas(){
         this.pacientes = new HashMap<>();
     }
 

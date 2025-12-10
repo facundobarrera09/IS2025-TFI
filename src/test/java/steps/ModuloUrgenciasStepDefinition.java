@@ -7,7 +7,7 @@ import io.cucumber.java.en.Then;
 import java.time.*;
 import java.util.*;
 
-import mock.DBPruebaEnMemoria;
+import mock.RepoPacientesParaPruebas;
 import org.domain.controllers.ControladorUrgencias;
 import org.domain.models.*;
 
@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.*;
 public class ModuloUrgenciasStepDefinition {
 
     private Enfermera enfermera;
-    private final DBPruebaEnMemoria DBMockeada;
+    private final RepoPacientesParaPruebas DBMockeada;
     private final ControladorUrgencias servicioUrgencia;
 
     private LocalDateTime fechaYHoraMockeada;
@@ -24,7 +24,7 @@ public class ModuloUrgenciasStepDefinition {
     private Exception excepcionCapturada;
 
     public ModuloUrgenciasStepDefinition(){
-        this.DBMockeada = new DBPruebaEnMemoria();
+        this.DBMockeada = new RepoPacientesParaPruebas();
         this.servicioUrgencia = new ControladorUrgencias(DBMockeada);
     }
 

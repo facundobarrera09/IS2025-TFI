@@ -3,16 +3,14 @@ package org.app.interfaces;
 import org.domain.interfaces.helpers.IPasswordHasher;
 import org.domain.models.Autoridad;
 import org.domain.models.Usuario;
-import org.domain.errors.AuthenticationException;
+import org.domain.errors.UsuarioNoAutenticado;
 import org.domain.interfaces.IRepositorioUsuarios;
 import org.domain.controllers.ControladorAutenticacion;
-import org.domain.models.helpers.Argon2Hasher;
 import org.domain.models.helpers.PasswordHasherPorMapeo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.DoNotMock;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
@@ -180,7 +178,7 @@ class ServicioAutenticacionImplTest {
     class InicioSesionTests {
 
         @Test
-        void deberiaIniciarSesionConCredencialesCorrectas() throws AuthenticationException {
+        void deberiaIniciarSesionConCredencialesCorrectas() throws UsuarioNoAutenticado {
             // Arrange
             String email = "medico@hospital.com";
             String contraseña = "SecurePass123";
@@ -208,8 +206,8 @@ class ServicioAutenticacionImplTest {
             when(repositorio.buscarPorEmail(email)).thenReturn(null);
 
             // Act & Assert
-            AuthenticationException excepcion = assertThrows(
-                AuthenticationException.class,
+            UsuarioNoAutenticado excepcion = assertThrows(
+                UsuarioNoAutenticado.class,
                 () -> servicioAutenticacion.iniciarSesion(email, contraseña)
             );
 
@@ -228,8 +226,8 @@ class ServicioAutenticacionImplTest {
             when(repositorio.buscarPorEmail(email)).thenReturn(usuarioMock);
 
             // Act & Assert
-            AuthenticationException excepcion = assertThrows(
-                AuthenticationException.class,
+            UsuarioNoAutenticado excepcion = assertThrows(
+                UsuarioNoAutenticado.class,
                 () -> servicioAutenticacion.iniciarSesion(email, contraseñaIncorrecta)
             );
 
@@ -246,8 +244,8 @@ class ServicioAutenticacionImplTest {
             when(repositorio.buscarPorEmail(email)).thenReturn(null);
 
             // Act & Assert
-            AuthenticationException excepcion = assertThrows(
-                AuthenticationException.class,
+            UsuarioNoAutenticado excepcion = assertThrows(
+                UsuarioNoAutenticado.class,
                 () -> servicioAutenticacion.iniciarSesion(email, contraseña)
             );
 
@@ -266,8 +264,8 @@ class ServicioAutenticacionImplTest {
             when(repositorio.buscarPorEmail(email)).thenReturn(usuarioMock);
 
             // Act & Assert
-            AuthenticationException excepcion = assertThrows(
-                AuthenticationException.class,
+            UsuarioNoAutenticado excepcion = assertThrows(
+                UsuarioNoAutenticado.class,
                 () -> servicioAutenticacion.iniciarSesion(email, contraseña)
             );
 
@@ -276,7 +274,7 @@ class ServicioAutenticacionImplTest {
         }
 
         @Test
-        void deberiaIniciarSesionConMultiplesUsuariosDistintos() throws AuthenticationException {
+        void deberiaIniciarSesionConMultiplesUsuariosDistintos() throws UsuarioNoAutenticado {
             // Arrange
             String emailMedico = "medico@hospital.com";
             String contraseñaMedico = "SecurePass123";

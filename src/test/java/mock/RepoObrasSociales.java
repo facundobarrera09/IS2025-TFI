@@ -1,6 +1,6 @@
 package mock;
 
-import org.domain.errors.ElementNotFound;
+import org.domain.errors.ElementoNoEncontrado;
 import org.domain.interfaces.IRepositorioObrasSociales;
 import org.domain.models.ObraSocial;
 
@@ -16,13 +16,13 @@ public class RepoObrasSociales implements IRepositorioObrasSociales {
     }
 
     @Override
-    public ObraSocial obtenerObraSocialPorNombre(String nombre) throws ElementNotFound {
+    public ObraSocial obtenerObraSocialPorNombre(String nombre) throws ElementoNoEncontrado {
         for (ObraSocial obraSocial : obrasSociales) {
             if (obraSocial.getNombre().equals(nombre)) {
                 return obraSocial;
             }
         }
-        throw new ElementNotFound("Obra social inexistente");
+        throw new ElementoNoEncontrado("Obra social inexistente");
     }
 
     public void inicializar(List<ObraSocial> obrasSociales) {

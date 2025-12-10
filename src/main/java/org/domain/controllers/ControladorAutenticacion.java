@@ -5,7 +5,7 @@ import org.domain.interfaces.IControladorAutenticacion;
 import org.domain.interfaces.helpers.IPasswordHasher;
 import org.domain.models.Autoridad;
 import org.domain.models.Usuario;
-import org.domain.errors.AuthenticationException;
+import org.domain.errors.UsuarioNoAutenticado;
 import java.util.*;
 
 public class ControladorAutenticacion implements IControladorAutenticacion {
@@ -42,17 +42,17 @@ public class ControladorAutenticacion implements IControladorAutenticacion {
     }
 
     @Override
-    public Usuario iniciarSesion(String email, String contraseña) throws AuthenticationException {
+    public Usuario iniciarSesion(String email, String contraseña) throws UsuarioNoAutenticado {
         Usuario usuario = repoUsuarios.buscarPorEmail(email);
 
         // Verificar que el usuario existe
         if (usuario == null) {
-            throw new AuthenticationException("Usuario o contraseña inválidos");
+            throw new UsuarioNoAutenticado("Usuario o contraseña inválidos");
         }
 
         // Comparar los hashes
         if (!hasher.chequearHash(usuario.getHashContraseña(), contraseña)) {
-            throw new AuthenticationException("Usuario o contraseña inválidos");
+            throw new UsuarioNoAutenticado("Usuario o contraseña inválidos");
         }
 
         return usuario;

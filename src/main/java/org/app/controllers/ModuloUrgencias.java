@@ -8,6 +8,10 @@ import org.app.models.ingresos.ResListaDeIngresos;
 import org.app.models.paciente.ResInvalidFindOrCreatePaciente;
 import org.app.services.AuthService;
 import org.app.services.UrgenciasService;
+import org.domain.errors.UsuarioNoAutenticado;
+import org.domain.errors.UsuarioNoAutorizado;
+import org.domain.errors.ListaDeEsperaVacia;
+import org.domain.errors.PacienteYaIngresado;
 import org.domain.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -49,6 +53,9 @@ public class ModuloUrgencias {
                     new ResInvalidCreateIngreso(e.getMessage(), form)
             );
         }
+        catch (PacienteYaIngresado e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @GetMapping("/ingresos")
@@ -63,6 +70,24 @@ public class ModuloUrgencias {
         );
 
         return ResponseEntity.ok(respuesta);
+    }
+
+    @GetMapping("/ingresos/reclamar")
+    public ResponseEntity<?> reclamarIngreso(@RequestHeader("Authorization") String authHeader) {
+        try {
+            Usuario usuario = this.authService.validarSesion(authHeader);
+            Ingreso ingreso = this.urgenciasService.reclamarIngreso(usuario);
+            return ResponseEntity.ok(ingreso);
+        }
+        catch (UsuarioNoAutenticado e) {
+            return ResponseEntity.status(401).build();
+        }
+        catch (UsuarioNoAutorizado e) {
+            return ResponseEntity.status(403).build();
+        }
+        catch (ListaDeEsperaVacia e) {
+            return ResponseEntity.badRequest().body("No hay pacientes en la lista de espera");
+        }
     }
 }
 

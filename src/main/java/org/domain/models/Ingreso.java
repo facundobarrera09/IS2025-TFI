@@ -17,6 +17,8 @@ public class Ingreso {
     Float frecuenciaRespiratoria;
     TensionArterial tensionArterial;
 
+    Atencion atencion;
+
     public Ingreso(Paciente paciente, Enfermera enfermera, String informe, NivelEmergencia nivelEmergencia,
                    Float temperatura, Float frecuenciaCardiaca, Float frecuenciaRespiratoria, TensionArterial tensionArterial) {
         if (paciente == null) {
@@ -112,7 +114,19 @@ public class Ingreso {
         return tensionArterial;
     }
 
+    public Atencion getAtencion() {
+        return atencion;
+    }
+
     public void setFechaIngreso(LocalDateTime fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
+    }
+
+    public void setAtencion(Atencion atencion) {
+        this.atencion = atencion;
+    }
+
+    public void setEstado(EstadoIngreso estado) {
+        this.estado = estado;
     }
 }

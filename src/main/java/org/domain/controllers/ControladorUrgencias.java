@@ -1,15 +1,19 @@
 package org.domain.controllers;
 
+import org.domain.errors.ListaDeEsperaVacia;
+import org.domain.errors.PacienteYaIngresado;
 import org.domain.interfaces.IRepositorioPacientes;
 import org.domain.models.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 public class ControladorUrgencias {
 
     private final IRepositorioPacientes DBPacientes;
     private final PriorityQueue<Ingreso> listaEspera;
+    private final ArrayList<Ingreso> historicoEspera;
 
     public ControladorUrgencias(IRepositorioPacientes DBPacientes) {
         this.DBPacientes = DBPacientes;
@@ -28,6 +32,18 @@ public class ControladorUrgencias {
 
             return aExcedioFechaMaxima ? 1 : -1;
         });
+        this.historicoEspera = new ArrayList<>();
+    }
+
+    private boolean pacienteEstaIngresado(Paciente paciente) {
+        boolean resultado = false;
+        for (Ingreso ingreso : historicoEspera) {
+            if (ingreso.getPaciente().equals(paciente) && ingreso.getEstado() != EstadoIngreso.FINALIZADO) {
+                resultado = true;
+                break;
+            }
+        }
+        return resultado;
     }
 
     public void registrarUrgencia(
@@ -44,9 +60,14 @@ public class ControladorUrgencias {
             .buscarPacientePorCuil(cuilPaciente)
             .orElseThrow(() -> new RuntimeException("Paciente no registrado"));
 
+        if (pacienteEstaIngresado(paciente)) {
+            throw new PacienteYaIngresado("El paciente ya se encuentra ingresado");
+        }
+
         Ingreso ingreso = new Ingreso(paciente, enfermera, informe, emergencia, temperatura, frecuenciaCardiaca, frecuenciaRespiratoria, tensionArterial);
 
         listaEspera.offer(ingreso);
+        historicoEspera.add(ingreso);
     }
 
     public void registrarUrgencia(
@@ -64,10 +85,15 @@ public class ControladorUrgencias {
                 .buscarPacientePorCuil(cuilPaciente)
                 .orElseThrow(() -> new RuntimeException("Paciente no registrado"));
 
+        if (pacienteEstaIngresado(paciente)) {
+            throw new PacienteYaIngresado("El paciente ya se encuentra ingresado");
+        }
+
         Ingreso ingreso = new Ingreso(paciente, enfermera, informe, emergencia, temperatura, frecuenciaCardiaca, frecuenciaRespiratoria, tensionArterial);
         ingreso.setFechaIngreso(fechaIngreso);
 
         listaEspera.offer(ingreso);
+        historicoEspera.add(ingreso);
     }
 
     public PriorityQueue<Ingreso> getListaDeEspera(){
@@ -88,6 +114,17 @@ public class ControladorUrgencias {
         listaEspera.addAll(this.listaEspera);
 
         return listaEspera;
+    }
+
+    public Ingreso reclamarIngreso(Medico medico) throws ListaDeEsperaVacia {
+        Ingreso ingreso = listaEspera.poll();
+        if (ingreso == null) {
+            throw new ListaDeEsperaVacia("No hay pacientes en la lista de espera");
+        }
+        ingreso.setAtencion(new Atencion(medico));
+        ingreso.setEstado(EstadoIngreso.EN_PROCESO);
+        historicoEspera.addFirst(ingreso);
+        return ingreso;
     }
 }
 

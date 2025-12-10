@@ -3,7 +3,7 @@ package org.app.controllers;
 import org.app.models.auth.LoginData;
 import org.app.models.auth.ResInvalidUser;
 import org.app.services.AuthService;
-import org.domain.errors.AuthenticationException;
+import org.domain.errors.UsuarioNoAutenticado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +29,7 @@ public class ModuloAutenticacion {
                     new ResInvalidUser("Email y contraseña deben estar definidos", form)
             );
         }
-        catch (AuthenticationException e) {
+        catch (UsuarioNoAutenticado e) {
             return ResponseEntity.badRequest().body(
                     new ResInvalidUser("Email o contraseña incorrectos", form)
             );

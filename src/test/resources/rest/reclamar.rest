@@ -1,0 +1,7 @@
+### Reclamar un ingreso como médico
+GET http://localhost:8080/ingresos/reclamar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
+
+### Reclamar un ingreso como enfermero
+GET http://localhost:8080/ingresos/reclamar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMxODE1NSwiZXhwIjoxNzY1MzMyNTU1fQ.2M9jZTG7TUb5C-4mYKGXTfPAbPM0qhpDyaJ8h2W0e8w

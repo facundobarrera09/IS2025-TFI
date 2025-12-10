@@ -8,7 +8,7 @@ import java.util.*;
 
 import org.domain.models.Autoridad;
 import org.domain.models.Usuario;
-import org.domain.errors.AuthenticationException;
+import org.domain.errors.UsuarioNoAutenticado;
 import org.domain.interfaces.IControladorAutenticacion;
 import org.domain.controllers.ControladorAutenticacion;
 import mock.RepositorioUsuariosPrueba;
@@ -138,7 +138,7 @@ public class AuthenticationStepDefinition {
             resultadoLogin = "Login exitoso";
             System.out.println("Login EXITOSO: " + email);
             System.out.println("Historias disponibles: " + historiasUsuarioDisponibles);
-        } catch (AuthenticationException e) {
+        } catch (UsuarioNoAutenticado e) {
             loginExitoso = false;
             resultadoLogin = e.getMessage();
             System.out.println("Login FALLIDO: " + e.getMessage());

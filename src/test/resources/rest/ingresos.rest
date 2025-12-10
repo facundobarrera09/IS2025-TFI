@@ -1,6 +1,7 @@
 ### Listar pacientes
 GET http://localhost:8080/ingresos
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMxODE1NSwiZXhwIjoxNzY1MzMyNTU1fQ.2M9jZTG7TUb5C-4mYKGXTfPAbPM0qhpDyaJ8h2W0e8w
+
 ### Paciente existente de baja prioridad
 POST http://localhost:8080/ingresos
 Content-Type: application/json

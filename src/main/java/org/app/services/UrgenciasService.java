@@ -5,12 +5,12 @@ import org.app.exceptions.InvalidFindOrCreatePaciente;
 import org.app.models.ingresos.CreateIngreso;
 import org.app.models.paciente.FindOrCreatePaciente;
 import org.domain.controllers.ControladorUrgencias;
+import org.domain.errors.UsuarioNoAutorizado;
 import org.domain.interfaces.IRepositorioEnfermeras;
 import org.domain.interfaces.IRepositorioPacientes;
 import org.domain.models.*;
 import org.app.repos.RepoEnfermeras;
 import org.app.repos.RepoPacientes;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -64,5 +64,13 @@ public class UrgenciasService {
 
     public PriorityQueue<Ingreso> listarUrgencias() {
         return this.controladorUrgencia.getListaDeEspera();
+    }
+
+    public Ingreso reclamarIngreso(Usuario usuario) {
+        if (usuario.getAutoridad() != Autoridad.MEDICO) {
+            throw new UsuarioNoAutorizado(UsuarioNoAutorizado.PROHIBIDO);
+        }
+
+        return this.controladorUrgencia.reclamarIngreso(usuario.getMedico());
     }
 }

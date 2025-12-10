@@ -4,7 +4,7 @@ import org.app.utils.JWTUtil;
 import org.app.models.auth.LoginData;
 import org.app.models.auth.Sesion;
 import org.domain.controllers.ControladorAutenticacion;
-import org.domain.errors.AuthenticationException;
+import org.domain.errors.UsuarioNoAutenticado;
 import org.domain.models.Autoridad;
 import org.domain.models.Usuario;
 import org.domain.models.helpers.Argon2Hasher;
@@ -25,7 +25,7 @@ public class AuthService {
         this.controladorAutenticacion = new ControladorAutenticacion(repoUsuarios, new Argon2Hasher());
     }
 
-    public Sesion iniciarSesion(LoginData form) throws AuthenticationException {
+    public Sesion iniciarSesion(LoginData form) throws UsuarioNoAutenticado {
         if (form.getEmail() == null || form.getEmail().isEmpty() || form.getContraseña() == null || form.getContraseña().isEmpty()) {
             throw new IllegalArgumentException("Email y contraseña deben estar definidos");
         }
@@ -34,21 +34,21 @@ public class AuthService {
             Usuario usuario = controladorAutenticacion.iniciarSesion(form.getEmail(), form.getContraseña());
             String token = jwtUtil.generarToken(usuario.getEmail());
             return new Sesion(token);
-        } catch (AuthenticationException e) {
-            throw new AuthenticationException("Email o contraseña incorrectos");
+        } catch (UsuarioNoAutenticado e) {
+            throw new UsuarioNoAutenticado("Email o contraseña incorrectos");
         }
     }
 
-    public Usuario validarSesion(String authHeader) throws AuthenticationException {
+    public Usuario validarSesion(String authHeader) throws UsuarioNoAutenticado {
         String token = authHeader.substring(7);
         try {
             String email = jwtUtil.validarTokenYDevolverEmail(token);
             Usuario usuario = repoUsuarios.buscarPorEmail(email);
-            if (usuario == null) { throw new AuthenticationException("Usuario no encontrado"); }
+            if (usuario == null) { throw new UsuarioNoAutenticado("Usuario no encontrado"); }
             return usuario;
         }
         catch (Exception e) {
-            throw new AuthenticationException("Usuario no inicio sesion");
+            throw new UsuarioNoAutenticado("Usuario no inicio sesion");
         }
     }
 
@@ -59,7 +59,7 @@ public class AuthService {
             System.out.println("Usuario: " + usuario.getEmail() + " " + usuario.getAutoridad());
             return (usuario.getAutoridad() == autoridad);
         }
-        catch (AuthenticationException e) {
+        catch (UsuarioNoAutenticado e) {
             return false;
         }
     }

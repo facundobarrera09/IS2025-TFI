@@ -1,6 +1,6 @@
 package org.domain.models;
 
-import org.domain.errors.InvalidInsurance;
+import org.domain.errors.AfiliacionNoExistente;
 import org.domain.interfaces.IRepositorioAfiliaciones;
 
 import java.util.List;
@@ -43,7 +43,7 @@ public class Afiliacion {
             }
         }
         if (!afiliacionEncontrada) {
-            throw new InvalidInsurance("Paciente no afiliado a obra social");
+            throw new AfiliacionNoExistente("Paciente no afiliado a obra social");
         }
     }
 
