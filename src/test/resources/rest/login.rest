@@ -15,3 +15,32 @@ Content-Type: application/json
   "email": "enf@mail.com",
   "contraseña": "password"
 }
+
+### Crear médico
+POST http://localhost:8080/usuarios
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTQwNjY1NywiZXhwIjoxNzY1NDIxMDU3fQ.yULP81rYBcX6ekTEhpHNreMik0yL1Rq5eBwVk0Auo6U
+
+{
+  "email": "ruben@mail.com",
+  "contraseña": "password",
+  "autoridad": "médico",
+  "medico": {
+    "matricula": "1234"
+  }
+}
+
+### Crear enfermero
+POST http://localhost:8080/usuarios
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTQwNjY1NywiZXhwIjoxNzY1NDIxMDU3fQ.yULP81rYBcX6ekTEhpHNreMik0yL1Rq5eBwVk0Auo6U
+
+{
+  "email": "facundo@mail.com",
+  "contraseña": "password",
+  "autoridad": "enfermera",
+  "enfermera": {
+    "apellido": "Rivadeneira",
+    "nombre": "Claudio"
+  }
+}

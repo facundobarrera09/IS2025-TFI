@@ -18,4 +18,8 @@ public enum Autoridad {
         }
         return null;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
 }

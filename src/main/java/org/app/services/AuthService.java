@@ -1,11 +1,14 @@
 package org.app.services;
 
+import org.app.models.auth.RegistroData;
 import org.app.utils.JWTUtil;
 import org.app.models.auth.LoginData;
 import org.app.models.auth.Sesion;
 import org.domain.controllers.ControladorAutenticacion;
 import org.domain.errors.UsuarioNoAutenticado;
 import org.domain.models.Autoridad;
+import org.domain.models.Enfermera;
+import org.domain.models.Medico;
 import org.domain.models.Usuario;
 import org.domain.models.helpers.Argon2Hasher;
 import org.app.repos.RepoUsuarios;
@@ -36,6 +39,35 @@ public class AuthService {
             return new Sesion(token);
         } catch (UsuarioNoAutenticado e) {
             throw new UsuarioNoAutenticado("Email o contraseña incorrectos");
+        }
+    }
+
+    public void registrarUsuario(RegistroData form) {
+        if (form.getAutoridad() == null || form.getAutoridad().isEmpty()) {
+            throw new IllegalArgumentException("autoridad debe estar definido");
+        }
+        if (form.getAutoridad().equals(Autoridad.MEDICO.getNombre()) && form.getMedico() == null) {
+            throw new IllegalArgumentException("medico debe estar definido");
+        }
+        if (form.getAutoridad().equals(Autoridad.ENFERMERO.getNombre()) && form.getEnfermera() == null) {
+            throw new IllegalArgumentException("enfermera debe estar definido");
+        }
+
+        if (form.getAutoridad().equals(Autoridad.MEDICO.getNombre())) {
+            controladorAutenticacion.registrarUsuario(
+                    form.getEmail(),
+                    form.getContraseña(),
+                    Autoridad.MEDICO,
+                    new Medico(form.getMedico().getMatricula())
+            );
+        }
+        else {
+            controladorAutenticacion.registrarUsuario(
+                    form.getEmail(),
+                    form.getContraseña(),
+                    Autoridad.ENFERMERO,
+                    new Enfermera(form.getEnfermera().getNombre(), form.getEnfermera().getApellido())
+            );
         }
     }
 

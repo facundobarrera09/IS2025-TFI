@@ -4,6 +4,8 @@ import org.domain.interfaces.IRepositorioUsuarios;
 import org.domain.interfaces.IControladorAutenticacion;
 import org.domain.interfaces.helpers.IPasswordHasher;
 import org.domain.models.Autoridad;
+import org.domain.models.Enfermera;
+import org.domain.models.Medico;
 import org.domain.models.Usuario;
 import org.domain.errors.UsuarioNoAutenticado;
 import java.util.*;
@@ -21,8 +23,13 @@ public class ControladorAutenticacion implements IControladorAutenticacion {
 //        this.repoUsuarios.guardarUsuario(new Usuario("med@mail.com", passwordHasher.hashearContraseña("password"), Autoridad.MEDICO));
     }
 
-    @Override
-    public Usuario registrarUsuario(String email, String contraseña, Autoridad autoridad) throws IllegalArgumentException {
+    public void validarDatosDeRegistro(String email, String contraseña){
+        if (email == null || email.isEmpty()) {
+            throw new IllegalArgumentException("email debe estar definido");
+        }
+        if (contraseña == null || contraseña.isEmpty()) {
+            throw new IllegalArgumentException("contraseña debe estar definido");
+        }
 
         // Verificar si el email ya existe
         if (repoUsuarios.existeEmail(email)) {
@@ -33,9 +40,34 @@ public class ControladorAutenticacion implements IControladorAutenticacion {
         if (contraseña.length() < 8) {
             throw new IllegalArgumentException("La contraseña debe tener al menos 8 caracteres");
         }
+    }
+
+    @Override
+    public Usuario registrarUsuario(String email, String contraseña, Autoridad autoridad) throws IllegalArgumentException {
+        validarDatosDeRegistro(email, contraseña);
 
         // Crear y guardar usuario
         Usuario usuario = new Usuario(email, hasher.hashearContraseña(contraseña), autoridad);
+        repoUsuarios.guardarUsuario(usuario);
+
+        return usuario;
+    }
+
+    public Usuario registrarUsuario(String email, String contraseña, Autoridad autoridad, Medico medico) throws IllegalArgumentException {
+        validarDatosDeRegistro(email, contraseña);
+
+        // Crear y guardar usuario
+        Usuario usuario = new Usuario(email, hasher.hashearContraseña(contraseña), autoridad, medico);
+        repoUsuarios.guardarUsuario(usuario);
+
+        return usuario;
+    }
+
+    public Usuario registrarUsuario(String email, String contraseña, Autoridad autoridad, Enfermera enfermera) throws IllegalArgumentException {
+        validarDatosDeRegistro(email, contraseña);
+
+        // Crear y guardar usuario
+        Usuario usuario = new Usuario(email, hasher.hashearContraseña(contraseña), autoridad, enfermera);
         repoUsuarios.guardarUsuario(usuario);
 
         return usuario;
