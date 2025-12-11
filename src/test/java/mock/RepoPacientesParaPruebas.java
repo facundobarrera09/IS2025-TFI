@@ -5,6 +5,7 @@ import org.domain.interfaces.IRepositorioPacientes;
 import org.domain.models.Paciente;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -29,6 +30,11 @@ public class RepoPacientesParaPruebas implements IRepositorioPacientes {
     @Override
     public Paciente buscarOCrearPaciente(FindOrCreatePaciente formPaciente) {
         return null;
+    }
+
+    @Override
+    public List<Paciente> obtenerPacientes() {
+        return List.of();
     }
 
     public Map<String, Paciente> getPacientes() {

@@ -8,8 +8,14 @@ import org.domain.errors.UsuarioNoAutorizado;
 import org.domain.models.Paciente;
 import org.domain.models.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.swing.text.html.Option;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @RestController
 public class ModuloPacientes {
@@ -23,10 +29,30 @@ public class ModuloPacientes {
     }
 
     @GetMapping("/pacientes")
-    public ResponseEntity<?> obtenerPacientes() { return ResponseEntity.internalServerError().build(); }
+    public ResponseEntity<?> obtenerPacientes(@RequestHeader("Authorization") String authHeader) {
+        try {
+            Usuario usuario = authService.validarSesion(authHeader);
+            List<Paciente> pacientes = pacientesService.obtenerPacientes();
+            return ResponseEntity.ok(pacientes);
+        } catch (UsuarioNoAutenticado e) {
+            return  ResponseEntity.status(401).build();
+        }
+    }
 
     @GetMapping("/pacientes/{cuit}")
-    public ResponseEntity<?> obtenerPacientePorCuit(@PathVariable("cuit") String cuit) { return ResponseEntity.internalServerError().build(); }
+    public ResponseEntity<?> obtenerPacientePorCuit(@RequestHeader("Authorization") String authHeader, @PathVariable("cuit") String cuit) {
+        try {
+            Usuario usuario = authService.validarSesion(authHeader);
+            Optional<Paciente> paciente = pacientesService.obtenerPacientePorCuit(cuit);
+            return ResponseEntity.ok().body(paciente.get());
+        }
+        catch (IllegalArgumentException | NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
+        catch (UsuarioNoAutenticado e) {
+            return ResponseEntity.status(401).build();
+        }
+    }
 
     @PostMapping("/pacientes")
     public ResponseEntity<?> crearPaciente(@RequestHeader("Authorization") String authHeader, @RequestBody CreatePaciente form) {

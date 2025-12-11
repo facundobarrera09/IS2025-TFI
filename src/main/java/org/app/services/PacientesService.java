@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PacientesService {
@@ -22,10 +23,16 @@ public class PacientesService {
         this.repoPacientes = repoPacientes;
     }
 
-    public List<Paciente> obtenerPacientes() { return List.of(); }
+    public List<Paciente> obtenerPacientes() { return repoPacientes.obtenerPacientes(); }
 
     @GetMapping("/pacientes/{cuit}")
-    public Paciente obtenerPacientePorCuit(String cuit) { return null; }
+    public Optional<Paciente> obtenerPacientePorCuit(String cuit) {
+        if (cuit == null || cuit.isEmpty()) {
+            throw new IllegalArgumentException("cuit no puede ser nulo");
+        }
+
+        return repoPacientes.buscarPacientePorCuil(cuit);
+    }
 
     @PostMapping("/pacientes")
     public Paciente crearPaciente(Usuario usuario, CreatePaciente form) {

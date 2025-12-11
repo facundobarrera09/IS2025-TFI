@@ -6,9 +6,7 @@ import org.domain.models.Domicilio;
 import org.domain.models.Paciente;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Repository("repoPacientes")
 public class RepoPacientes implements IRepositorioPacientes {
@@ -50,6 +48,11 @@ public class RepoPacientes implements IRepositorioPacientes {
         }
 
         return paciente.get();
+    }
+
+    @Override
+    public List<Paciente> obtenerPacientes() {
+        return new ArrayList<>(pacientes.values());
     }
 
     public Map<String, Paciente> getPacientes() {
