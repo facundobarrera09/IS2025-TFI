@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c45076f-2d4c-499a-9514-24b062e9d7fe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/app/controllers/ModuloPacientes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/app/services/PacientesService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/app/models/paciente/CreatePaciente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/rest/pacientes.rest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/controllers/ModuloPacientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/controllers/ModuloPacientes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/repos/RepoPacientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/repos/RepoPacientes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/services/PacientesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/services/PacientesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/utils/JWTUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/utils/JWTUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +36,9 @@
   "keyToString": {
     "HTTP Request.login | Crear enfermero.executor": "Run",
     "HTTP Request.login | Crear médico.executor": "Run",
+    "HTTP Request.login | Iniciar sesión como enfermero.executor": "Run",
     "HTTP Request.login | Iniciar sesión como médico.executor": "Run",
+    "HTTP Request.pacientes | Crear paciente como enfermero.executor": "Run",
     "Maven.IS2025-TFI [test].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -45,6 +52,11 @@
     "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.app.models.paciente" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="configurationStatuses">
       <map>
@@ -53,7 +65,9 @@
             <map>
               <entry key="login | Crear enfermero" value="STOPPED" />
               <entry key="login | Crear médico" value="STOPPED" />
+              <entry key="login | Iniciar sesión como enfermero" value="STOPPED" />
               <entry key="login | Iniciar sesión como médico" value="STOPPED" />
+              <entry key="pacientes | Crear paciente como enfermero" value="STOPPED" />
             </map>
           </value>
         </entry>
@@ -67,7 +81,13 @@
     <configuration name="login | Crear médico" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/resources/rest/login.rest" executionIdentifier="Crear médico" index="3" runType="Run single request">
       <method v="2" />
     </configuration>
+    <configuration name="login | Iniciar sesión como enfermero" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/resources/rest/login.rest" executionIdentifier="Iniciar sesión como enfermero" index="2" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <configuration name="login | Iniciar sesión como médico" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/resources/rest/login.rest" executionIdentifier="Iniciar sesión como médico" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="pacientes | Crear paciente como enfermero" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/resources/rest/pacientes.rest" executionIdentifier="Crear paciente como enfermero" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
@@ -79,6 +99,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.pacientes | Crear paciente como enfermero" />
+        <item itemvalue="HTTP Request.login | Iniciar sesión como enfermero" />
         <item itemvalue="HTTP Request.login | Crear enfermero" />
         <item itemvalue="HTTP Request.login | Crear médico" />
         <item itemvalue="HTTP Request.login | Iniciar sesión como médico" />

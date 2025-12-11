@@ -17,7 +17,7 @@ public class JWTUtil {
                 .withSubject("User Details")
                 .withClaim("username", username)
                 .withIssuedAt(new Date())
-                .withExpiresAt(new Date(System.currentTimeMillis() + (4 * 60 * 60 * 1000)))
+//                .withExpiresAt(new Date(System.currentTimeMillis() + (4 * 60 * 60 * 1000)))
                 .sign(Algorithm.HMAC256(secret));
     }
 

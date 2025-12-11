@@ -1,0 +1,15 @@
+### Crear paciente como enfermero
+POST http://localhost:8080/pacientes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTQ2OTA5OX0.kaORSE34tJaCdvH_F39AcEiWNPwHayCriCyLHdO52Nc
+
+{
+  "cuit": "20-45678912-1",
+  "apellido": "Montereal",
+  "nombre": "Ramiro",
+  "domicilio": {
+    "calle": "Calle",
+    "localidad": "Localidad",
+    "numero": "123"
+  }
+}

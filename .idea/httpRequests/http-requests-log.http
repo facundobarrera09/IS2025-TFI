@@ -1,3 +1,109 @@
+POST http://localhost:8080/pacientes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTQ2OTA5OX0.kaORSE34tJaCdvH_F39AcEiWNPwHayCriCyLHdO52Nc
+Content-Length: 150
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "cuit": "20-45678912-1",
+  "apellido": "Montereal",
+  "nombre": "Ramiro",
+  "domicilio": {
+    "localidad": "Localidad",
+    "numero": "123"
+  }
+}
+
+<> 2025-12-11T130909.201.json
+
+###
+
+POST http://localhost:8080/pacientes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTQ2OTA5OX0.kaORSE34tJaCdvH_F39AcEiWNPwHayCriCyLHdO52Nc
+Content-Length: 145
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "cuit": "20-45678912-1",
+  "nombre": "Ramiro",
+  "domicilio": {
+    "calle": "Calle",
+    "localidad": "Localidad",
+    "numero": "123"
+  }
+}
+
+<> 2025-12-11T130901.400.txt
+
+###
+
+POST http://localhost:8080/pacientes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTQ2OTA5OX0.kaORSE34tJaCdvH_F39AcEiWNPwHayCriCyLHdO52Nc
+Content-Length: 172
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "cuit": "20-45678912-1",
+  "apellido": "Montereal",
+  "nombre": "Ramiro",
+  "domicilio": {
+    "calle": "Calle",
+    "localidad": "Localidad",
+    "numero": "123"
+  }
+}
+
+<> 2025-12-11T130845.400.txt
+
+###
+
+POST http://localhost:8080/pacientes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTQ2OTA5OX0.kaORSE34tJaCdvH_F39AcEiWNPwHayCriCyLHdO52Nc
+Content-Length: 172
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "cuit": "20-45678912-1",
+  "apellido": "Montereal",
+  "nombre": "Ramiro",
+  "domicilio": {
+    "calle": "Calle",
+    "localidad": "Localidad",
+    "numero": "123"
+  }
+}
+
+<> 2025-12-11T130838.201.json
+
+###
+
+POST http://localhost:8080/login
+Content-Type: application/json
+Content-Length: 58
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "enf@mail.com",
+  "contraseña": "password"
+}
+
+<> 2025-12-11T130459.200.json
+
+###
+
 POST http://localhost:8080/usuarios
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTQwNjY1NywiZXhwIjoxNzY1NDIxMDU3fQ.yULP81rYBcX6ekTEhpHNreMik0yL1Rq5eBwVk0Auo6U
@@ -723,88 +829,6 @@ Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 <> 2025-12-09T230023.200.json
-
-###
-
-GET http://localhost:8080/ingresos/reclamar
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2025-12-09T230015.200.json
-
-###
-
-POST http://localhost:8080/ingresos
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMxODE1NSwiZXhwIjoxNzY1MzMyNTU1fQ.2M9jZTG7TUb5C-4mYKGXTfPAbPM0qhpDyaJ8h2W0e8w
-Content-Length: 335
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-    "paciente": {
-        "cuit": "20432165491"
-    },
-    "enfermera": {
-        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
-    },
-    "informe": "Algun informe aceptable",
-    "temperatura": 36.5,
-    "nivel": "Sin Urgencia",
-    "frecuenciaCardiaca": 80.0,
-    "frecuenciaRespiratoria": 16.0,
-    "tensionArterial": "120/80"
-}
-
-###
-
-POST http://localhost:8080/ingresos
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMxODE1NSwiZXhwIjoxNzY1MzMyNTU1fQ.2M9jZTG7TUb5C-4mYKGXTfPAbPM0qhpDyaJ8h2W0e8w
-Content-Length: 335
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-    "paciente": {
-        "cuit": "20432165491"
-    },
-    "enfermera": {
-        "uuid": "4c300fec-ed8f-4365-ac77-3d5b70a4e990"
-    },
-    "informe": "Algun informe aceptable",
-    "temperatura": 36.5,
-    "nivel": "Sin Urgencia",
-    "frecuenciaCardiaca": 80.0,
-    "frecuenciaRespiratoria": 16.0,
-    "tensionArterial": "120/80"
-}
-
-<> 2025-12-09T224136.400.txt
-
-###
-
-GET http://localhost:8080/ingresos
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMxODE1NSwiZXhwIjoxNzY1MzMyNTU1fQ.2M9jZTG7TUb5C-4mYKGXTfPAbPM0qhpDyaJ8h2W0e8w
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2025-12-09T224131.200.json
-
-###
-
-GET http://localhost:8080/ingresos/reclamar
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6Im1lZEBtYWlsLmNvbSIsImlhdCI6MTc2NTMyOTk3NywiZXhwIjoxNzY1MzQ0Mzc3fQ.gUIgaYz1vnsJsGmRTGTlMTUozbPXYf6eh_OhY-CQGCo
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.2.5
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2025-12-09T224128.200.json
 
 ###
 
