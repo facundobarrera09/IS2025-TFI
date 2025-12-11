@@ -9,9 +9,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/app/controllers/ModuloUrgencias.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/controllers/ModuloUrgencias.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/app/services/UrgenciasService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/services/UrgenciasService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/domain/controllers/ControladorUrgencias.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/domain/controllers/ControladorUrgencias.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/rest/ingresos.rest" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/rest/ingresos.rest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/rest/reclamar.rest" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/rest/reclamar.rest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/rest/pacientes.rest" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/rest/pacientes.rest" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +31,7 @@
 }</component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Cucumber Java.Feature: moduloAutenticacion.executor": "Run",
     "HTTP Request.ingresos | Obtener todos los ingresos.executor": "Run",
     "HTTP Request.ingresos | Paciente existente de baja prioridad.executor": "Run",
     "HTTP Request.login | Crear enfermero.executor": "Run",
@@ -42,6 +41,8 @@
     "HTTP Request.pacientes | Crear paciente como enfermero.executor": "Run",
     "HTTP Request.pacientes | Obtener listado de pacientes.executor": "Run",
     "HTTP Request.pacientes | Obtener paciente por cuit.executor": "Run",
+    "HTTP Request.reclamar | Ingresar informe como médico.executor": "Run",
+    "HTTP Request.reclamar | Reclamar un ingreso como enfermero.executor": "Run",
     "Maven.IS2025-TFI [test].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -68,30 +69,104 @@
             <map>
               <entry key="ingresos | Obtener todos los ingresos" value="STOPPED" />
               <entry key="ingresos | Paciente existente de baja prioridad" value="STOPPED" />
-              <entry key="login | Iniciar sesión como médico" value="STOPPED" />
-              <entry key="pacientes | Crear paciente como enfermero" value="STOPPED" />
               <entry key="pacientes | Obtener listado de pacientes" value="STOPPED" />
+              <entry key="pacientes | Obtener paciente por cuit" value="STOPPED" />
             </map>
           </value>
         </entry>
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Main">
-    <configuration name="ingresos | Obtener todos los ingresos" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/resources/rest/ingresos.rest" executionIdentifier="Obtener todos los ingresos" index="8" runType="Run single request">
-      <method v="2" />
+  <component name="RunManager" selected="Cucumber Java.Feature: moduloUrgencias">
+    <configuration name="Feature: moduloAutenticacion" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="7" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/moduloAutenticacion.feature" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="IS2025-TFI" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity" />
+      <option name="SUGGESTED_NAME" value="Feature: moduloAutenticacion" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="ingresos | Paciente existente de baja prioridad" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/resources/rest/ingresos.rest" executionIdentifier="Paciente existente de baja prioridad" index="2" runType="Run single request">
-      <method v="2" />
+    <configuration name="Feature: moduloCrearAtencion" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="7" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/moduloCrearAtencion.feature" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="IS2025-TFI" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity" />
+      <option name="SUGGESTED_NAME" value="Feature: moduloCrearAtencion" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="login | Iniciar sesión como médico" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/resources/rest/login.rest" executionIdentifier="Iniciar sesión como médico" runType="Run single request">
-      <method v="2" />
+    <configuration name="Feature: moduloPacientes" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="7" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/moduloPacientes.feature" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="IS2025-TFI" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity" />
+      <option name="SUGGESTED_NAME" value="Feature: moduloPacientes" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="pacientes | Crear paciente como enfermero" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/resources/rest/pacientes.rest" executionIdentifier="Crear paciente como enfermero" runType="Run single request">
-      <method v="2" />
+    <configuration name="Feature: moduloReclamarPaciente" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="7" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/moduloReclamarPaciente.feature" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="IS2025-TFI" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity" />
+      <option name="SUGGESTED_NAME" value="Feature: moduloReclamarPaciente" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="pacientes | Obtener listado de pacientes" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/resources/rest/pacientes.rest" executionIdentifier="Obtener listado de pacientes" index="3" runType="Run single request">
-      <method v="2" />
+    <configuration name="Feature: moduloUrgencias" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="7" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/moduloUrgencias.feature" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="IS2025-TFI" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity" />
+      <option name="SUGGESTED_NAME" value="Feature: moduloUrgencias" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="IS2025-TFI" />
@@ -102,11 +177,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.login | Iniciar sesión como médico" />
-        <item itemvalue="HTTP Request.ingresos | Obtener todos los ingresos" />
-        <item itemvalue="HTTP Request.ingresos | Paciente existente de baja prioridad" />
-        <item itemvalue="HTTP Request.pacientes | Obtener listado de pacientes" />
-        <item itemvalue="HTTP Request.pacientes | Crear paciente como enfermero" />
+        <item itemvalue="Cucumber Java.Feature: moduloUrgencias" />
+        <item itemvalue="Cucumber Java.Feature: moduloReclamarPaciente" />
+        <item itemvalue="Cucumber Java.Feature: moduloPacientes" />
+        <item itemvalue="Cucumber Java.Feature: moduloCrearAtencion" />
+        <item itemvalue="Cucumber Java.Feature: moduloAutenticacion" />
       </list>
     </recent_temporary>
   </component>

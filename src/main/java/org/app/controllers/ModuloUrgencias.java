@@ -35,12 +35,9 @@ public class ModuloUrgencias {
     @PostMapping("/ingresos")
     public ResponseEntity<?> registrarUrgencia(@RequestHeader(HttpHeaders.AUTHORIZATION) String authHeader, @RequestBody CreateIngreso form) {
         System.out.println("Registrando urgencia");
-        if (!authService.tieneAutoridad(authHeader, Autoridad.ENFERMERO)) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-
         try {
-            urgenciasService.registrarUrgencia(form);
+            Usuario usuario = authService.validarSesion(authHeader);
+            urgenciasService.registrarUrgencia(usuario, form);
             return ResponseEntity.ok().build();
         }
         catch (InvalidFindOrCreatePaciente e) {
@@ -55,6 +52,8 @@ public class ModuloUrgencias {
         }
         catch (PacienteYaIngresado e) {
             return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (UsuarioNoAutenticado e) {
+            return ResponseEntity.status(403).body(e.getMessage());
         }
     }
 

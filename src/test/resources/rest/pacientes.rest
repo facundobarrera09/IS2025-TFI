@@ -15,7 +15,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERld
 }
 
 ### Obtener paciente por cuit
-GET http://localhost:8080/pacientes/20-45678912-1
+GET http://localhost:8080/pacientes/20439658011
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTQ2OTA5OX0.kaORSE34tJaCdvH_F39AcEiWNPwHayCriCyLHdO52Nc
 
 ### Obtener listado de pacientes

@@ -11,6 +11,9 @@ import org.domain.interfaces.IRepositorioPacientes;
 import org.domain.models.*;
 import org.app.repos.RepoEnfermeras;
 import org.app.repos.RepoPacientes;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,15 +25,20 @@ import java.util.UUID;
 public class UrgenciasService {
     ControladorUrgencias controladorUrgencia;
     IRepositorioPacientes repositorioPacientes;
-    IRepositorioEnfermeras repositorioEnfermeras;
+//    IRepositorioEnfermeras repositorioEnfermeras;
 
-    UrgenciasService() {
-        this.repositorioPacientes = new RepoPacientes();
-        this.repositorioEnfermeras = new RepoEnfermeras();
+    @Autowired
+    UrgenciasService(IRepositorioPacientes repoPacientes) {
+        this.repositorioPacientes = repoPacientes;
+//        this.repositorioEnfermeras = new RepoEnfermeras();
         this.controladorUrgencia = new ControladorUrgencias(repositorioPacientes);
     }
 
-    public void registrarUrgencia(CreateIngreso form) {
+    public void registrarUrgencia(Usuario usuario, CreateIngreso form) {
+        if (!usuario.getAutoridad().equals(Autoridad.ENFERMERO)) {
+            throw new UsuarioNoAutorizado("El usuario no tiene permiso para realizar esta acción");
+        }
+
         FindOrCreatePaciente formPaciente = form.getPaciente();
         Paciente paciente;
 
@@ -41,15 +49,17 @@ public class UrgenciasService {
             throw new InvalidFindOrCreatePaciente(e.getMessage());
         }
 
-        Optional<Enfermera> enfermera = repositorioEnfermeras.obtenerEnfermera(UUID.fromString(form.getEnfermera().getUuid()));
-        if (enfermera.isEmpty()) {
-            throw new InvalidCreateIngreso("Enfermera con ese uuid no existe");
-        }
+//        Optional<Enfermera> enfermera = repositorioEnfermeras.obtenerEnfermera(UUID.fromString(form.getEnfermera().getUuid()));
+//        if (enfermera.isEmpty()) {
+//            throw new InvalidCreateIngreso("Enfermera con ese uuid no existe");
+//        }
+
+        Enfermera enfermera = usuario.getEnfermera();
 
         try {
             this.controladorUrgencia.registrarUrgencia(
                     paciente.getCuit(),
-                    enfermera.get(),
+                    enfermera,
                     form.getInforme(),
                     form.getTemperatura(),
                     NivelEmergencia.buscarPorNombre(form.getNivel()),
