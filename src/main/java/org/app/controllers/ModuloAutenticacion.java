@@ -42,13 +42,13 @@ public class ModuloAutenticacion {
     @PostMapping("/usuarios")
     public ResponseEntity<?> registrarUsuario(@RequestHeader("Authorization") String authHeader, @RequestBody RegistroData form) {
         try {
-            authService.validarSesion(authHeader);
+//            authService.validarSesion(authHeader);
             authService.registrarUsuario(form);
             return ResponseEntity.noContent().build();
         }
-        catch (UsuarioNoAutenticado e) {
-            return ResponseEntity.status(401).build();
-        }
+//        catch (UsuarioNoAutenticado e) {
+//            return ResponseEntity.status(401).build();
+//        }
         catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

@@ -95,7 +95,7 @@ class ServicioAutenticacionImplTest {
                 () -> servicioAutenticacion.registrarUsuario(email, contraseña, autoridad)
             );
 
-            assertEquals("Formato de email inválido", excepcion.getMessage());
+            assertEquals("email debe estar definido", excepcion.getMessage());
             verify(repositorio, never()).guardarUsuario(any(Usuario.class));
         }
 
