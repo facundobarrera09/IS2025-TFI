@@ -1,11 +1,11 @@
-### Listar pacientes
+### Listar ingresos pendientes
 GET http://localhost:8080/ingresos
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMzNDM2MywiZXhwIjoxNzY1MzQ4NzYzfQ.a3pYdnl0QIYSklG9j8QTMG0lV4ovzxJpdhIvn5h1-Kk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTQ2OTA5OX0.kaORSE34tJaCdvH_F39AcEiWNPwHayCriCyLHdO52Nc
 
 ### Paciente existente de baja prioridad
 POST http://localhost:8080/ingresos
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTMzNDM2MywiZXhwIjoxNzY1MzQ4NzYzfQ.a3pYdnl0QIYSklG9j8QTMG0lV4ovzxJpdhIvn5h1-Kk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTQ2OTA5OX0.kaORSE34tJaCdvH_F39AcEiWNPwHayCriCyLHdO52Nc
 
 {
     "paciente": {
@@ -118,3 +118,7 @@ Content-Type: application/json
     "frecuenciaRespiratoria": -5.0,
     "tensionArterial": "120/80"
 }
+
+### Obtener todos los ingresos
+GET http://localhost:8080/ingresos/todos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJ1c2VybmFtZSI6ImVuZkBtYWlsLmNvbSIsImlhdCI6MTc2NTQ2OTA5OX0.kaORSE34tJaCdvH_F39AcEiWNPwHayCriCyLHdO52Nc

@@ -1,5 +1,6 @@
 package org.app.controllers;
 
+import org.apache.coyote.Response;
 import org.app.exceptions.InvalidCreateIngreso;
 import org.app.exceptions.InvalidFindOrCreatePaciente;
 import org.app.models.ingresos.AddInforme;
@@ -18,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 public class ModuloUrgencias {
@@ -68,6 +70,18 @@ public class ModuloUrgencias {
         );
 
         return ResponseEntity.ok(respuesta);
+    }
+
+    @GetMapping("/ingresos/todos")
+    public ResponseEntity<?> obtenerIngresos(@RequestHeader("Authorization") String authHeader) {
+        try {
+            Usuario usuario = this.authService.validarSesion(authHeader);
+            List<Ingreso> ingresos = urgenciasService.obtenerIngresos();
+            return ResponseEntity.ok(ingresos);
+        }
+        catch (UsuarioNoAutenticado e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 
     @GetMapping("/ingresos/reclamar")

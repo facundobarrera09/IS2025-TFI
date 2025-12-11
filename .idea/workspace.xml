@@ -7,12 +7,11 @@
     <list default="true" id="2c45076f-2d4c-499a-9514-24b062e9d7fe" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/controllers/ModuloPacientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/controllers/ModuloPacientes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/repos/RepoPacientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/repos/RepoPacientes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/services/PacientesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/services/PacientesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/domain/interfaces/IRepositorioPacientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/domain/interfaces/IRepositorioPacientes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/mock/RepoPacientesParaPruebas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/mock/RepoPacientesParaPruebas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/rest/pacientes.rest" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/rest/pacientes.rest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/controllers/ModuloUrgencias.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/controllers/ModuloUrgencias.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/services/UrgenciasService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/services/UrgenciasService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/domain/controllers/ControladorUrgencias.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/domain/controllers/ControladorUrgencias.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/rest/ingresos.rest" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/rest/ingresos.rest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/rest/reclamar.rest" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/rest/reclamar.rest" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +33,8 @@
 }</component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "HTTP Request.ingresos | Obtener todos los ingresos.executor": "Run",
+    "HTTP Request.ingresos | Paciente existente de baja prioridad.executor": "Run",
     "HTTP Request.login | Crear enfermero.executor": "Run",
     "HTTP Request.login | Crear médico.executor": "Run",
     "HTTP Request.login | Iniciar sesión como enfermero.executor": "Run",
@@ -65,11 +66,11 @@
         <entry key="HttpClient.HttpRequestRunConfigurationType">
           <value>
             <map>
-              <entry key="login | Crear enfermero" value="STOPPED" />
-              <entry key="login | Iniciar sesión como enfermero" value="STOPPED" />
+              <entry key="ingresos | Obtener todos los ingresos" value="STOPPED" />
+              <entry key="ingresos | Paciente existente de baja prioridad" value="STOPPED" />
+              <entry key="login | Iniciar sesión como médico" value="STOPPED" />
               <entry key="pacientes | Crear paciente como enfermero" value="STOPPED" />
               <entry key="pacientes | Obtener listado de pacientes" value="STOPPED" />
-              <entry key="pacientes | Obtener paciente por cuit" value="STOPPED" />
             </map>
           </value>
         </entry>
@@ -77,19 +78,19 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.Main">
-    <configuration name="login | Crear enfermero" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/resources/rest/login.rest" executionIdentifier="Crear enfermero" index="4" runType="Run single request">
+    <configuration name="ingresos | Obtener todos los ingresos" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/resources/rest/ingresos.rest" executionIdentifier="Obtener todos los ingresos" index="8" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="login | Iniciar sesión como enfermero" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/resources/rest/login.rest" executionIdentifier="Iniciar sesión como enfermero" index="2" runType="Run single request">
+    <configuration name="ingresos | Paciente existente de baja prioridad" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/resources/rest/ingresos.rest" executionIdentifier="Paciente existente de baja prioridad" index="2" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="login | Iniciar sesión como médico" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/resources/rest/login.rest" executionIdentifier="Iniciar sesión como médico" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="pacientes | Crear paciente como enfermero" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/resources/rest/pacientes.rest" executionIdentifier="Crear paciente como enfermero" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="pacientes | Obtener listado de pacientes" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/resources/rest/pacientes.rest" executionIdentifier="Obtener listado de pacientes" index="3" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="pacientes | Obtener paciente por cuit" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/resources/rest/pacientes.rest" executionIdentifier="Obtener paciente por cuit" index="2" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
@@ -101,11 +102,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.login | Iniciar sesión como médico" />
+        <item itemvalue="HTTP Request.ingresos | Obtener todos los ingresos" />
+        <item itemvalue="HTTP Request.ingresos | Paciente existente de baja prioridad" />
         <item itemvalue="HTTP Request.pacientes | Obtener listado de pacientes" />
-        <item itemvalue="HTTP Request.pacientes | Obtener paciente por cuit" />
         <item itemvalue="HTTP Request.pacientes | Crear paciente como enfermero" />
-        <item itemvalue="HTTP Request.login | Iniciar sesión como enfermero" />
-        <item itemvalue="HTTP Request.login | Crear enfermero" />
       </list>
     </recent_temporary>
   </component>

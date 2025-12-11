@@ -8,6 +8,7 @@ import org.domain.models.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 
 public class ControladorUrgencias {
@@ -179,6 +180,10 @@ public class ControladorUrgencias {
                     : "")
             );
         }
+    }
+
+    public List<Ingreso> obtenerIngresos() {
+        return this.historicoIngresos;
     }
 }
 

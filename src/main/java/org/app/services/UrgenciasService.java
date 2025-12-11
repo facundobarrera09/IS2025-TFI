@@ -13,6 +13,7 @@ import org.app.repos.RepoEnfermeras;
 import org.app.repos.RepoPacientes;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.PriorityQueue;
 import java.util.UUID;
@@ -80,5 +81,9 @@ public class UrgenciasService {
         }
 
         this.controladorUrgencia.registrarInforme(usuario.getMedico(), informe);
+    }
+
+    public List<Ingreso> obtenerIngresos() {
+        return this.controladorUrgencia.obtenerIngresos();
     }
 }
